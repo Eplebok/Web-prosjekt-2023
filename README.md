@@ -3,3 +3,6 @@ This project is part of the NTNU, IDG2671 Webproject course. In this project we 
 
 fungerer dette
 sup brah! lololol
+
+heisann
+q3eqq
