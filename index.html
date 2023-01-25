@@ -9,10 +9,110 @@
     <script src="/script/main.js"></script>
 </head>
 <body>
+
     
+     <header class="header">
+        <nav tabindex="0">
+             <div class="nav_links" id="nav_links">
+                  
+               
+                <ul role="navigation">
+                    <li id="leftlink" ><a id="test" href="index.html">Home</a></li>
+                    <li><a href="tools.html">Tools</a></li>
+                    <li><a href="booking.html">Booking</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="login.html">Log In</a></li>
+                    
+                </ul>
+            </div> 
+           
+           
+
+        </nav>
+    
+
     <h1>Overskrift</h1>
     <h1>Overskrift</h1>
     <p>helloooooo</p>
     <p>helloooooo123</p>
+
+    <style>
+        * {
+margin: 0;
+padding: 0;
+        }
+        
+
+
+
+nav {
+    position: absolute;
+    
+    display: flex;
+    
+    justify-content: space-between;
+    text-align: center;
+    background-color: black;
+    width: 100vw;
+    padding: 20px 0;
+    font-size: 20px;
+    
+   
+}
+
+.nav_links {
+    flex: 1;
+    text-align: center;
+}
+
+
+
+.nav_links ul li, #leftlink{
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.nav_links ul li a, #leftlink a{
+    color: white;
+    text-decoration: none;
+    font-size: 0.9em;
+    
+}
+
+.nav_links ul li::after{
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: white;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+#leftlink::after{
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: white;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.nav_links ul li:hover::after{
+    width: 100%;
+}
+#leftlink:hover::after{
+    width: 100%;
+}
+
+
+
+    </style>
+
+
 </body>
 </html>
