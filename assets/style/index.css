@@ -1,1 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+  background-color: black;
+  width: 100vw;
+  padding: 20px 0;
+  font-size: 20px;
+}
+
+.nav_links {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+
+.nav_links ul li {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 12px;
+  position: relative;
+}
+
+.nav_links ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.nav_links ul li::after {
+  content: "";
+  width: 0%;
+  height: 2px;
+  background: white;
+  display: block;
+  margin: auto;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.nav_links ul li:hover::after {
+  width: 100%;
+}
+
+#leftlink {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 12px;
+  position: relative;
+}
+
+#leftlink a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+#leftlink::after {
+  content: "";
+  width: 0%;
+  height: 2px;
+  background: white;
+  display: block;
+  margin: auto;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#leftlink:hover::after {
+  width: 100%;
+}
 /*# sourceMappingURL=index.css.map */

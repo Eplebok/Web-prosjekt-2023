@@ -25,6 +25,27 @@
            
         </nav>
     </header>
+
+    <div class="comment-box">
+        <h2 tabindex="0">Submit a message to WWF's contact team.</h2>
+
+        <form name="form1"  onsubmit="return checkforblank()" class="comment-form" id="myForm" tabindex="0" aria-label="This forms contains one required input field, along with your desired message.">
+            <p id="error4" tabindex="0"  class="error4">    </p>
+            
+            <label  for="name">Your Name: (required)</label>
+            <input tabindex="0" type="text" id="name" name="name">
+            <p id="error2" tabindex="0"  class="error2"></p>
+            
+           
+            <label  for="textarea">Your message: (required)</label>
+            <input tabindex="0" id="textarea" name="textarea" rows="5">
+
+        </input> 
+             <p id="error3" tabindex="0"  class="error3"></p>
+            <button onclick="ValidateEmail(document.form1.email)" type="submit" id="submitbutton" class="hero-btn alt-btn">Submit Comment</button>
+           
+        </form>
+    </div>
     
     <h1>Overskrift</h1>
     <h1>Overskrift</h1>
