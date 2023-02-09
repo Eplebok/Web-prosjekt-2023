@@ -6,10 +6,10 @@ footer {
     background-color: #464866;
 }
 
-#container {
+.footer-container {
     display: flex;
     color: white;
-    padding-bottom: 3rem;
+
 }
 
 ul {
@@ -18,19 +18,29 @@ ul {
     padding: 0;   
 }
 
-li {
-    list-style: none;
+.footer-list {
+    font-size: 1rem;
 }
 
-div {
+.footer-container{
     margin-left: 1rem;
     margin-right: 1rem;
-    padding-top: 3rem;
     justify-content: center;
 }
 
 .footer-top {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    padding-top: 3rem;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.footer-top-info {
+    font-size: 1.5rem;
+    margin-bottom: .9rem;
+    text-decoration: underline;
+   
 }
 
 a {
