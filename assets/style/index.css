@@ -127,10 +127,6 @@ a:hover {
   text-align: center;
 }
 
-.important-info-list {
-  list-style: circle;
-}
-
 section {
   width: 100%;
   margin: 0 auto;
@@ -156,14 +152,31 @@ section {
   margin: 0 auto;
 }
 
+.relevant-info p {
+  line-height: 1.5rem;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
 .important-info-card, .important-booking-card {
   margin: 300px 100px;
+}
+
+.important-info-card {
+  margin-left: 25%;
+}
+
+.important-info-card li {
+  line-height: 1.5rem;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .important-booking-card {
   width: 50ch;
   border: solid;
   padding: 20px;
+  margin-right: 25%;
 }
 
 .important-booking-card li {
@@ -175,8 +188,45 @@ section {
 }
 
 .homepage-button {
-  background-color: black;
-  color: white;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  background-color: #2f80ed;
+  border-radius: 10px;
+  border-style: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  height: 50px;
+  letter-spacing: normal;
+  line-height: 1.5;
+  outline: none;
+  overflow: hidden;
+  padding: 14px 30px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
 }
 
 nav {
