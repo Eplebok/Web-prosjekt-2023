@@ -102,8 +102,14 @@ section {
 }
 
 .homepage-welcome-section {
-	padding: 200px 100px ;
+	padding: 200px 0px ;
 	background-color: beige;
+	
+}
+
+.relevant-info {
+	max-width: 100ch;
+	padding: 0 250px;
 }
 
 .important-info-card, .important-booking-card {
