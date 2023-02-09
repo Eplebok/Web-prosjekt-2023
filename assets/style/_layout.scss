@@ -47,3 +47,87 @@
 		margin: 10px 0;
 	}
 }
+
+
+// homepage css below
+
+#homepage {
+	width: 100vw;
+}
+
+.relevant-info-title {
+	text-decoration: underline;
+	font-size: 2rem;
+	display: inline;
+}
+
+.p {
+	font-size: 2rem;
+}
+
+
+.recent-booking-card {
+	border: solid;
+	margin:auto;
+	margin-bottom: 2rem;
+	margin-top: 3rem;
+	width: 700px;
+	  height: 500px;
+}
+
+.booking-title {
+	font-size: 1.3rem;
+	text-decoration: underline;
+	margin: auto;
+	text-align: center;
+}
+
+.important-info-list {
+	list-style: circle;
+}
+
+section {
+	width: 100%;
+	margin: 0 auto;
+	// margin-bottom: 150px;
+	// padding: 40px;
+	position: relative;
+	//padding: 300px 50;
+}
+
+.homepage-info-booking-section {
+	display: flex;
+	box-sizing: border-box;
+	background-color: grey;
+}
+
+.homepage-welcome-section {
+	padding: 200px 100px ;
+	background-color: beige;
+}
+
+.important-info-card, .important-booking-card {
+	margin: 300px 100px ;
+}
+
+.important-booking-card {
+	width: 50ch;
+	border: solid;
+	padding: 20px;
+
+}
+
+.important-booking-card li {
+	margin-top: 10px;
+}
+
+.important-booking-card h2 {
+	text-align: center;
+}
+
+.homepage-button {
+	background-color: black;
+	color: white;
+}
+
+
