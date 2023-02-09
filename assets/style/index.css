@@ -160,10 +160,15 @@ section {
   margin: 300px 100px;
 }
 
+.important-info-card {
+  margin-left: 25%;
+}
+
 .important-booking-card {
   width: 50ch;
   border: solid;
   padding: 20px;
+  margin-right: 25%;
 }
 
 .important-booking-card li {
