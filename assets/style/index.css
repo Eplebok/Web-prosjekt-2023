@@ -330,6 +330,44 @@ section {
   cursor: pointer;
 }
 
+.tools {
+  width: 100%;
+  display: inline-block;
+  background-color: beige;
+  text-align: center;
+}
+
+.tools input {
+  font-size: 2rem;
+  height: 100px;
+  margin: 100px;
+  padding: 30px;
+  background-color: #BAD7E9;
+  border-radius: 5%;
+  display: block;
+}
+
+.tools-electric {
+  display: inline-block;
+}
+
+.tools-normal {
+  display: inline-block;
+  border-left: solid;
+}
+
+.items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.tools p {
+  padding: 30px;
+  font-size: 2rem;
+  text-decoration: underline;
+}
+
 nav {
   display: -webkit-box;
   display: -ms-flexbox;
