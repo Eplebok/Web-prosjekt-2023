@@ -144,7 +144,9 @@ section {
 
 .homepage-welcome-section {
   padding: 200px 0px;
-  background-color: beige;
+  background-image: url(../images/tools.jpg);
+  background-size: cover;
+  color: white;
 }
 
 .relevant-info {
@@ -304,5 +306,9 @@ nav {
 
 #leftlink:hover::after {
   width: 100%;
+}
+
+* {
+  font-family: 'Arial', sans-serif;
 }
 /*# sourceMappingURL=index.css.map */
