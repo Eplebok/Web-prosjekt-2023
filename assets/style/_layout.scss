@@ -52,9 +52,7 @@
 
 // homepage css below
 
-#homepage {
-	// width: 100vw;
-}
+
 
 .relevant-info-title {
 	text-decoration: underline;
@@ -244,7 +242,7 @@ section {
 		}
 
 		#about img {
-			width: 500px;	
+			width: 300px;	
 			border-radius: 75px;
 			box-shadow: 5px 10px 5px;
 			
@@ -255,8 +253,8 @@ section {
 			margin: 300px 100px;
 		}
 
-		.about-relevant-info, .about-important-owner-card {
-			width: 400px;
+		.about-relevant-info, .about-important-owner-card, .about-important-tools-card {
+			width: 300px;
 			padding: 20px;
 		}
 
@@ -267,5 +265,28 @@ section {
 		#about section {
 			display: flex;
 		}
+
+		.comment-box {
+		
+width: 30%;
+margin: 0 auto;
+margin-top: 100px;
+margin-bottom: 100px;
+	}
+	
+	#submitbutton {
+		width: 100%;
+    height: 55px;
+    background: #2364d2;
+    border: none;
+    border-radius: 5px;
+    font-size: 22px;
+    font-weight: 500;
+    font-family: "Source Sans Pro", sans-serif;
+    box-shadow: 3px 10px 20px 0px rgba(35, 100, 210, 0.3);
+    color: #fff;
+    margin-top: 20px;
+    cursor: pointer;
+	}
 
 
