@@ -231,6 +231,82 @@ section {
   white-space: nowrap;
 }
 
+.about-welcome-section {
+  background-color: #7e773e;
+  margin: 0 auto;
+}
+
+.about-info-card {
+  background-color: #9c7272;
+}
+
+.about-img-second {
+  margin-right: 25%;
+}
+
+.about-important-tools-card {
+  padding: 20px;
+  margin-left: 25%;
+  width: 400px;
+}
+
+.about-info-card img {
+  width: 600px;
+}
+
+.about-owner-card {
+  background-color: grey;
+}
+
+.test {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#about p {
+  line-height: 1.5rem;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#about h1 {
+  text-decoration: underline;
+}
+
+.about-link-ida {
+  color: #6b2828;
+  text-decoration: underline;
+}
+
+#about img {
+  width: 500px;
+  border-radius: 75px;
+  -webkit-box-shadow: 5px 10px 5px;
+          box-shadow: 5px 10px 5px;
+}
+
+.about-relevant-info, .about-important-tools-card, .about-important-owner-card {
+  border: solid;
+  margin: 300px 100px;
+}
+
+.about-relevant-info, .about-important-owner-card {
+  width: 400px;
+  padding: 20px;
+}
+
+.about-img-first, .about-img-second, .about-img-third {
+  margin: 300px 100px;
+}
+
+#about section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 nav {
   display: -webkit-box;
   display: -ms-flexbox;

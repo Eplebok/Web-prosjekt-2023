@@ -181,4 +181,91 @@ section {
 }
 
 
+// about page css below
+
+
+
+	// first section 
+
+		.about-welcome-section {
+			background-color: rgb(126, 119, 62);
+			margin: 0 auto;
+		}
+
+
+	// second section 
+
+		.about-info-card {
+			background-color: rgb(156, 114, 114);
+		}
+
+		.about-img-second {
+			margin-right: 25%;
+		}
+
+		.about-important-tools-card {
+			padding: 20px;
+			margin-left: 25%;
+			width: 400px;
+		}
+
+		.about-info-card img {
+			width: 600px;
+		}
+
+	// third section 
+
+		.about-owner-card {
+			background-color: grey;	
+		}
+
+
+		.test {
+			margin: 0 auto;
+			display: flex;
+		}
+
+
+	// all sections
+
+		#about p {
+			line-height: 1.5rem;
+			margin-top: 15px;
+			margin-bottom: 15px;
+		}
+
+		#about h1 {
+			text-decoration: underline;
+		}
+
+		.about-link-ida {
+			color: rgb(107, 40, 40);
+			text-decoration: underline;
+		}
+
+		#about img {
+			width: 500px;	
+			border-radius: 75px;
+			box-shadow: 5px 10px 5px;
+			
+		}
+
+		.about-relevant-info, .about-important-tools-card, .about-important-owner-card {
+			border: solid;
+			margin: 300px 100px;
+		}
+
+		.about-relevant-info, .about-important-owner-card {
+			width: 400px;
+			padding: 20px;
+		}
+
+		.about-img-first, .about-img-second, .about-img-third {
+			margin: 300px 100px;
+		}
+
+		#about section {
+			display: flex;
+		}
+
 
