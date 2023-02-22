@@ -24,6 +24,7 @@
 		margin: 20px;
 	}
 }
+
 .comment-form {
 	input {
 		width: 100%;
@@ -100,7 +101,9 @@ section {
 
 .homepage-welcome-section {
 	padding: 200px 0px ;
-	background-color: beige;
+	background-image: url(../images/tools.jpg);
+	background-size: cover;
+	color: white;
 	
 }
 
@@ -264,6 +267,5 @@ section {
 		#about section {
 			display: flex;
 		}
-
 
 
