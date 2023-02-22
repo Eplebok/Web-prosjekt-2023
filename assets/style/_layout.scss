@@ -242,24 +242,23 @@ section {
 		}
 
 		#about img {
-			width: 300px;	
+			width: 25vw;	
 			border-radius: 75px;
 			box-shadow: 5px 10px 5px;
-			
 		}
 
 		.about-relevant-info, .about-important-tools-card, .about-important-owner-card {
 			border: solid;
-			margin: 300px 100px;
+			margin: 30vw 10vw;
 		}
 
 		.about-relevant-info, .about-important-owner-card, .about-important-tools-card {
-			width: 300px;
+			width: 25vw;
 			padding: 20px;
 		}
 
 		.about-img-first, .about-img-second, .about-img-third {
-			margin: 300px 100px;
+			margin: 30vw 10vw;
 		}
 
 		#about section {
@@ -267,6 +266,31 @@ section {
 		}
 
 
+
+
+
+		.comment-box, .login-box, .register-box {
+		
+		width: 30%;
+		margin: 0 auto;
+		margin-top: 100px;
+		margin-bottom: 100px;
+		}
+	
+	#submitbutton, #submitbutton2 {
+			width: 100%;
+		height: 55px;
+		background: #2364d2;
+		border: none;
+		border-radius: 5px;
+		font-size: 22px;
+		font-weight: 500;
+		font-family: "Source Sans Pro", sans-serif;
+		box-shadow: 3px 10px 20px 0px rgba(35, 100, 210, 0.3);
+		color: #fff;
+		margin-top: 20px;
+		cursor: pointer;
+	}
 
 	// Log in/feedback section style CSS
 
@@ -344,6 +368,7 @@ section {
 		}
 
 	
+
 
 	
 
