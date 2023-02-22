@@ -63,14 +63,14 @@ a:hover {
   margin-top: 100px;
 }
 
-.comment-box {
+.comment-box, .login-box, .register-box {
   border: 1px solid #ccc;
   margin: 100px 0;
   padding: 10px 20px;
   text-align: left;
 }
 
-.comment-box h2 {
+.comment-box h2, .login-box h2, .register-box h2 {
   text-align: center;
   margin: 20px;
 }
@@ -281,7 +281,7 @@ section {
 }
 
 #about img {
-  width: 500px;
+  width: 300px;
   border-radius: 75px;
   -webkit-box-shadow: 5px 10px 5px;
           box-shadow: 5px 10px 5px;
@@ -292,8 +292,8 @@ section {
   margin: 300px 100px;
 }
 
-.about-relevant-info, .about-important-owner-card {
-  width: 400px;
+.about-relevant-info, .about-important-owner-card, .about-important-tools-card {
+  width: 300px;
   padding: 20px;
 }
 
@@ -305,6 +305,29 @@ section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.comment-box, .login-box, .register-box {
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+#submitbutton, #submitbutton2 {
+  width: 100%;
+  height: 55px;
+  background: #2364d2;
+  border: none;
+  border-radius: 5px;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: "Source Sans Pro", sans-serif;
+  -webkit-box-shadow: 3px 10px 20px 0px rgba(35, 100, 210, 0.3);
+          box-shadow: 3px 10px 20px 0px rgba(35, 100, 210, 0.3);
+  color: #fff;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
 nav {
