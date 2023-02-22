@@ -10,7 +10,7 @@ function checkForblank() {
     let myname = document.getElementById("name");
     let mytextarea = document.getElementById("textarea");
 
-    let form = document.getElementById("myForm");
+   let form = document.getElementById("myForm");
 
   if (myname.value === "" && mytextarea.value === "") {
     error3.style.color = "red";
