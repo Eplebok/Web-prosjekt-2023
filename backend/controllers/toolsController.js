@@ -1,6 +1,6 @@
 const toolSchema = require("../schemas/toolsSchema")
-const ElectricTool = require("../schemas/electricTools");
-const NormalTool = require('../schemas/normalTools');
+const ElectricTool = require('../schemas/electricTools')
+const NormalTool = require('../schemas/normalTools')
 // const multer = require("multer") // set up multer so we can upload image to the DB
 
 
@@ -10,13 +10,14 @@ const NormalTool = require('../schemas/normalTools');
 // Retrieve electric tools from the 'electricTools' collection
 const getElectricTools = async (req, res) => {
     try {
-      const electricTools = await ElectricTool.find({});
-      res.render('electricTools', { tools: electricTools });
+      const electricTools = await ElectricTool.find();
+      res.json(electricTools)
+     //res.render('electricTools', { tools: electricTools });
     } catch (err) {
       console.error(err);
       res.status(500).send('Error retrieving electric tools');
     }
-  };
+  }
   
   const getNormalTools = async (req, res) => {
     try {
@@ -26,7 +27,7 @@ const getElectricTools = async (req, res) => {
       console.error(err);
       res.status(500).send('Error retrieving normal tools');
     }
-  };
+  }
 
 // POST method (create)
 // this function adds data in my DB
