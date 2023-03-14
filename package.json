@@ -4,7 +4,8 @@
     "express": "^4.18.2",
     "mongodb": "^5.1.0",
     "mongoose": "^7.0.1",
-    "multer": "^1.4.5-lts.1"
+    "multer": "^1.4.5-lts.1",
+    "node": "^19.6.1"
   },
   "name": "web-prosjekt-2023",
   "description": "This project is part of the NTNU, IDG2671 Webproject course. In this project we will be working on creating a website that is going to to aid an employee of NTNU when it comes to handling her workshop!",
