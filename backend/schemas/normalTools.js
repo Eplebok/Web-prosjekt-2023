@@ -1,9 +1,18 @@
 const mongoose = require('mongoose');
 
 const normalToolSchema = new mongoose.Schema({
-    name: String,
-    description: String,
-    size: String
+    name: {
+      type: String,
+      required: true
+    },
+    description: {
+      type: String,
+      required: true
+    },
+    size:{
+      type: String, 
+      required: true
+    } 
   });
   
 module.exports = mongoose.model('NormalTool', normalToolSchema);

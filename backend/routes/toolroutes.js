@@ -7,7 +7,7 @@ const {createTool, getNormalTools, getElectricTools} = require("../controllers/t
 
 router.get("/electric", cors(), getElectricTools)
 // Route for retrieving normal tools
-router.get("/normal", getNormalTools)
+router.get("/normal", cors(), getNormalTools)
 
 const {createUser} = require("../controllers/userController")
 
