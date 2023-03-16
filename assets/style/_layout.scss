@@ -367,7 +367,10 @@ section {
 			text-decoration: underline;
 		}
 
-
+        .product-card > img {
+			width: 300px;
+			height: 300px;
+		}
 
 		#product-card-container {
 			display: flex;
@@ -375,6 +378,9 @@ section {
 			justify-content: space-between;
 			padding: 2%;
 		  }
+        h2 > a {
+			color: black;
+		}
 		  
 		  .product-card {
 			width: calc(33.33% - 20px);

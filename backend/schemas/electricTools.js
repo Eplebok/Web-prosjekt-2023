@@ -9,7 +9,7 @@ const electricToolSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    power: {
+    image_name: {
         type: String,
         required: true
     }

@@ -6,8 +6,9 @@ fetch('http://localhost:3500/tools/electric')
     // Modify the data as needed
     const modifiedData = data.map(tool => {
       return {
+        id: tool._id,
         name: tool.name,
-        description: tool.description,// increase price by 10%;
+        description: tool.description,
         power: tool.power
       };
     });
@@ -18,31 +19,16 @@ fetch('http://localhost:3500/tools/electric')
     modifiedData.forEach(tool => {
       const toolElement = document.createElement('div');
       toolElement.classList.add('product-card');
+      const imageUrl = `/assets/images/${tool.name}.jpg`;
       toolElement.innerHTML = `
-        <h2>${tool.name}</h2>
-        <p>description: ${tool.description}</p>
+        <h2><a href="/spesificTool.html?toolName=${tool.name}">${tool.name}</a></h2>
+        <img src="${imageUrl}">
+        
         
       `;
-      //<p>power: ${tool.power}</p>
       container.appendChild(toolElement);
     });
   })
   .catch(error => console.error(error));
-  /*.then(data => {
-    console.log(data); // or display the data on the webpage
-  })*/
-  //.catch(error => console.error(error));
-  /* .then(response => response.json())
-  .then(data => {
-    // create a new HTML element for each electric tool and append it to the electricToolsContainer
-    data.electricTools.forEach(tool => {
-      const toolElement = document.createElement('div');
-      toolElement.textContent = `${tool.name}: ${tool.description}: ${tool.power}`;
-      electricToolsContainer.appendChild(toolElement);
-    });
-  })
-  .catch(error => {
-    console.error(error);
-    electricToolsContainer.textContent = 'Error retrieving electric tools';
-  });*/
+ 
 
