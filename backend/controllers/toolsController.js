@@ -30,6 +30,27 @@ const getElectricTools = async (req, res) => {
     }
   }
 
+  const getOneElectricTool = async (req, res) => {
+    try{
+      const name = req.params.name;
+      const tool = await ElectricTool.findOne({ name: name });
+      res.json(tool);
+
+    } catch (err) {
+      console.error(err);
+      res.status(404).send('Item not found');
+
+    }
+  }
+
+  const getOneNormalTool = async (req, res) => {
+    try{
+
+    } catch (err) {
+      
+    }
+  }
+
 // POST method (create)
 // this function adds data in my DB
 const createTool = async (req, res) => {
@@ -46,4 +67,4 @@ const createTool = async (req, res) => {
     }
 };
 
-module.exports = {createTool, getElectricTools, getNormalTools}
+module.exports = {createTool, getElectricTools, getNormalTools, getOneElectricTool, getOneNormalTool}

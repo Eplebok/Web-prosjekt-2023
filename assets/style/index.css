@@ -364,11 +364,20 @@ section {
   text-decoration: underline;
 }
 
+.product-card > img {
+  width: 300px;
+  height: 300px;
+}
+
 #product-card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 2%;
+}
+
+h2 > a {
+  color: black;
 }
 
 .product-card {
