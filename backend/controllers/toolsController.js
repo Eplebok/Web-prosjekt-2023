@@ -1,6 +1,55 @@
 const toolSchema = require("../schemas/toolsSchema")
+const ElectricTool = require('../schemas/electricTools')
+const NormalTool = require('../schemas/normalTools')
 // const multer = require("multer") // set up multer so we can upload image to the DB
 
+
+// Get (read)
+//Function to read info from database
+
+// Retrieve electric tools from the 'electricTools' collection
+const getElectricTools = async (req, res) => {
+    try {
+      const electricTools = await ElectricTool.find();
+      res.json(electricTools)
+     //res.render('electricTools', { tools: electricTools });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Error retrieving electric tools');
+    }
+  }
+  
+  const getNormalTools = async (req, res) => {
+    try {
+      const normalTools = await NormalTool.find();
+      res.json(normalTools)
+      //res.render('normalTools', { tools: normalTools });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Error retrieving normal tools');
+    }
+  }
+
+  const getOneElectricTool = async (req, res) => {
+    try{
+      const name = req.params.name;
+      const tool = await ElectricTool.findOne({ name: name });
+      res.json(tool);
+
+    } catch (err) {
+      console.error(err);
+      res.status(404).send('Item not found');
+
+    }
+  }
+
+  const getOneNormalTool = async (req, res) => {
+    try{
+
+    } catch (err) {
+      
+    }
+  }
 
 // POST method (create)
 // this function adds data in my DB
@@ -18,4 +67,4 @@ const createTool = async (req, res) => {
     }
 };
 
-module.exports = {createTool}
+module.exports = {createTool, getElectricTools, getNormalTools, getOneElectricTool, getOneNormalTool}
