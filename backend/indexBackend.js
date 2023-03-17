@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express()
-const PORT = process.env.PORT || 3500
+const PORT = process.env.PORT || 3200
 const dotenv = require("dotenv").config()
 const bodyParser = require("body-parser")
 app.use(bodyParser.json())
@@ -21,5 +21,9 @@ connectDB()
 app.listen(PORT,() => {
     console.log(`Api fungere på ${PORT}`)
     console.log(process.env.MONGO_URI);
+
 })
+
+})
+
 
