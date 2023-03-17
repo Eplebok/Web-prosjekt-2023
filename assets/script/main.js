@@ -36,6 +36,19 @@ function checkForblank() {
   }
 }
 
+function validateForm() {
+  let e = document.forms["myForm"]["quantity"].value;
+  var x = document.forms["myForm"]["electric"].value;
+  if (isNaN(e)) {
+    alert("Quantity field must be a number");
+    return false;
+  }
+  if (x != "true" && x != "false" && x != "") {
+    alert("Electric field must be either true or false");
+    return false;
+  }      
+}
+
 function showMenu(){
     navLinks.style.right = "0" + "px";
 }

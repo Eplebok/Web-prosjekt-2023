@@ -4,13 +4,26 @@ const mongoose = require("mongoose")
 const toolSchema = new mongoose.Schema({
     name: {
       type: String,
-      required: [true, "Please enter the name of the tool"],
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    quantity: {
+      type: Number,
+      required: true,
+    },
+    electric: {
+      type: Boolean,
+      required: true,
     },
     image: {
-      data: Buffer, // Store the image data as a buffer object
-      contentType: String, // Store the content type of the image (e.g. "image/png")
-    },
+      type: String, // Store the path to the image file
+      required: true
+    }
   });
+  
 
 // export 
     module.exports = mongoose.model("toolSchema", toolSchema)
