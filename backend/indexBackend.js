@@ -26,21 +26,12 @@ connectDB()
 app.listen(PORT,() => {
     console.log(`Api fungere på ${PORT}`)
     console.log(process.env.MONGO_URI);
+
 })
 
 
-
-
-
-
-// FOR login insertion - kan mulig ryddes senere
-const User = require("./schemas/userSchema")
-app.use(express.urlencoded({extended: true}))
-app.set("view engine", "ejs")
-
-app.get("/home", (req, res)=>{
-    res.render("login")
 })
+
 
 app.post("/api/user", (req, res)=>{
     const SaveUser = new User(req.body)
