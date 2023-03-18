@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 3200
 const dotenv = require("dotenv").config()
 const bodyParser = require("body-parser")
 const toolSchema = require("./schemas/toolsSchema")
+const User = require("./schemas/userSchema")
 app.use(bodyParser.json())
 const connectDB = require("./dbconnect/dbconnect")
 connectDB()
@@ -79,14 +80,38 @@ app.listen(PORT,() => {
 
 })
 
-
-
-
-
-app.post("/api/user", (req, res)=>{
+app.post("/upload2", (req, res)=>{
     const SaveUser = new User(req.body)
     SaveUser.save()
     res.send(SaveUser)
     res.render(SaveUser)
     console.log("sucess")
 })
+
+
+app.post(
+    "/uploadUser",
+    upload.single("file"),
+    async (req, res) => {
+      const tempPath = req.file.path;
+      const targetDir = path.join(__dirname, "DBpictures");
+      const targetPath = path.join(targetDir, req.file.originalname.replace(/\.[^/.]+$/, "") + path.extname(req.file.originalname));
+  
+      try {
+        await fs.promises.rename(tempPath, targetPath);
+        const tool = new toolSchema({
+          name: req.body.name,
+          description: req.body.description,
+          quantity: req.body.quantity,
+          electric: req.body.electric,
+          image: targetPath
+        });
+        await tool.save();
+        res.status(200).end("File uploaded!");
+      } catch (err) {
+        console.error(err);
+        res.status(500).end("Oops! Something went wrong!");
+      }
+    }
+  );
+

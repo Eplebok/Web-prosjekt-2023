@@ -69,16 +69,19 @@
       <div class="register-box">
         <h2 tabindex="0">Please Register</h2>
 
-        <form name="myForm" action="/create/user" method="post" class="comment-form" id="myForm2" tabindex="0" >
+        <form name="myForm" action="/upload2" method="post" class="comment-form" id="myForm2" tabindex="0" >
           <p id="error4" tabindex="0" class="error4"></p>
       
-          <label for="name">Your username: (required)</label>
-          <input tabindex="0" type="text" id="name" name="name">
-          <p id="error22" tabindex="0" class="error2"></p>
+          <label for="userName">Your username: (required)</label>
+          <input tabindex="0" type="text" id="name" name="userName">
+
+          <label for="name">Your email: (required)</label>
+          <input tabindex="0" type="text" id="name" name="email">
+          
       
           <label for="textarea">Your password: (required)</label>
           <input tabindex="0" type="text" id="password" name="password">
-          <p id="error32" tabindex="0" class="error3"></p>
+         
           <button type="submit" id="submitbutton2" class="hero-btn alt-btn">Register</button>
 
         </form>
