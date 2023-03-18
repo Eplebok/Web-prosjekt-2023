@@ -11,11 +11,17 @@ router.get("/electric/:name", cors(), getOneElectricTool)
 router.get("/normal", cors(), getNormalTools)
 router.get("/normal/:id", cors(), getOneNormalTool)
 
-const {createUser} = require("../controllers/userController")
+const {createUser, getAllUsers, getUser} = require("../controllers/userController")
 
 
 // this creates a new tool
 router.post("/create/tool", createTool)
+
+// for user
 router.post("/create/user", createUser)
+router.get("/showall/user", getAllUsers)
+router.get("/showone/user/:userName", getUser)
+
+
 
 module.exports = router

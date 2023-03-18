@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webproject 2023</title>
+    <link rel="stylesheet" href="/assets/style/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="./assets/script/main.js"></script>
+</head>
+<body>
+    <nav-component></nav-component>
+
+    <div class="login-box">
+        <h2 tabindex="0">Please Login</h2>
+        <form name="myForm" onsubmit="return checkForblank()" class="comment-form" id="myForm2" tabindex="0" aria-label="This forms contains one required input field, along with your desired message.">
+          <p id="error4" tabindex="0" class="error4"></p>
+      
+          <label for="name">Your username: (required)</label>
+          <input tabindex="0" type="text" id="name" name="name">
+          <p id="error22" tabindex="0" class="error2"></p>
+      
+          <label for="textarea">Your password: (required)</label>
+          <input tabindex="0" type="text" id="password" name="password">
+          <p id="error32" tabindex="0" class="error3"></p>
+          
+          <button type="submit" id="submitbutton2" class="hero-btn alt-btn">Login</button>
+
+        </form>
+      </div>
+
+
+
+
+      <div class="register-box">
+        <h2 tabindex="0">Please Register</h2>
+
+
+        <form name="myForm2" action="/api/user" method="post" class="comment-form" id="myForm2" tabindex="0" >
+          
+      
+          <label for="name">Your username: (required)</label>
+          <input tabindex="0" type="text" id="name" name="userName">
+          
+          <label for="textarea">Your email: (required)</label>
+          <input tabindex="0" type="text" id="password" name="email">
+
+          <label for="textarea">Your password: (required)</label>
+          <input tabindex="0" type="text" id="password" name="password">
+          
+          <button type="submit" id="submitbutton2" class="hero-btn alt-btn">Register</button>
+
+        </form>
+      </div>
+
+    <footer-component></footer-component>
+
+</body>
+</html>
