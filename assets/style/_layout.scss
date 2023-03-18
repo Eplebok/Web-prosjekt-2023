@@ -3,185 +3,177 @@
     padding: 0;
 }
 
-// 
-
-
-
 // form css beneath
 
-.myForm {
-	width: 80%;
-	margin: auto;
-	margin-top: 100px;
-}
-.comment-box, .login-box, .register-box {
-	border: 1px solid #ccc;
-	margin: 100px 0;
-	padding: 10px 20px;
-	text-align: left;
-	h2 {
-		text-align: center;
-		margin: 20px;
+	.myForm {
+		width: 80%;
+		margin: auto;
+		margin-top: 100px;
 	}
-}
+	.comment-box, .login-box, .register-box {
+		border: 1px solid #ccc;
+		margin: 100px 0;
+		padding: 10px 20px;
+		text-align: left;
+		h2 {
+			text-align: center;
+			margin: 20px;
+		}
+	}
 
-.comment-form {
-	input {
-		width: 100%;
-		padding: 10px;
-		margin: 15px 0;
-		box-sizing: border-box;
-		border: none;
-		outline: none;
-		background: #f0f0f0;
+	.comment-form {
+		input {
+			width: 100%;
+			padding: 10px;
+			margin: 15px 0;
+			box-sizing: border-box;
+			border: none;
+			outline: none;
+			background: #f0f0f0;
+		}
+		textarea {
+			width: 100%;
+			padding: 10px;
+			margin: 15px 0;
+			box-sizing: border-box;
+			border: none;
+			outline: none;
+			background: #f0f0f0;
+		}
+		button {
+			margin: 10px 0;
+		}
 	}
-	textarea {
-		width: 100%;
-		padding: 10px;
-		margin: 15px 0;
-		box-sizing: border-box;
-		border: none;
-		outline: none;
-		background: #f0f0f0;
-	}
-	button {
-		margin: 10px 0;
-	}
-}
 
 
 // homepage css below
 
+	.relevant-info-title {
+		text-decoration: underline;
+		font-size: 2rem;
+		display: inline;
+	}
+
+	.p {
+		font-size: 2rem;
+	}
 
 
-.relevant-info-title {
-	text-decoration: underline;
-	font-size: 2rem;
-	display: inline;
-}
+	.recent-booking-card {
+		border: solid;
+		margin:auto;
+		margin-bottom: 2rem;
+		margin-top: 3rem;
+		width: 700px;
+		height: 500px;
+	}
 
-.p {
-	font-size: 2rem;
-}
-
-
-.recent-booking-card {
-	border: solid;
-	margin:auto;
-	margin-bottom: 2rem;
-	margin-top: 3rem;
-	width: 700px;
-	  height: 500px;
-}
-
-.booking-title {
-	font-size: 1.3rem;
-	text-decoration: underline;
-	margin: auto;
-	text-align: center;
-}
+	.booking-title {
+		font-size: 1.3rem;
+		text-decoration: underline;
+		margin: auto;
+		text-align: center;
+	}
 
 
-section {
-	width: 100%;
-	margin: 0 auto;
-	// margin-bottom: 150px;
-	// padding: 40px;
-	position: relative;
-	//padding: 300px 50;
-}
+	section {
+		width: 100%;
+		margin: 0 auto;
+		// margin-bottom: 150px;
+		// padding: 40px;
+		position: relative;
+		//padding: 300px 50;
+	}
 
-.homepage-info-booking-section {
-	display: flex;
+	.homepage-info-booking-section {
+		display: flex;
+		box-sizing: border-box;
+		background-color: grey;
+	}
+
+	.homepage-welcome-section {
+		padding: 200px 0px ;
+		background-image: url(../images/tools.jpg);
+		background-size: cover;
+		color: white;
+		
+	}
+
+	.relevant-info {
+		max-width: 100ch;
+		margin: 0 auto;
+	}
+
+	.relevant-info p {
+		line-height: 1.5rem;
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+
+	.important-info-card, .important-booking-card {
+		margin: 300px 100px ;
+	}
+
+	.important-info-card {
+		margin-left: 25% ;
+	}
+
+	.important-info-card li {
+		line-height: 1.5rem;
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+
+	.important-booking-card {
+		width: 50ch;
+		border: solid;
+		padding: 20px;
+		margin-right: 25%;
+
+	}
+
+	.important-booking-card li {
+		margin-top: 10px;
+	}
+
+	.important-booking-card h2 {
+		text-align: center;
+	}
+
+	.homepage-button {
+		appearance: none;
+	backface-visibility: hidden;
+	background-color: #2f80ed;
+	border-radius: 10px;
+	border-style: none;
+	box-shadow: none;
 	box-sizing: border-box;
-	background-color: grey;
-}
-
-.homepage-welcome-section {
-	padding: 200px 0px ;
-	background-image: url(../images/tools.jpg);
-	background-size: cover;
-	color: white;
-	
-}
-
-.relevant-info {
-	max-width: 100ch;
-	margin: 0 auto;
-}
-
-.relevant-info p {
-	line-height: 1.5rem;
-	margin-top: 15px;
-	margin-bottom: 15px;
-}
-
-.important-info-card, .important-booking-card {
-	margin: 300px 100px ;
-}
-
-.important-info-card {
-	margin-left: 25% ;
-}
-
-.important-info-card li {
-	line-height: 1.5rem;
-	margin-top: 15px;
-	margin-bottom: 15px;
-}
-
-.important-booking-card {
-	width: 50ch;
-	border: solid;
-	padding: 20px;
-	margin-right: 25%;
-
-}
-
-.important-booking-card li {
-	margin-top: 10px;
-}
-
-.important-booking-card h2 {
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+	font-size: 15px;
+	font-weight: 500;
+	height: 50px;
+	letter-spacing: normal;
+	line-height: 1.5;
+	outline: none;
+	overflow: hidden;
+	padding: 14px 30px;
+	position: relative;
 	text-align: center;
-}
-
-.homepage-button {
-	appearance: none;
-  backface-visibility: hidden;
-  background-color: #2f80ed;
-  border-radius: 10px;
-  border-style: none;
-  box-shadow: none;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  height: 50px;
-  letter-spacing: normal;
-  line-height: 1.5;
-  outline: none;
-  overflow: hidden;
-  padding: 14px 30px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  transform: translate3d(0, 0, 0);
-  transition: all .3s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: top;
-  white-space: nowrap;
-}
+	text-decoration: none;
+	transform: translate3d(0, 0, 0);
+	transition: all .3s;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	vertical-align: top;
+	white-space: nowrap;
+	}
 
 
 // about page css below
-
-
 
 	// first section 
 
@@ -189,7 +181,6 @@ section {
 			background-color: rgb(126, 119, 62);
 			margin: 0 auto;
 		}
-
 
 	// second section 
 
@@ -216,7 +207,6 @@ section {
 		.about-owner-card {
 			background-color: grey;	
 		}
-
 
 		.test {
 			margin: 0 auto;
@@ -265,12 +255,7 @@ section {
 			display: flex;
 		}
 
-
-
-
-
 		.comment-box, .login-box, .register-box {
-		
 		width: 30%;
 		margin: 0 auto;
 		margin-top: 100px;
@@ -292,30 +277,202 @@ section {
 		cursor: pointer;
 	}
 
-	// Log in/feedback section style CSS
+	// Log in/register section style CSS
+	  
+			
 
-			.comment-box, .login-box, .register-box {
-				width: 30%;
+			$font: "Source Sans Pro", sans-serif;
+			$blue: #809bce;
+			$purple: #9893da;
+			$grey: #c3c3d8;
+
+			.bigcontainer,
+			.message,
+			.form,
+			form {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			}
+
+
+			.container {
+			width: 700px;
+			height: 400px;
+			background: white;
+			position: relative;
+			display: grid;
+			grid-template: 100% / 50% 50%;
+			box-shadow: 2px 2px 10px 0 rgba(#333, 0.2);
+			}
+
+			.message {
+			position: absolute;
+			background: white;
+			width: 50%;
+			height: 100%;
+			transition: 0.5s all ease;
+			transform: translateX(100%);
+			z-index: 4;
+
+			&:before {
+				position: absolute;
+				content: "";
+				width: 1px;
+				height: 70%;
+				background: $grey;
+				opacity: 0;
+				left: 0;
+				top: 15%;
+			}
+
+			.button {
+				margin: 5px 0;
+			}
+			}
+
+			.signup {
+			&:before {
+				opacity: 0.3;
+				left: 0;
+			}
+			}
+
+			.login {
+			&:before {
+				opacity: 0.3;
+				left: 100%;
+			}
+			}
+
+			.btn-wrapper {
+			width: 60%;
+			}
+
+			.form {
+			width: 100%;
+			height: 100%;
+
+			&--heading {
+				font-size: 25px;
+				height: 50px;
+				color: #8288ff;
+				font-family: $font;
+			}
+			
+			&--signup {
+				border-right: 1px solid #999;
+			}
+			}
+
+			form {
+			width: 70%;
+			> * {
+				margin: 10px;
+			}
+			input {
+				width: 90%;
+				border: 0;
+				border-bottom: 1px solid #aaa;
+				font-size: 13px;
+				font-weight: 300;
+				color: #797a9e;
+				letter-spacing: 0.11em;
+
+				&::placeholder {
+				color: #333;
+				font-size: 10px;
+				}
+
+				&:focus {
+				outline: 0;
+				border-bottom: 1px solid rgba($blue, 0.7);
+				transition: 0.6s all ease;
+				}
+			}
+			}
+
+			.button {
+			width: 100%;
+			height: 30px;
+			border: 0;
+			outline: 0;
+			color: white;
+			font-size: 15px;
+			font-weight: 400;
+			position: relative;
+			z-index: 3;
+			background: #8288ff;
+			font-family: $font;
+			cursor: pointer;
+			}
+
+	// feedback form css
+	
+			.feedback-box {
+				display: flex;
+				width: 80%;
 				margin: 0 auto;
-				margin-top: 100px;
-				margin-bottom: 100px;
-				}
-				
-				#submitbutton, #submitbutton2 {
+				text-align: center;
+				margin-bottom: 10px;
+				margin-top: 10px;
+				background-color: rgb(145, 128, 128);
+				border-radius: 10px;
+			}
+
+			.feedback {
+				border-radius: 15px 50px 30px;
+				margin: 10px;
+			}
+
+			  .feedback-img {
+				top: 0;
+				left: 0;
+				width: 30%;
+				object-fit: cover;
+				border-radius: 10px;
+			  }
+
+			  .feedback-textarea {
+				width: 90%;
+				font-size: 1rem;
+				border-radius: 10px;
+			  }
+
+			  .feedback .title {
+				font-size: 24px;
+				font-weight: bold;
+				margin-bottom: 10px;
+			  }
+
+			  .feedback input,
+				.feedback textarea {
+				display: block;
 				width: 100%;
-				height: 55px;
-				background: #2364d2;
-				border: none;
-				border-radius: 5px;
-				font-size: 22px;
-				font-weight: 500;
-				font-family: "Source Sans Pro", sans-serif;
-				box-shadow: 3px 10px 20px 0px rgba(35, 100, 210, 0.3);
-				color: #fff;
-				margin-top: 20px;
-				cursor: pointer;
+				padding: 10px;
+				margin-bottom: 10px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				box-sizing: border-box;
+				font-family: initial;
+				letter-spacing: 0;
 				}
 
+			.feedback textarea {
+				height: 150px;
+			  }
+
+				  
+			.feedback button{
+				background-color: #4CAF50;
+				color: white;
+				border: none;
+				padding: 10px 20px;
+				border-radius: 4px;
+				cursor: pointer;
+			}
+						
 
 	// Tools CSS Below
 
@@ -327,16 +484,122 @@ section {
 			background-color: beige;
 			text-align: center;
 		}
+		  
+		// update form CSS below 
+			.uploadTool {
+				background-color: #15172b;
+				border-radius: 20px;
+				box-sizing: border-box;
+				height: 520px;
+				padding: 20px;
+				width: 320px;
+				margin-bottom: 10px;
+				margin-top: 10px;
+			}
+			
+			.subtitle {
+				color: #eee;
+				font-family: sans-serif;
+				font-size: 16px;
+				font-weight: 600;
+				margin-top: 10px;
+			}
+			
+			.input-container {
+				height: 50px;
+				position: relative;
+				width: 100%;
+			}
+			
+			.ic1 {
+				margin-top: 20px;
+			}
+			
+			.ic2 {
+				margin-top: 20px;
+			}
+			
+			.input {
+				background-color: #303245;
+				border-radius: 12px;
+				border: 0;
+				box-sizing: border-box;
+				color: #eee;
+				font-size: 18px;
+				height: 100%;
+				outline: 0;
+				padding: 4px 20px 0;
+				width: 100%;
+			}
+			
+			.cut {
+				background-color: #15172b;
+				border-radius: 10px;
+				height: 20px;
+				left: 20px;
+				position: absolute;
+				top: -20px;
+				transform: translateY(0);
+				transition: transform 200ms;
+				width: 76px;
+			}
+			
+			.cut-short {
+				width: 50px;
+			}
+			
+			.input:focus ~ .cut,
+			.input:not(:placeholder-shown) ~ .cut {
+				transform: translateY(8px);
+			}
+			
+			.placeholder {
+				color: #65657b;
+				font-family: sans-serif;
+				left: 20px;
+				line-height: 14px;
+				pointer-events: none;
+				position: absolute;
+				transform-origin: 0 50%;
+				transition: transform 200ms, color 200ms;
+				top: 20px;
+			}
+			
+			.input:focus ~ .placeholder,
+			.input:not(:placeholder-shown) ~ .placeholder {
+				transform: translateY(-30px) translateX(10px) scale(0.75);
+			}
+			
+			.input:not(:placeholder-shown) ~ .placeholder {
+				color: #808097;
+			}
+			
+			.input:focus ~ .placeholder {
+				color: #dc2f55;
+			}
+			
+			.submit {
+				background-color: #08d;
+				border-radius: 12px;
+				border: 0;
+				box-sizing: border-box;
+				color: #eee;
+				cursor: pointer;
+				font-size: 18px;
+				height: 40px;
+				margin-top: 38px;
+				// outline: 0;
+				text-align: center;
+				width: 100%;
+			}
+			
+			.submit:active {
+				background-color: #06b;
+			}
+		  
+		  
 
-		.tools input {
-			font-size: 2rem;
-			height: 100px;
-			margin: 100px;
-			padding: 30px;
-			background-color: #BAD7E9;
-			border-radius: 5%;
-			display: block;
-		}
+		
 
 
 	//Electric tools
@@ -350,8 +613,9 @@ section {
 			border-left: solid;
 		}
 
-		.tools-electric input {
-			
+		.upload {
+			margin: 10px;
+			background-color: red;
 		}
 
 

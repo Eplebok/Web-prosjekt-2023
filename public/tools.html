@@ -14,42 +14,59 @@
 <body>
 
     <nav-component></nav-component>
-
-      <div class="tools">
-        <div id="tools-electric">
-          <a id="electric-tools-link" href="/electricTools.html">
-            <input type="button" value="Electric Tools">
-          </a>
-        </div>
-
-        <div id="tools-normal">
-          <div id="tools-electric">
-            <a id="normal-tools-link" href="/normalTools.html">
-              <input type="button" value="Normal Tools">
-            </a>
-        </div>
-      
-    </div>
     
-    <form name="myForm" method="post" enctype="multipart/form-data" action="/upload" onsubmit="return validateForm()">
-      <label>Name:</label>
-      <input type="text" name="name" required>
-      <br>
-      <label>Description</label>
-      <input type="text" name="description" required> 
-      <br>
-      <label>Quantity:</label>
-      <input type="text" name="quantity" required placeholder="Enter a number">
-      <br>
-      <label>Electric:</label>
-      <input type="text" name="electric" placeholder="Enter true or false" required> 
-      <br>
-      <label>Image:</label>
-      <input type="file" name="file" required>
-      <br>
-      <input type="submit" value="Submit" required>
+    <!-- nye updatetools formen  -->
+    <form name="myForm" method="post" enctype="multipart/form-data" action="/upload" onsubmit="return validateForm()" class="uploadTool">
+        <div class="subtitle">Fill out the form below to add a tool!</div>
+
+      <div class="input-container ic1">
+        <input type="text" name="name" required class="input" placeholder=" ">
+        <div class="cut"></div>
+        <label for="firstname" class="placeholder">Name:</label>
+      </div>
+
+      <div class="input-container ic2">
+        <input name="description" required class="input" type="text" placeholder=" "> 
+        <div class="cut"></div>
+        <label class="placeholder">Description:</label>
+      </div>
+
+      <div class="input-container ic2">
+        <input name="quantity" required class="input" type="text" placeholder=" ">
+        <div class="cut"></div>
+        <label class="placeholder">Quantity:</label>
+      </div>
+
+      <div class="input-container ic2">
+        <input type="text" name="electric" required class="input" type="text" placeholder=" ">  
+        <div class="cut"></div>
+        <label class="placeholder">Electric:</label>
+      </div>
+
+      <div class="input-container ic2">
+        <input type="file" name="file" required class="input" type="text" placeholder=" ">
+        <div class="cut"></div>
+        <label class="placeholder">Image:</label>
+      </div>
+      <button type="text" class="submit" value="submit" required>Submit</button>
     </form>
 
+    <div class="tools">
+      <div id="tools-electric">
+        <a id="electric-tools-link" href="/electricTools.html">
+          <input type="button" value="Electric Tools">
+        </a>
+      </div>
+
+      <div id="tools-normal">
+        <div id="tools-electric">
+          <a id="normal-tools-link" href="/normalTools.html">
+            <input type="button" value="Normal Tools">
+          </a>
+        </div>
+      </div>
+
+    </div>
 
 
     <footer-component></footer-component>
