@@ -9,10 +9,10 @@ const normalToolSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    size:{
-      type: String, 
+    image_name: {
+      type: String,
       required: true
-    } 
+    }
   });
   
 module.exports = mongoose.model('NormalTool', normalToolSchema);
