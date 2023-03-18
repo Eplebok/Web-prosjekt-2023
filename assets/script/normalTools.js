@@ -1,34 +1,28 @@
-//const electricToolsContainer = document.getElementById('electric-tools-container');
-
-fetch('http://localhost:3500/tools/electric')
+fetch('http://localhost:3200/tools/normal')
   .then(response => response.json())
   .then(data => {
     // Modify the data as needed
     const modifiedData = data.map(tool => {
       return {
-        id: tool._id,
         name: tool.name,
-        description: tool.description,
+        description: tool.description,// increase price by 10%;
         power: tool.power
       };
     });
     
     // Display the modified data on the webpage
-    const container = document.getElementById('product-card-container');
+    const container = document.getElementById('normal-tools-container');
     
     modifiedData.forEach(tool => {
       const toolElement = document.createElement('div');
       toolElement.classList.add('product-card');
-      const imageUrl = `/assets/images/${tool.name}.jpg`;
       toolElement.innerHTML = `
-        <h2><a href="/spesificTool.html?toolName=${tool.name}">${tool.name}</a></h2>
-        <img src="${imageUrl}">
-        
+        <h2>${tool.name}</h2>
+        <p>description: ${tool.description}</p>
         
       `;
+      //<p>power: ${tool.power}</p>
       container.appendChild(toolElement);
     });
   })
   .catch(error => console.error(error));
- 
-

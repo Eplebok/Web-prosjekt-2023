@@ -7,7 +7,7 @@ const toolName = window.location.search.split('=')[1];
 console.log(toolName);
 
 
-fetch(`http://localhost:3500/tools/electric/${toolName}`)
+fetch(`http://localhost:3200/tools/electric/${toolName}`)
   .then(response => response.json())
   .then(tool => {
     //window.location.href = `/spesificTool.html?name=${tool.name}&description=${tool.description}&power=${tool.power}`;
