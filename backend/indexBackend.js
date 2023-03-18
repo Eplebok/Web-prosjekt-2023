@@ -30,7 +30,7 @@ app.listen(PORT,() => {
 })
 
 
-})
+
 
 
 app.post("/api/user", (req, res)=>{
