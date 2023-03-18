@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 3200
 const dotenv = require("dotenv").config()
 const bodyParser = require("body-parser")
 const toolSchema = require("./schemas/toolsSchema")
+const userSchema = require("./schemas/userSchema")
 app.use(bodyParser.json())
 const connectDB = require("./dbconnect/dbconnect")
 connectDB()
@@ -15,6 +16,7 @@ const fs = require("fs");
 
 app.use(express.static("public"));
 app.use('/assets', express.static('assets'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const multer = require("multer");
 
@@ -53,6 +55,24 @@ app.post(
       });
       await tool.save();
       res.status(200).end("File uploaded!");
+    } catch (err) {
+      console.error(err);
+      res.status(500).end("Oops! Something went wrong!");
+    }
+  }
+);
+
+app.post(
+  "/register",
+  async (req, res) => {
+    try {
+      const user = new userSchema({
+        email: req.body.email,
+        password: req.body.password,
+      });
+      await user.save();
+      res.status(200).end("User created!");
+      console.log(user)
     } catch (err) {
       console.error(err);
       res.status(500).end("Oops! Something went wrong!");
