@@ -4,17 +4,18 @@ const PORT = process.env.PORT || 3200
 const dotenv = require("dotenv").config()
 const bodyParser = require("body-parser")
 const toolSchema = require("./schemas/toolsSchema")
+const userSchema = require("./schemas/userSchema")
 app.use(bodyParser.json())
 const connectDB = require("./dbconnect/dbconnect")
 connectDB()
 const mime = require("mime");
-
 const path = require("path");
 const fs = require("fs");
-// put the HTML file containing your form in a directory named "public" (relative to where this script is located)
 
+// put the HTML file containing your form in a directory named "public" (relative to where this script is located)
 app.use(express.static("public"));
 app.use('/assets', express.static('assets'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const multer = require("multer");
 
@@ -34,31 +35,82 @@ if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
 
-app.post(
-  "/upload",
-  upload.single("file"),
-  async (req, res) => {
-    const tempPath = req.file.path;
+// this code is for adding tools to the database in the tool.html page
+  app.post(
+    "/upload",
+    upload.single("file"),
+    async (req, res) => {
+      const tempPath = req.file.path;
     const targetDir = path.join(__dirname, "DBpictures");
-    const targetPath = path.join(targetDir, req.file.originalname.replace(/\.[^/.]+$/, "") + path.extname(req.file.originalname));
+    const date = Date.now();
+    const targetFileName = `${date}-${req.file.originalname}`;
+    const targetPath = path.join(targetDir, targetFileName);
 
+      try {
+        await fs.promises.rename(tempPath, targetPath);
+        const tool = new toolSchema({
+          name: req.body.name,
+          description: req.body.description,
+          quantity: req.body.quantity,
+          electric: req.body.electric,
+          image: targetPath
+        });
+        await tool.save();
+        res.status(200).end("File uploaded!");
+      } catch (err) {
+        console.error(err);
+        res.status(500).end("Oops! Something went wrong!");
+      }
+    }
+  );
+
+// this code is for the register part in the login.html page
+  app.post("/register", async (req, res) => {
     try {
-      await fs.promises.rename(tempPath, targetPath);
-      const tool = new toolSchema({
-        name: req.body.name,
-        description: req.body.description,
-        quantity: req.body.quantity,
-        electric: req.body.electric,
-        image: targetPath
-      });
-      await tool.save();
-      res.status(200).end("File uploaded!");
+      const existingUser = await userSchema.findOne({ email: req.body.email });
+      if (existingUser) {
+        res.status(409).end("Email already registered");
+      } else {
+        const user = new userSchema({
+          email: req.body.email,
+          password: req.body.password,
+        });
+        await user.save();
+        res.status(200).end("User created successfully!");
+        console.log(user);
+      }
     } catch (err) {
       console.error(err);
       res.status(500).end("Oops! Something went wrong!");
     }
-  }
-);
+  });
+
+// this code is for login part in the login.html page 
+// used POST because its more secure and people recommended it on stack-overflow, even though we dont update anything
+  app.post(
+    "/login",
+    async (req, res) => {
+      try {
+        const user = await userSchema.findOne({
+          email: req.body.email,
+          password: req.body.password,
+        });
+        if(user){
+          console.log(user)
+          res.status(200).end(`Welcome ${user.email}`)
+        }
+        else {
+          console.log("Invalid email or password")
+          res.status(500).end("Invalid Email or password")
+        }
+      } catch (err) {
+        console.error(err);
+        res.status(500).end("Oops! Something went wrong!");
+      }
+    }
+  );
+
+
 
 // we import our routers
     app.use("api/tools", require("./routes/toolroutes"))

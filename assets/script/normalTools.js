@@ -17,7 +17,7 @@ fetch('http://localhost:3200/tools/normal')
       const toolElement = document.createElement('div');
       toolElement.classList.add('product-card');
       toolElement.innerHTML = `
-        <h2>${tool.name}</h2>
+        <h2><a href="/spesificTool.html?toolName=${tool.name}">${tool.name}</a></h2>
         <p>description: ${tool.description}</p>
         
       `;

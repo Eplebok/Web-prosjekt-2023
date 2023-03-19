@@ -45,9 +45,12 @@ const getElectricTools = async (req, res) => {
 
   const getOneNormalTool = async (req, res) => {
     try{
-
+      const name = req.params.name;
+      const tool = await NormalTool.findOne({ name: name });
+      res.json(tool);
     } catch (err) {
-      
+      console.error(err);
+      res.status(404).send('Item not found');
     }
   }
 
@@ -66,5 +69,7 @@ const createTool = async (req, res) => {
         res.status(500).json({ message: 'error', error: err });
     }
 };
+
+
 
 module.exports = {createTool, getElectricTools, getNormalTools, getOneElectricTool, getOneNormalTool}
