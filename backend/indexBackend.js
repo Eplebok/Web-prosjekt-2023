@@ -41,8 +41,12 @@ if (!fs.existsSync(uploadDir)) {
     upload.single("file"),
     async (req, res) => {
       const tempPath = req.file.path;
-      const targetDir = path.join(__dirname, "DBpictures");
-      const targetPath = path.join(targetDir, req.file.originalname.replace(/\.[^/.]+$/, "") + path.extname(req.file.originalname));
+    const targetDir = path.join(__dirname, "DBpictures");
+    const date = Date.now();
+    const targetFileName = `${date}-${req.file.originalname}`;
+    const targetPath = path.join(targetDir, targetFileName);
+
+    
 
       try {
         await fs.promises.rename(tempPath, targetPath);
