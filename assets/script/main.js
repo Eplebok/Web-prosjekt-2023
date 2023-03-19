@@ -115,109 +115,84 @@ class NavComponent extends HTMLElement {
   customElements.define('nav-component', NavComponent);
 
 
-  // log in/ register js 
-  document.getElementById("signup").addEventListener("click", function() {
-  var message = document.querySelector(".message");
-  message.style.transform = "translateX(100%)";
-  if (message.classList.contains("login")) {
-    message.classList.remove("login");
-  }
-  message.classList.add("signup");
-});
-
-document.getElementById("login").addEventListener("click", function() {
-  var message = document.querySelector(".message");
-  message.style.transform = "translateX(0)";
-  if (message.classList.contains("login")) {
-    message.classList.remove("signup");
-  }
-  message.classList.add("login");
-});
-
-
-async function submitForm(event) {
-  event.preventDefault();
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  try {
-    const response = await fetch("/register", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+  // log in/ register js code for the login.html page below.
+    // this is for the functionality of the visual parts of the login/register form
+    // where if you press login, it "slides" to the login part, and if you press "register" it "slides" to register
+      document.getElementById("signup").addEventListener("click", function() {
+      var message = document.querySelector(".message");
+      message.style.transform = "translateX(100%)";
+      if (message.classList.contains("login")) {
+        message.classList.remove("login");
+      }
+      message.classList.add("signup");
     });
 
-    if (response.status === 200) {
-      document.getElementById("status").innerHTML = "User created successfully!";
-      document.getElementById("error-message").innerHTML = ""; // clear any previous error messages
-    } else {
-      const errorMessage = await response.text();
-      document.getElementById("status").innerHTML = "";
-      document.getElementById("error-message").innerHTML = errorMessage;
-    }
-  } catch (err) {
-    console.error(err);
-  }
-} 
-
-async function submitForm(event) {
-  event.preventDefault();
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  try {
-    const response = await fetch("/register", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+    document.getElementById("login").addEventListener("click", function() {
+      var message = document.querySelector(".message");
+      message.style.transform = "translateX(0)";
+      if (message.classList.contains("login")) {
+        message.classList.remove("signup");
+      }
+      message.classList.add("login");
     });
 
-    if (response.status === 200) {
-      document.getElementById("status").innerHTML = "User created successfully!";
-      document.getElementById("error-message").innerHTML = ""; // clear any previous error messages
-    } else {
-      const errorMessage = await response.text();
-      document.getElementById("status").innerHTML = "";
-      document.getElementById("error-message").innerHTML = errorMessage;
+
+//  functions below are for displaying error msg or success msg when filling out the login/register form in the login.html
+// submitForm for register part
+  async function submitForm(event) {
+    event.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    try {
+      const response = await fetch("/register", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.status === 200) {
+        document.getElementById("status").innerHTML = "User created successfully!";
+        document.getElementById("error-message").innerHTML = ""; // clear any previous error messages
+      } else {
+        const errorMessage = await response.text();
+        document.getElementById("status").innerHTML = "";
+        document.getElementById("error-message").innerHTML = errorMessage;
+      }
+    } catch (err) {
+      console.error(err);
     }
-  } catch (err) {
-    console.error(err);
-  }
-} 
+  } 
 
+// submitLoginForm for login part
+  async function submitLoginForm(event) {
+    event.preventDefault();
+    const email = document.getElementById("email2").value;
+    const password = document.getElementById("password2").value;
 
+    try {
+      const response = await fetch("/login", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-
-async function submitLoginForm(event) {
-  event.preventDefault();
-  const email = document.getElementById("email2").value;
-  const password = document.getElementById("password2").value;
-
-  try {
-    const response = await fetch("/login", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (response.status === 200) {
-      document.getElementById("logged").innerHTML = `You logged in!`;
-      document.getElementById("error").innerHTML = ""; // clear any previous error messages
-    } else {
-      const errorMessage = await response.text();
-      document.getElementById("logged").innerHTML = "";
-      document.getElementById("error").innerHTML = errorMessage;
+      if (response.status === 200) {
+        document.getElementById("logged").innerHTML = `You logged in!`;
+        document.getElementById("error").innerHTML = ""; // clear any previous error messages
+      } else {
+        const errorMessage = await response.text();
+        document.getElementById("logged").innerHTML = "";
+        document.getElementById("error").innerHTML = errorMessage;
+      }
+    } catch (err) {
+      console.error(err);
     }
-  } catch (err) {
-    console.error(err);
-  }
-};
+  };
 
 
     
