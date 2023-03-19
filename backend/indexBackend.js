@@ -11,6 +11,7 @@ connectDB()
 const mime = require("mime");
 const path = require("path");
 const fs = require("fs");
+const bcrypt = require('bcrypt');
 
 // put the HTML file containing your form in a directory named "public" (relative to where this script is located)
 app.use(express.static("public"));
@@ -65,50 +66,55 @@ if (!fs.existsSync(uploadDir)) {
   );
 
 // this code is for the register part in the login.html page
-  app.post("/register", async (req, res) => {
-    try {
-      const existingUser = await userSchema.findOne({ email: req.body.email });
-      if (existingUser) {
-        res.status(409).end("Email already registered");
-      } else {
-        const user = new userSchema({
-          email: req.body.email,
-          password: req.body.password,
-        });
-        await user.save();
-        res.status(200).end("User created successfully!");
-        console.log(user);
-      }
-    } catch (err) {
-      console.error(err);
-      res.status(500).end("Oops! Something went wrong!");
+app.post("/register", async (req, res) => {
+  try {
+    const existingUser = await userSchema.findOne({ email: req.body.email });
+    if (existingUser) {
+      res.status(409).end("Email already registered");
+    } else {
+      // Hash the password
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      const user = new userSchema({
+        email: req.body.email,
+        password: hashedPassword, // Store the hashed password
+      });
+      await user.save();
+      res.status(200).end("User created successfully!");
+      console.log(user);
     }
-  });
+  } catch (err) {
+    console.error(err);
+    res.status(500).end("Oops! Something went wrong!");
+  }
+});
+
 
 // this code is for login part in the login.html page 
 // used POST because its more secure and people recommended it on stack-overflow, even though we dont update anything
-  app.post(
-    "/login",
-    async (req, res) => {
-      try {
-        const user = await userSchema.findOne({
-          email: req.body.email,
-          password: req.body.password,
-        });
-        if(user){
-          console.log(user)
-          res.status(200).end(`Welcome ${user.email}`)
-        }
-        else {
-          console.log("Invalid email or password")
-          res.status(500).end("Invalid Email or password")
-        }
-      } catch (err) {
-        console.error(err);
-        res.status(500).end("Oops! Something went wrong!");
-      }
+
+
+app.post("/login", async (req, res) => {
+  try {
+    const user = await userSchema.findOne({
+      email: req.body.email,
+    });
+    if (user && bcrypt.compareSync(req.body.password, user.password)) {
+      console.log(user);
+      res.status(200).end(`Welcome ${user.email}`);
+
+    } else {
+      console.log("Invalid email or password");
+      res.status(500).end("Invalid email or password");
     }
-  );
+  } catch (err) {
+    console.error(err);
+    res.status(500).end("Oops! Something went wrong!");
+  }
+});
+
+
+
+
 
 
 

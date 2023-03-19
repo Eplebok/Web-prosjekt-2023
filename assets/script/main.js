@@ -103,7 +103,8 @@ class NavComponent extends HTMLElement {
                   <li><a href="about.html">About Us</a></li>
                   <li><a href="feedback.html">Feedback</a></li>
                   <li><a href="login.html">Log In</a></li>
-                  <li id="user-email"></li>       
+                  <li><a>Log out</a></li>  
+                  <li id="user-email"><a>Display email here</a></li>
               </ul>
           </div>  
         </nav>
@@ -213,14 +214,14 @@ class NavComponent extends HTMLElement {
       } else {
         const errorMessage = await response.text();
         document.getElementById("success").innerHTML = "";
-        document.getElementById("notsuccess").innerHTML = errorMessage;
+        document.getElementById("notsuccess").innerHTML = "Please fill out the required form!";
       }
     } catch (err) {
       console.error(err);
     }
   }
 
-  
+
   
   
   
