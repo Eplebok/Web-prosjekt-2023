@@ -26,24 +26,29 @@
 
       <div class="form form--signup">
         <div class="form--heading">Welcome! Sign Up</div>
-        <form autocomplete="off" onsubmit="return checkForblank()">
-          <input type="text" placeholder="Name">
-          <input type="email" placeholder="Email">
-          <input type="password" placeholder="Password">
+        <form autocomplete="off" onsubmit="submitForm(event)" method="post" action="/register">
+          <input type="email" name="email" placeholder="Email" id="email" required>
+          <input type="password" name="password" placeholder="Password" id="password" required>
           <button class="button" id="signup">Sign Up</button>
+        </form>
+        <div id="error-message"></div>
+        <div id="status"></div>
+      </div>
+      
+      <div class="form form--login">  
+        <div class="form--heading">Welcome back! </div>
+        <form autocomplete="off" onsubmit="submitLoginForm(event)" method="post" action="/login">
+          <input type="email" placeholder="email" name="email" id="email2" required>
+          <input type="password" placeholder="Password" name="password" id="password2" required>
+          <button class="button" id="login">Login</button>
+          <div id="logged"></div>
+          <div id="error"></div>
         </form>
       </div>
 
-      <div class="form form--login">  
-        <div class="form--heading">Welcome back! </div>
-        <form autocomplete="off" onsubmit="return checkForblank()">
-          <input type="text" placeholder="Name">
-          <input type="password" placeholder="Password">
-          <button class="button" id="login">Login</button>
-        </form>
-      </div>
     </div>
   </div>
+
 
   <!-- Den gamle nedenfor -->
 
@@ -86,6 +91,8 @@
 
         </form>
       </div>
+
+
 
 
 

@@ -9,7 +9,7 @@ router.get("/electric", cors(), getElectricTools)
 router.get("/electric/:name", cors(), getOneElectricTool)
 // Route for retrieving normal tools
 router.get("/normal", cors(), getNormalTools)
-router.get("/normal/:id", cors(), getOneNormalTool)
+router.get("/normal/:name", cors(), getOneNormalTool)
 
 const {createUser, getAllUsers, getUser} = require("../controllers/userController")
 
