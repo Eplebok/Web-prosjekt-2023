@@ -46,8 +46,6 @@ if (!fs.existsSync(uploadDir)) {
     const targetFileName = `${date}-${req.file.originalname}`;
     const targetPath = path.join(targetDir, targetFileName);
 
-    
-
       try {
         await fs.promises.rename(tempPath, targetPath);
         const tool = new toolSchema({
