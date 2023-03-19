@@ -9,11 +9,10 @@ app.use(bodyParser.json())
 const connectDB = require("./dbconnect/dbconnect")
 connectDB()
 const mime = require("mime");
-
 const path = require("path");
 const fs = require("fs");
-// put the HTML file containing your form in a directory named "public" (relative to where this script is located)
 
+// put the HTML file containing your form in a directory named "public" (relative to where this script is located)
 app.use(express.static("public"));
 app.use('/assets', express.static('assets'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -62,23 +61,51 @@ app.post(
   }
 );
 
-app.post(
-  "/register",
-  async (req, res) => {
-    try {
+app.post("/register", async (req, res) => {
+  try {
+    const existingUser = await userSchema.findOne({ email: req.body.email });
+    if (existingUser) {
+      res.status(409).end("Email already registered");
+    } else {
       const user = new userSchema({
         email: req.body.email,
         password: req.body.password,
       });
       await user.save();
-      res.status(200).end("User created!");
-      console.log(user)
+      res.status(200).end("User created successfully!");
+      console.log(user);
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).end("Oops! Something went wrong!");
+  }
+});
+
+
+app.post(
+  "/login",
+  async (req, res) => {
+    try {
+      const user = await userSchema.findOne({
+        email: req.body.email,
+        password: req.body.password,
+      });
+      if(user){
+        console.log(user)
+        res.status(200).end(`Welcome ${user.email}`)
+      }
+      else {
+        console.log("Invalid email or password")
+        res.status(500).end("Invalid Email or password")
+      }
     } catch (err) {
       console.error(err);
       res.status(500).end("Oops! Something went wrong!");
     }
   }
 );
+
+
 
 // we import our routers
     app.use("api/tools", require("./routes/toolroutes"))
