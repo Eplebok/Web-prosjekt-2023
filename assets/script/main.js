@@ -138,8 +138,9 @@ class NavComponent extends HTMLElement {
 
 
 //  functions below are for displaying error msg or success msg when filling out the login/register form in the login.html
+
 // submitForm for register part
-  async function submitForm(event) {
+  async function submitRegisterForm(event) {
     event.preventDefault();
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -194,6 +195,7 @@ class NavComponent extends HTMLElement {
     }
   };
 
+  
   async function addTool(event) {
     event.preventDefault();
     const form = document.querySelector(".uploadTool");
@@ -217,16 +219,11 @@ class NavComponent extends HTMLElement {
       console.error(err);
     }
   }
-  
 
-  function submitForm(event) {
-    event.preventDefault(); // prevent the form from submitting
-    addTool(event); // call addTool function
-    validateForm(); // call validateForm function
-  }
   
-
-    
+  
+  
+  
 
 
 
