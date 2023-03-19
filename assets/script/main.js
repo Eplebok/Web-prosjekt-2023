@@ -102,7 +102,8 @@ class NavComponent extends HTMLElement {
                   <li><a href="booking.html">Booking</a></li>
                   <li><a href="about.html">About Us</a></li>
                   <li><a href="feedback.html">Feedback</a></li>
-                  <li><a href="login.html">Log In</a></li>         
+                  <li><a href="login.html">Log In</a></li>
+                  <li id="user-email"></li>       
               </ul>
           </div>  
         </nav>
@@ -132,6 +133,94 @@ document.getElementById("login").addEventListener("click", function() {
   }
   message.classList.add("login");
 });
+
+
+async function submitForm(event) {
+  event.preventDefault();
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    const response = await fetch("/register", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.status === 200) {
+      document.getElementById("status").innerHTML = "User created successfully!";
+      document.getElementById("error-message").innerHTML = ""; // clear any previous error messages
+    } else {
+      const errorMessage = await response.text();
+      document.getElementById("status").innerHTML = "";
+      document.getElementById("error-message").innerHTML = errorMessage;
+    }
+  } catch (err) {
+    console.error(err);
+  }
+} 
+
+async function submitForm(event) {
+  event.preventDefault();
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    const response = await fetch("/register", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.status === 200) {
+      document.getElementById("status").innerHTML = "User created successfully!";
+      document.getElementById("error-message").innerHTML = ""; // clear any previous error messages
+    } else {
+      const errorMessage = await response.text();
+      document.getElementById("status").innerHTML = "";
+      document.getElementById("error-message").innerHTML = errorMessage;
+    }
+  } catch (err) {
+    console.error(err);
+  }
+} 
+
+
+
+
+async function submitLoginForm(event) {
+  event.preventDefault();
+  const email = document.getElementById("email2").value;
+  const password = document.getElementById("password2").value;
+
+  try {
+    const response = await fetch("/login", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.status === 200) {
+      document.getElementById("logged").innerHTML = `You logged in!`;
+      document.getElementById("error").innerHTML = ""; // clear any previous error messages
+    } else {
+      const errorMessage = await response.text();
+      document.getElementById("logged").innerHTML = "";
+      document.getElementById("error").innerHTML = errorMessage;
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+
+    
 
 
 
