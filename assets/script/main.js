@@ -213,14 +213,14 @@ class NavComponent extends HTMLElement {
       } else {
         const errorMessage = await response.text();
         document.getElementById("success").innerHTML = "";
-        document.getElementById("notsuccess").innerHTML = errorMessage;
+        document.getElementById("notsuccess").innerHTML = "Please fill out the required form!";
       }
     } catch (err) {
       console.error(err);
     }
   }
 
-  
+
   
   
   
