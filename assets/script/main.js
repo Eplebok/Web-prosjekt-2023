@@ -194,6 +194,37 @@ class NavComponent extends HTMLElement {
     }
   };
 
+  async function addTool(event) {
+    event.preventDefault();
+    const form = document.querySelector(".uploadTool");
+    const formData = new FormData(form);
+  
+    try {
+      const response = await fetch("/upload", {
+        method: "POST",
+        body: formData,
+      });
+  
+      if (response.status === 200) {
+        document.getElementById("success").innerHTML = "Tool added!";
+        document.getElementById("notsuccess").innerHTML = ""; // clear any previous error messages
+      } else {
+        const errorMessage = await response.text();
+        document.getElementById("success").innerHTML = "";
+        document.getElementById("notsuccess").innerHTML = errorMessage;
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  
+
+  function submitForm(event) {
+    event.preventDefault(); // prevent the form from submitting
+    addTool(event); // call addTool function
+    validateForm(); // call validateForm function
+  }
+  
 
     
 
