@@ -13,19 +13,19 @@ fetch('http://localhost:3200/tools/electric')
     });
     
     // Display the modified data on the webpage
-    const container = document.getElementById('normal-tools-container');
+    const container = document.getElementById('tool-card-container');
     
     modifiedData.forEach(tool => {
       
       if(tool.electric === false){
       const toolElement = document.createElement('div');
-      toolElement.classList.add('product-card');
+      toolElement.classList.add('tool-card');
       const imageUrl = tool.image;
       toolElement.innerHTML = `
-        <h2><a href="/spesificTool.html?toolName=${tool.name}">${tool.name}</a></h2>
-        <img src="${tool.image}">
-        <p>quantity: ${tool.quantity}</p>
-        <p>${tool.electric}</p>
+        <h2><a href="/spesificTool.html?toolName=${tool.name}" id="tool-card-h2">${tool.name}</a></h2>
+        <img src="${tool.image}" id="tool-card-image">
+        <p id="tool-card-quantity">quantity: ${tool.quantity}</p>
+        <p id="tool-card-electric">${tool.electric}</p>
       `;
       container.appendChild(toolElement);
       console.log(tool.electric);
