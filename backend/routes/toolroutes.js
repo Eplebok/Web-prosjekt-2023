@@ -2,10 +2,13 @@ const express = require("express")
 const router = express.Router()
 const cors = require('cors');
 
-const {createTool, getNormalTools, getElectricTools, getOneNormalTool, getOneElectricTool} = require("../controllers/toolsController")
+const {createTool, getNormalTools, getTools, getOneNormalTool, getOneElectricTool} = require("../controllers/toolsController")
 
 
-router.get("/electric", cors(), getElectricTools)
+router.get("/tools", cors(), getTools)
+router.get("/electric/:name", cors(), getOneElectricTool)
+
+router.get("/electric", cors(), getTools)
 router.get("/electric/:name", cors(), getOneElectricTool)
 // Route for retrieving normal tools
 router.get("/normal", cors(), getNormalTools)

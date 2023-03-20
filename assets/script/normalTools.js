@@ -1,12 +1,14 @@
-fetch('http://localhost:3200/tools/normal')
+fetch('http://localhost:3200/tools/electric')
   .then(response => response.json())
   .then(data => {
     // Modify the data as needed
     const modifiedData = data.map(tool => {
       return {
+        id: tool._id,
         name: tool.name,
-        description: tool.description,// increase price by 10%;
-        power: tool.power
+        quantity: tool.quantity,
+        electric: tool.electric,
+        image: tool.image
       };
     });
     
@@ -14,15 +16,20 @@ fetch('http://localhost:3200/tools/normal')
     const container = document.getElementById('normal-tools-container');
     
     modifiedData.forEach(tool => {
+      
+      if(tool.electric === false){
       const toolElement = document.createElement('div');
       toolElement.classList.add('product-card');
+      const imageUrl = tool.image;
       toolElement.innerHTML = `
         <h2><a href="/spesificTool.html?toolName=${tool.name}">${tool.name}</a></h2>
-        <p>description: ${tool.description}</p>
-        
+        <img src="${tool.image}">
+        <p>quantity: ${tool.quantity}</p>
+        <p>${tool.electric}</p>
       `;
-      //<p>power: ${tool.power}</p>
       container.appendChild(toolElement);
+      console.log(tool.electric);
+    }
     });
   })
   .catch(error => console.error(error));

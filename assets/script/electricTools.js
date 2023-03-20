@@ -8,26 +8,34 @@ fetch('http://localhost:3200/tools/electric')
       return {
         id: tool._id,
         name: tool.name,
-        description: tool.description,
-        power: tool.power
+        quantity: tool.quantity,
+        electric: tool.electric,
+        image: tool.image
       };
     });
+  
     
     // Display the modified data on the webpage
     const container = document.getElementById('product-card-container');
     
+    
     modifiedData.forEach(tool => {
+      
+      if(tool.electric === true){
       const toolElement = document.createElement('div');
       toolElement.classList.add('product-card');
-      const imageUrl = `/assets/images/${tool.name}.jpg`;
+      const imageUrl = tool.image;
       toolElement.innerHTML = `
         <h2><a href="/spesificTool.html?toolName=${tool.name}">${tool.name}</a></h2>
-        <img src="${imageUrl}">
-        
-        
+        <img src="${tool.image}">
+        <p>quantity: ${tool.quantity}</p>
+        <p>${tool.electric}</p>
       `;
       container.appendChild(toolElement);
+      console.log(tool.electric);
+    }
     });
+  
   })
   .catch(error => console.error(error));
  
