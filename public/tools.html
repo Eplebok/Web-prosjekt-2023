@@ -16,7 +16,7 @@
     <nav-component></nav-component>
     
     <!-- nye updatetools formen  -->
-    <form name="myForm" method="post" enctype="multipart/form-data" action="/upload" onsubmit="submitForm(event)" class="uploadTool">
+    <form name="myForm" method="post" enctype="multipart/form-data" action="/upload" onsubmit="event.preventDefault(); validateForm(); addTool(event);" class="uploadTool">
         <div class="subtitle">Fill out the form below to add a tool!</div>
 
       <div class="input-container ic1">
