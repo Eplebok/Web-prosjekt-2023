@@ -8,10 +8,10 @@ const NormalTool = require('../schemas/normalTools')
 //Function to read info from database
 
 // Retrieve electric tools from the 'electricTools' collection
-const getElectricTools = async (req, res) => {
+const getTools = async (req, res) => {
     try {
-      const electricTools = await ElectricTool.find();
-      res.json(electricTools)
+      const allTools = await toolSchema.find();
+      res.json(allTools)
      //res.render('electricTools', { tools: electricTools });
     } catch (err) {
       console.error(err);
@@ -33,7 +33,7 @@ const getElectricTools = async (req, res) => {
   const getOneElectricTool = async (req, res) => {
     try{
       const name = req.params.name;
-      const tool = await ElectricTool.findOne({ name: name });
+      const tool = await toolSchema.findOne({ name: name });
       res.json(tool);
 
     } catch (err) {
@@ -72,4 +72,4 @@ const createTool = async (req, res) => {
 
 
 
-module.exports = {createTool, getElectricTools, getNormalTools, getOneElectricTool, getOneNormalTool}
+module.exports = {createTool, getTools, getNormalTools, getOneElectricTool, getOneNormalTool}
