@@ -5,6 +5,7 @@ const dotenv = require("dotenv").config()
 const bodyParser = require("body-parser")
 const toolSchema = require("./schemas/toolsSchema")
 const userSchema = require("./schemas/userSchema")
+const bookingSchema = require("./schemas/bookingSchema")
 app.use(bodyParser.json())
 const connectDB = require("./dbconnect/dbconnect")
 connectDB()
@@ -92,6 +93,19 @@ app.post("/register", async (req, res) => {
 // this code is for login part in the login.html page 
 // used POST because its more secure and people recommended it on stack-overflow, even though we dont update anything
 
+app.post("/uploadBooking", async (req, res) => {
+  try {
+      const Booking = new bookingSchema({
+        startBookingDate: req.body.startBookingDate,
+        endBookingDate: req.body.endBookingDate,
+      });
+      await Booking.save();
+      res.json(Booking)
+      console.log(Booking);
+    }
+   catch (err) {
+
+
 
 app.post("/login", async (req, res) => {
   try {
@@ -107,10 +121,28 @@ app.post("/login", async (req, res) => {
       res.status(500).end("Invalid email or password");
     }
   } catch (err) {
+
     console.error(err);
     res.status(500).end("Oops! Something went wrong!");
   }
 });
+
+
+
+app.get("/getBooking", async (req, res) => {
+  try {
+    const getBooking = await bookingSchema.find();
+    res.json(getBooking)
+    
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error ');
+  }
+});
+
+
+
+// this code is for adding Booking to the database in the booking.html p
 
 
 
