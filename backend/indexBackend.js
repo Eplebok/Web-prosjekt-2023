@@ -5,6 +5,7 @@ const dotenv = require("dotenv").config()
 const bodyParser = require("body-parser")
 const toolSchema = require("./schemas/toolsSchema")
 const userSchema = require("./schemas/userSchema")
+const bookingSchema = require("./schemas/bookingSchema")
 app.use(bodyParser.json())
 const connectDB = require("./dbconnect/dbconnect")
 connectDB()
@@ -87,28 +88,37 @@ if (!fs.existsSync(uploadDir)) {
 
 // this code is for login part in the login.html page 
 // used POST because its more secure and people recommended it on stack-overflow, even though we dont update anything
-  app.post(
-    "/login",
-    async (req, res) => {
-      try {
-        const user = await userSchema.findOne({
-          email: req.body.email,
-          password: req.body.password,
-        });
-        if(user){
-          console.log(user)
-          res.status(200).end(`Welcome ${user.email}`)
-        }
-        else {
-          console.log("Invalid email or password")
-          res.status(500).end("Invalid Email or password")
-        }
-      } catch (err) {
-        console.error(err);
-        res.status(500).end("Oops! Something went wrong!");
-      }
+app.post("/uploadBooking", async (req, res) => {
+  try {
+      const Booking = new bookingSchema({
+        startBookingDate: req.body.startBookingDate,
+        endBookingDate: req.body.endBookingDate,
+      });
+      await Booking.save();
+      res.json(Booking)
+      console.log(Booking);
     }
-  );
+   catch (err) {
+    console.error(err);
+    res.status(500).end("Oops! Something went wrong!");
+  }
+});
+
+
+app.get("/getBooking", async (req, res) => {
+  try {
+    const getBooking = await bookingSchema.find();
+    res.json(getBooking)
+    
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error ');
+  }
+});
+
+
+
+// this code is for adding Booking to the database in the booking.html p
 
 
 
