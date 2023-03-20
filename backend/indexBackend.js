@@ -100,7 +100,7 @@ app.post("/uploadBooking", async (req, res) => {
         endBookingDate: req.body.endBookingDate,
       });
       await Booking.save();
-      res.json(Booking)
+      res.status(200).end("Success!")
       console.log(Booking);
     }
    catch (err) {
