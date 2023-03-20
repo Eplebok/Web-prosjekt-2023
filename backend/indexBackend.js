@@ -104,7 +104,9 @@ app.post("/uploadBooking", async (req, res) => {
       console.log(Booking);
     }
    catch (err) {
-
+    res.status(500).end("error")
+   }
+  })
 
 
 app.post("/login", async (req, res) => {

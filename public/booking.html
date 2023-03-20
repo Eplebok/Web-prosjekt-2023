@@ -14,7 +14,7 @@
 
 
     
-     <form name="myBooking" method="post" enctype="multipart/form-data" action="/uploadBooking"  class="uploadTool">
+     <form name="myBooking" method="post" action="/uploadBooking"  class="uploadTool">
         <div class="subtitle">Fill out the form below to add a tool!</div>
 
       <div class="input-container ic1">
@@ -24,14 +24,11 @@
       </div>
 
       <div class="input-container ic2">
-        <input name="endBookingDate" required class="input" type="text" placeholder=" " id="feedback-description"> 
+        <input name="endBookingDate" required class="input" type="text" placeholder=" " id="booking"> 
         <div class="cut"></div>
         <label class="placeholder">End Date:</label>
       </div>
 
-     
-
-     
       <button type="text" class="submit" value="submit" required>Submit</button>
       <div id="success"></div>
       <div id="notsuccess"></div>
