@@ -196,31 +196,58 @@ class NavComponent extends HTMLElement {
     }
   };
 
-  
-  async function addTool(event) {
-    event.preventDefault();
-    const form = document.querySelector(".uploadTool");
-    const formData = new FormData(form);
-  
-    try {
-      const response = await fetch("/upload", {
-        method: "POST",
-        body: formData,
-      });
-  
-      if (response.status === 200) {
-        document.getElementById("success").innerHTML = "Tool added!";
-        document.getElementById("notsuccess").innerHTML = ""; // clear any previous error messages
-      } else {
-        const errorMessage = await response.text();
-        document.getElementById("success").innerHTML = "";
-        document.getElementById("notsuccess").innerHTML = "Please fill out the required form!";
+  // function to display different messages based on the success/error when uploading a tool
+    async function addTool(event) {
+      event.preventDefault();
+      const form = document.querySelector(".uploadTool");
+      const formData = new FormData(form);
+    
+      try {
+        const response = await fetch("/upload", {
+          method: "POST",
+          body: formData,
+        });
+    
+        if (response.status === 200) {
+          document.getElementById("success").innerHTML = "Tool added!";
+          document.getElementById("notsuccess").innerHTML = ""; // clear any previous error messages
+        } else {
+          const errorMessage = await response.text();
+          document.getElementById("success").innerHTML = "";
+          document.getElementById("notsuccess").innerHTML = "Please fill out the required form!";
+        }
+      } catch (err) {
+        console.error(err);
       }
-    } catch (err) {
-      console.error(err);
     }
-  }
 
+  // function to display different message based on if booking was successfull / error
+    async function submitBookingForm(event) {
+      event.preventDefault();
+      const startBookingDate = document.getElementById("bookingStart").value;
+      const endBookingDate = document.getElementById("bookingEnd").value;
+
+      try {
+        const response = await fetch("/uploadBooking", {
+          method: "POST",
+          body: JSON.stringify({ startBookingDate, endBookingDate }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (response.status === 200) {
+          document.getElementById("booking-success").innerHTML = `Booking appointment sent!`;
+          document.getElementById("booking-notsucess").innerHTML = ""; // clear any previous error messages
+        } else {
+          const errorMessage = await response.text();
+          document.getElementById("booking-success").innerHTML = "";
+          document.getElementById("booking-notsuccess").innerHTML = "Booking not success!";
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
 
   
   
