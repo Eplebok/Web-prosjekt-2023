@@ -2,6 +2,10 @@
 const mongoose = require("mongoose")
 
 const bookingSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+  },
     startBookingDate: {
       type: String,
       required: true,

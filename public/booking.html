@@ -15,16 +15,22 @@
 
     
      <form name="myBooking" method="post" action="/uploadBooking"  class="uploadTool">
-        <div class="subtitle">Fill out the form below to add a tool!</div>
+        <div class="subtitle">Fill out the form below to book your tool</div>
+
+        <div class="input-container ic3">
+          <input name="email" required class="input" type=text" placeholder=" " id="booking-email"> 
+          <div class="cut"></div>
+          <label class="placeholder">Your email adress:</label>
+        </div> 
 
       <div class="input-container ic1">
-        <input type="text" name="startBookingDate" required class="input" placeholder=" " id="booking-name">
+        <input type="date" name="startBookingDate" required class="input" placeholder=" " id="booking-start">
         <div class="cut"></div>
         <label for="firstname" class="placeholder">Start Date:</label>
       </div>
 
       <div class="input-container ic2">
-        <input name="endBookingDate" required class="input" type="text" placeholder=" " id="booking"> 
+        <input name="endBookingDate" required class="input" type="date" placeholder=" " id="booking-end"> 
         <div class="cut"></div>
         <label class="placeholder">End Date:</label>
       </div>
@@ -34,7 +40,7 @@
       <div id="notsuccess"></div>
     </form>
     
-
+<div id="booking-container"></div>
 
     <footer-component></footer-component>
 

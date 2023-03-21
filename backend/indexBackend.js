@@ -12,7 +12,9 @@ connectDB()
 const mime = require("mime");
 const path = require("path");
 const fs = require("fs");
-const bcrypt = require('bcrypt');
+
+
+// const bcrypt = require('bcrypt');
 
 // put the HTML file containing your form in a directory named "public" (relative to where this script is located)
 app.use(express.static("public"));
@@ -66,7 +68,7 @@ if (!fs.existsSync(uploadDir)) {
     }
   );
 
-// this code is for the register part in the login.html page
+/* this code is for the register part in the login.html page
 app.post("/register", async (req, res) => {
   try {
     const existingUser = await userSchema.findOne({ email: req.body.email });
@@ -88,28 +90,64 @@ app.post("/register", async (req, res) => {
     res.status(500).end("Oops! Something went wrong!");
   }
 });
-
+*/
 
 // this code is for login part in the login.html page 
 // used POST because its more secure and people recommended it on stack-overflow, even though we dont update anything
 
+
+
 app.post("/uploadBooking", async (req, res) => {
-  try {
+    try {
+      const existingUser = await userSchema.findOne({ email: req.body.email });
+      if (!existingUser) {
+        console.log("You have not entered a registered email adress");
+      } else {
+    const startValiadation = await bookingSchema.findOne({startBookingDate: req.body.startBookingDate});
+    const endValiadation = await bookingSchema.findOne({endBookingDate: req.body.endBookingDate})
+    const d3 = req.body.startBookingDate;  
+    const d4 = req.body.endBookingDate
+    var day3 = new Date(d3);   
+    var day4 = new Date(d4);
+    console.log(d3 + " " + d4);    
+    const diff = (day4.getTime() - day3.getTime()) / (1000*60*60*24)     
+    console.log(diff + "days between");
+
+    if (diff > 5) {
+      console.log("You can only book a tool for maximimum 5 days")
+      res.status(409).end("You can only book a tool for maximimum 5 days");
+    }
+    if (diff < 0) {
+      console.log("You cannot book a negative number of days!")
+      res.status(409).end("You cannot book a negative number of days!");
+    }
+    if (startValiadation) {
+      res.status(409).end("start already booked");
+    }
+     else if (endValiadation) {
+      res.status(409).end("end already booked");
+    }
+     else if (diff <= 5 && diff >= 0 && existingUser) {
       const Booking = new bookingSchema({
+        email: req.body.email,
         startBookingDate: req.body.startBookingDate,
         endBookingDate: req.body.endBookingDate,
       });
       await Booking.save();
       res.json(Booking)
       console.log(Booking);
+      
+    }
+  }
     }
    catch (err) {
-    res.status(500).end("error")
+    res.status(500).end("error");
    }
   })
 
 
-app.post("/login", async (req, res) => {
+
+/* app.post("/login", async (req, res) => {
   try {
     const user = await userSchema.findOne({
       email: req.body.email,
@@ -128,7 +166,7 @@ app.post("/login", async (req, res) => {
     res.status(500).end("Oops! Something went wrong!");
   }
 });
-
+*/
 
 
 app.get("/getBooking", async (req, res) => {
@@ -167,6 +205,9 @@ app.listen(PORT,() => {
     console.log(`Api fungere på ${PORT}`)
     console.log(process.env.MONGO_URI);
 })
+
+
+
 
 
 
