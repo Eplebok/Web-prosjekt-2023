@@ -34,39 +34,42 @@ const upload = multer({
   }
 });
 
-const uploadDir = path.join(__dirname, "DBpictures");
+const uploadDir = path.join("assets", "images");
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
 
 // this code is for adding tools to the database in the tool.html page
-  app.post(
-    "/upload",
-    upload.single("file"),
-    async (req, res) => {
-      const tempPath = req.file.path;
-    const targetDir = path.join(__dirname, "DBpictures");
+app.post(
+  "/upload",
+  upload.single("file"),
+  async (req, res) => {
+    const tempPath = req.file.path;
     const date = Date.now();
     const targetFileName = `${date}-${req.file.originalname}`;
-    const targetPath = path.join(targetDir, targetFileName);
+    const targetPath = path.join(uploadDir, targetFileName).replace(/\\/g, "/");
 
-      try {
-        await fs.promises.rename(tempPath, targetPath);
-        const tool = new toolSchema({
-          name: req.body.name,
-          description: req.body.description,
-          quantity: req.body.quantity,
-          electric: req.body.electric,
-          image: targetPath
-        });
-        await tool.save();
-        res.status(200).end("File uploaded!");
-      } catch (err) {
-        console.error(err);
-        res.status(500).end("Oops! Something went wrong!");
-      }
+    try {
+      await fs.promises.rename(tempPath, targetPath);
+      const tool = new toolSchema({
+        name: req.body.name,
+        description: req.body.description,
+        quantity: req.body.quantity,
+        electric: req.body.electric,
+        image: targetPath,
+      });
+      await tool.save();
+      res.status(200).end("File uploaded!");
+    } catch (err) {
+      console.error(err);
+      res.status(500).end("Oops! Something went wrong!");
     }
-  );
+  }
+);
+
+
+
+
 
 /* this code is for the register part in the login.html page
 app.post("/register", async (req, res) => {
@@ -134,7 +137,7 @@ app.post("/uploadBooking", async (req, res) => {
         endBookingDate: req.body.endBookingDate,
       });
       await Booking.save();
-      res.json(Booking)
+      res.status(200).end("Success!")
       console.log(Booking);
       
     }

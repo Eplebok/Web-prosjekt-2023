@@ -14,6 +14,7 @@
 
 
     
+
      <form name="myBooking" method="post" action="/uploadBooking"  class="uploadTool">
         <div class="subtitle">Fill out the form below to book your tool</div>
 
@@ -25,19 +26,30 @@
 
       <div class="input-container ic1">
         <input type="date" name="startBookingDate" required class="input" placeholder=" " id="booking-start">
+
+     <form name="myBooking" method="post" action="/uploadBooking"  class="uploadTool" onsubmit="submitBookingForm(event)">
+        <div class="subtitle">Fill out the form below to add a tool!</div>
+
+      <div class="input-container ic1">
+        <input type="text" name="startBookingDate" class="input" placeholder=" " id="bookingStart" required >
+
         <div class="cut"></div>
         <label for="firstname" class="placeholder">Start Date:</label>
       </div>
 
       <div class="input-container ic2">
+
         <input name="endBookingDate" required class="input" type="date" placeholder=" " id="booking-end"> 
+
+        <input name="endBookingDate" class="input" type="text" placeholder=" " id="bookingEnd" required> 
+
         <div class="cut"></div>
         <label class="placeholder">End Date:</label>
       </div>
 
       <button type="text" class="submit" value="submit" required>Submit</button>
-      <div id="success"></div>
-      <div id="notsuccess"></div>
+      <div id="booking-success"></div>
+      <div id="booking-notsuccess"></div>
     </form>
     
 <div id="booking-container"></div>
