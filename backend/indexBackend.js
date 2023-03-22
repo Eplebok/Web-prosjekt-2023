@@ -12,6 +12,8 @@ connectDB()
 const mime = require("mime");
 const path = require("path");
 const fs = require("fs");
+const jwt = require('jsonwebtoken'); // required for creating JSON Web Tokens
+const secretKey = 'pass'; // replace this with a secret key of your choice
 
 
 const bcrypt = require('bcrypt');
@@ -154,26 +156,28 @@ app.post("/uploadBooking", async (req, res) => {
   })
 
 
-
- app.post("/login", async (req, res) => {
-  try {
-    const user = await userSchema.findOne({
-      email: req.body.email,
-    });
-    if (user && bcrypt.compareSync(req.body.password, user.password)) {
-      console.log(user);
-      res.status(200).end(`Welcome ${user.email}`);
-
-    } else {
-      console.log("Invalid email or password");
-      res.status(500).end("Invalid email or password");
+  // used for the log in 
+  app.post('/login', async (req, res) => {
+    try {
+      const user = await userSchema.findOne({ email: req.body.email });
+      if (user && bcrypt.compareSync(req.body.password, user.password)) {
+        console.log(user);
+        const token = jwt.sign({ email: user.email }, secretKey, { expiresIn: '1h' }); // create a JSON Web Token with the user's email
+        res.cookie('token', token, { httpOnly: true, maxAge: 3600000 }); // set a cookie with the token
+        console.log('Cookie set:', res.get('Set-Cookie')); // log the Set-Cookie header
+        res.status(200).end(`Welcome ${user.email}`);
+      } else {
+        console.log('Invalid email or password');
+        res.status(500).end('Invalid email or password');
+      }
+    } catch (err) {
+      console.error(err);
+      res.status(500).end('Oops! Something went wrong!');
     }
-  } catch (err) {
+  });
+  
 
-    console.error(err);
-    res.status(500).end("Oops! Something went wrong!");
-  }
-});
+  
 
 
 

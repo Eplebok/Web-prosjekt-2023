@@ -1,5 +1,5 @@
 $color_1: white;
-$background-color_1: black;
+$background-color_1: rgb(255, 255, 255); // byttet ut denne til "white" å. for å vise ntnu logoen
 
 nav {
 	//position: absolute;
@@ -22,7 +22,7 @@ nav {
 			padding: 8px 12px;
 			position: relative;
 			a {
-				color: $color_1;
+				color: grey; // byttet denne til grå sånn at <a> skal vises
 				text-decoration: none;
 				font-size: 0.9em;
 			}
@@ -30,7 +30,7 @@ nav {
 				content: "";
 				width: 0%;
 				height: 2px;
-				background: white;
+				background: rgb(5, 5, 5); // byttet denne fra "white" til "black" /hover effecten
 				display: block;
 				margin: auto;
 				transition: 0.5s;
@@ -67,4 +67,8 @@ nav {
 			width: 100%;
 		}
 	}
+}
+
+#logout-link {
+	display: none;
 }

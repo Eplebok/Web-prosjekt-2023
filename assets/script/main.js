@@ -63,7 +63,8 @@ class FooterComponent extends HTMLElement {
     this.innerHTML = `
     <footer>
     <div class="footer-container">
-        <div class="footer-top">
+    <img src="/assets/images/logo_ntnu_tag_norsk.svg">  
+        <div class="footer-top">      
             <p class="footer-top-info">Kontakt Info</p>
                 <ul>
                     <li><a href="https://www.ntnu.no/" class="footer-list">NTNU Homepage</a></li>
@@ -84,6 +85,32 @@ class FooterComponent extends HTMLElement {
     </div>
     </footer>
     `;
+
+    // create a new map element
+    const mapElement = document.createElement('div');
+    mapElement.setAttribute('id', 'map');
+    mapElement.style.height = '300px'; // set the height of the map
+    mapElement.style.padding = "relative"
+
+    // append the map element to the footer container
+    const footerContainer = this.querySelector('.footer-container');
+    footerContainer.appendChild(mapElement);
+
+    // initialize the map
+    const map = new google.maps.Map(mapElement, {
+      center: { lat: 60.789619024489895, lng: 10.675773229350039}, // set the initial center of the map
+      zoom: 14, // set the initial zoom level
+    });
+
+    const location = new google.maps.LatLng(60.78962992090764, 10.675766849946319);
+
+    // Create a marker at the specified location
+      const marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title: 'Verkstedet' // You can set a title to display when hovering over the marker
+      });
+
   }
 }
 
@@ -97,19 +124,46 @@ class NavComponent extends HTMLElement {
            <div class="nav_links" id="nav_links">
                 
               <ul role="navigation">
+              <img src="/assets/images/logo_ntnu.svg">
                   <li id="leftlink" ><a id="test" href="index.html">Home</a></li>
                   <li><a href="tools.html">Tools</a></li>
                   <li><a href="booking.html">Booking</a></li>
                   <li><a href="about.html">About Us</a></li>
                   <li><a href="feedback.html">Feedback</a></li>
-                  <li><a href="login.html">Log In</a></li>
-                  <li><a>Log out</a></li>  
-                  <li id="user-email"><a>Display email here</a></li>
+                  <li id="login-link"><a href="login.html">Log In</a></li>
+                  <li id="logout-link"><a>Log out</a></li>  
+                  <li id="user-email"><a></a></li>
               </ul>
           </div>  
         </nav>
         </header>
       `;
+
+       // add event listener to update nav bar based on login state
+    window.addEventListener("message", (event) => {
+      if (event.data.loggedIn) {
+        document.getElementById("login-link").style.display = "none";
+        document.getElementById("logout-link").style.display = "inline-block";
+        document.getElementById("user-email").getElementsByTagName("a")[0].innerHTML = event.data.email;
+      } else {
+        document.getElementById("login-link").style.display = "block";
+        document.getElementById("logout-link").style.display = "none";
+        document.getElementById("user-email").style.display = "none";
+        document.getElementById("user-email").getElementsByTagName("a")[0].innerHTML = "";
+      }
+    });
+    
+
+    const logoutLink = this.querySelector("#logout-link");
+    if (logoutLink) {
+      logoutLink.addEventListener("click", () => {
+        // delete the cookie
+        document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        // redirect the user to the login page
+        window.location.href = "login.html";
+      });
+    }
+
     }
   }
   
@@ -169,32 +223,37 @@ class NavComponent extends HTMLElement {
   } 
 
 // submitLoginForm for login part
-  async function submitLoginForm(event) {
-    event.preventDefault();
-    const email = document.getElementById("email2").value;
-    const password = document.getElementById("password2").value;
+async function submitLoginForm(event) {
+  event.preventDefault();
+  const email = document.getElementById("email2").value;
+  const password = document.getElementById("password2").value;
 
-    try {
-      const response = await fetch("/login", {
-        method: "POST",
-        body: JSON.stringify({ email, password }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+  try {
+    const response = await fetch("/login", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-      if (response.status === 200) {
-        document.getElementById("logged").innerHTML = `You logged in!`;
-        document.getElementById("error").innerHTML = ""; // clear any previous error messages
-      } else {
-        const errorMessage = await response.text();
-        document.getElementById("logged").innerHTML = "";
-        document.getElementById("error").innerHTML = errorMessage;
-      }
-    } catch (err) {
-      console.error(err);
+    if (response.status === 200) {
+      // Send a message to the parent window with the user's email and login state
+      window.parent.postMessage({
+        loggedIn: true,
+        email: email,
+      }, "*");
+   //   window.alert("You logged in!")
+      document.getElementById("status-msg-login").innerHTML = `You logged in!`;
+   //   window.location.href = "index.html"; // redirects the user to the home page
+    } else {
+      document.getElementById("status-msg-login").innerHTML = "Wrong email or password!";
     }
-  };
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 
   // function to display different messages based on the success/error when uploading a tool
     async function addTool(event) {

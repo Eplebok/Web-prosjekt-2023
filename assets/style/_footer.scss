@@ -52,3 +52,23 @@ a {
 a:hover {
     text-decoration:underline;
 }
+
+// google maps css below
+
+    #map {
+        position: relative; /* or position: static; */
+        width: 20%;
+        height: 200px;
+        margin-top: 15px;
+    }
+    
+    .footer-container {
+        position: relative;
+    }
+    
+    #map {
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    
