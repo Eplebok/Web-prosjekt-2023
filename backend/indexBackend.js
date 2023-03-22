@@ -14,7 +14,7 @@ const path = require("path");
 const fs = require("fs");
 
 
-// const bcrypt = require('bcrypt');
+ // const bcrypt = require('bcrypt');
 
 // put the HTML file containing your form in a directory named "public" (relative to where this script is located)
 app.use(express.static("public"));
@@ -71,7 +71,8 @@ app.post(
 
 
 
-/* this code is for the register part in the login.html page
+//this code is for the register part in the login.html page
+/*
 app.post("/register", async (req, res) => {
   try {
     const existingUser = await userSchema.findOne({ email: req.body.email });
@@ -95,6 +96,7 @@ app.post("/register", async (req, res) => {
 });
 */
 
+
 // this code is for login part in the login.html page 
 // used POST because its more secure and people recommended it on stack-overflow, even though we dont update anything
 
@@ -105,6 +107,7 @@ app.post("/uploadBooking", async (req, res) => {
       const existingUser = await userSchema.findOne({ email: req.body.email });
       if (!existingUser) {
         console.log("You have not entered a registered email adress");
+        console.log(existingUser)
       } else {
     const startValiadation = await bookingSchema.findOne({startBookingDate: req.body.startBookingDate});
     const endValiadation = await bookingSchema.findOne({endBookingDate: req.body.endBookingDate})
@@ -126,9 +129,11 @@ app.post("/uploadBooking", async (req, res) => {
     }
     if (startValiadation) {
       res.status(409).end("start already booked");
+      console.log("start alrdy booked")
     }
      else if (endValiadation) {
       res.status(409).end("end already booked");
+      console.log("end alrdy booked")
     }
      else if (diff <= 5 && diff >= 0 && existingUser) {
       const Booking = new bookingSchema({
