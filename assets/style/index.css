@@ -1,7 +1,15 @@
 footer {
-  font-size: 20px;
-  line-height: 1.5;
+  line-height: .7;
   background-color: #464866;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .footer-container {
@@ -11,14 +19,27 @@ footer {
   color: white;
 }
 
-ul {
+.footer-top ul {
   margin-left: auto;
   margin-right: auto;
   padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+  height: 120px;
+}
+
+.footer-top li {
+  list-style: none;
+}
+
+.footer-top .fa {
+  font-size: 20px;
+  margin-top: 5px;
+  line-height: 1.2;
 }
 
 .footer-list {
-  font-size: 1rem;
+  font-size: .6rem;
 }
 
 .footer-container {
@@ -31,21 +52,26 @@ ul {
 
 .footer-top {
   font-size: 1.5rem;
-  margin-bottom: 3rem;
-  padding-top: 3rem;
+  margin: auto;
   margin-left: 50px;
   margin-right: 50px;
 }
 
 .footer-top-info {
-  font-size: 1.5rem;
-  margin-bottom: .9rem;
+  font-size: 1rem;
+  margin-bottom: 3px;
   text-decoration: underline;
 }
 
 a {
   text-decoration: none;
   color: white;
+}
+
+.footer-img {
+  display: block;
+  margin: 0 auto;
+  padding-top: 10px;
 }
 
 a:hover {
@@ -56,8 +82,7 @@ a:hover {
   position: relative;
   /* or position: static; */
   width: 20%;
-  height: 200px;
-  margin-top: 15px;
+  height: 50px;
 }
 
 .footer-container {
@@ -864,6 +889,7 @@ nav {
   padding: 20px 0;
   font-size: 20px;
   top: 0;
+  border-bottom: solid #7c7a7a;
 }
 
 .nav_links {
@@ -890,7 +916,7 @@ nav {
   content: "";
   width: 0%;
   height: 2px;
-  background: #050505;
+  background: #130909;
   display: block;
   margin: auto;
   -webkit-transition: 0.5s;
@@ -909,7 +935,6 @@ nav {
 }
 
 #leftlink a {
-  color: white;
   text-decoration: none;
   font-size: 0.9em;
 }
@@ -927,6 +952,10 @@ nav {
 
 #leftlink:hover::after {
   width: 100%;
+}
+
+.nav_links ul img {
+  vertical-align: middle;
 }
 
 #logout-link {

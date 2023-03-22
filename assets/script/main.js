@@ -62,8 +62,8 @@ class FooterComponent extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
     <footer>
-    <div class="footer-container">
-    <img src="/assets/images/logo_ntnu_tag_norsk.svg">  
+    <img src="/assets/images/logo_ntnu_tag_norsk.svg" alt="picture of NTNU logo" class="footer-img">
+    <div class="footer-container">  
         <div class="footer-top">      
             <p class="footer-top-info">Kontakt Info</p>
                 <ul>
@@ -89,8 +89,9 @@ class FooterComponent extends HTMLElement {
     // create a new map element
     const mapElement = document.createElement('div');
     mapElement.setAttribute('id', 'map');
-    mapElement.style.height = '300px'; // set the height of the map
+    mapElement.style.height = '200px'; // set the height of the map
     mapElement.style.padding = "relative"
+    mapElement.style.margin = "40px"
 
     // append the map element to the footer container
     const footerContainer = this.querySelector('.footer-container');
@@ -125,7 +126,7 @@ class NavComponent extends HTMLElement {
                 
               <ul role="navigation">
               <img src="/assets/images/logo_ntnu.svg">
-                  <li id="leftlink" ><a id="test" href="index.html">Home</a></li>
+                  <li id="leftlink"><a href="index.html" id="test">Home</a></li>
                   <li><a href="tools.html">Tools</a></li>
                   <li><a href="booking.html">Booking</a></li>
                   <li><a href="about.html">About Us</a></li>
