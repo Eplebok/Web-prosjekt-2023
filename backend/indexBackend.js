@@ -14,7 +14,7 @@ const path = require("path");
 const fs = require("fs");
 
 
- // const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 // put the HTML file containing your form in a directory named "public" (relative to where this script is located)
 app.use(express.static("public"));
@@ -72,7 +72,7 @@ app.post(
 
 
 //this code is for the register part in the login.html page
-/*
+
 app.post("/register", async (req, res) => {
   try {
     const existingUser = await userSchema.findOne({ email: req.body.email });
@@ -94,7 +94,7 @@ app.post("/register", async (req, res) => {
     res.status(500).end("Oops! Something went wrong!");
   }
 });
-*/
+
 
 
 // this code is for login part in the login.html page 
@@ -155,7 +155,7 @@ app.post("/uploadBooking", async (req, res) => {
 
 
 
-/* app.post("/login", async (req, res) => {
+ app.post("/login", async (req, res) => {
   try {
     const user = await userSchema.findOne({
       email: req.body.email,
@@ -174,7 +174,7 @@ app.post("/uploadBooking", async (req, res) => {
     res.status(500).end("Oops! Something went wrong!");
   }
 });
-*/
+
 
 
 app.get("/getBooking", async (req, res) => {
