@@ -224,21 +224,21 @@ class NavComponent extends HTMLElement {
   // function to display different message based on if booking was successfull / error
     async function submitBookingForm(event) {
       event.preventDefault();
+      const email = document.getElementById("booking-email").value;
       const startBookingDate = document.getElementById("bookingStart").value;
       const endBookingDate = document.getElementById("bookingEnd").value;
 
       try {
         const response = await fetch("/uploadBooking", {
           method: "POST",
-          body: JSON.stringify({ startBookingDate, endBookingDate }),
+          body: JSON.stringify({ email, startBookingDate, endBookingDate }),
           headers: {
             "Content-Type": "application/json",
           },
         });
-
         if (response.status === 200) {
           document.getElementById("booking-success").innerHTML = `Booking appointment sent!`;
-          document.getElementById("booking-notsucess").innerHTML = ""; // clear any previous error messages
+          document.getElementById("booking-notsuccess").innerHTML = ""; // clear any previous error messages
         } else {
           const errorMessage = await response.text();
           document.getElementById("booking-success").innerHTML = "";
