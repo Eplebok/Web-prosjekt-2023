@@ -238,11 +238,11 @@ class NavComponent extends HTMLElement {
         });
         if (response.status === 200) {
           document.getElementById("booking-success").innerHTML = `Booking appointment sent!`;
-          document.getElementById("booking-notsuccess").innerHTML = ""; // clear any previous error messages
+         // document.getElementById("booking-notsuccess").innerHTML = ""; // clear any previous error messages
         } else {
           const errorMessage = await response.text();
-          document.getElementById("booking-success").innerHTML = "";
-          document.getElementById("booking-notsuccess").innerHTML = "Booking not success!";
+          document.getElementById("booking-success").innerHTML = "Booking not success!";
+          //document.getElementById("booking-notsuccess").innerHTML = "Booking not success!";
         }
       } catch (err) {
         console.error(err);
