@@ -170,6 +170,8 @@ class NavComponent extends HTMLElement {
   
   customElements.define('nav-component', NavComponent);
 
+  
+
 
   // log in/ register js code for the login.html page below.
     // this is for the functionality of the visual parts of the login/register form

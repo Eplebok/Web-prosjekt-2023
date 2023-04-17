@@ -1,6 +1,6 @@
 footer {
   line-height: .7;
-  background-color: #464866;
+  background-color: #272834;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -332,16 +332,15 @@ section {
 
 .about-relevant-info, .about-important-tools-card, .about-important-owner-card {
   border: solid;
-  margin: 30vw 10vw;
 }
 
 .about-relevant-info, .about-important-owner-card, .about-important-tools-card {
   width: 25vw;
-  padding: 20px;
+  margin: 0 auto;
 }
 
 .about-img-first, .about-img-second, .about-img-third {
-  margin: 30vw 10vw;
+  margin: 0 auto;
 }
 
 #about section {
