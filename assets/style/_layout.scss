@@ -511,7 +511,7 @@
 
 	        .spesific-tool-container {
 				display: flex;
-			    max-width: 70%;
+			    max-width: 50%;
 				align-items: center;
 				justify-content: center;
 			    margin-bottom: 20px;
@@ -540,7 +540,7 @@
 			}
 
 			#tool-right {
-				font-size: 2rem;
+				font-size: 1.5rem;
 				padding-left: 20px;
 			}
 
@@ -552,9 +552,9 @@
 			}
 
 			#tool-image {
-            width: 100%;
+            width: 200px;
             height: 100%;
-            object-fit: contain;
+            
 			
             }
 
