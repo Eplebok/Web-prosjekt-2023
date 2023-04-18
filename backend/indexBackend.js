@@ -14,6 +14,7 @@ const path = require("path");
 const fs = require("fs");
 const jwt = require('jsonwebtoken'); // required for creating JSON Web Tokens
 const secretKey = 'pass'; // replace this with a secret key of your choice
+module.exports = jwt
 
 
 // const bcrypt = require('bcrypt');
@@ -154,30 +155,27 @@ app.post("/uploadBooking", async (req, res) => {
   })
 
 
-  // used for the log in 
-  app.post('/login', async (req, res) => {
-    try {
-      const user = await userSchema.findOne({ email: req.body.email });
-      if (user && bcrypt.compareSync(req.body.password, user.password)) {
-        console.log(user);
-        const token = jwt.sign({ email: user.email }, secretKey, { expiresIn: '1h' }); // create a JSON Web Token with the user's email
-        res.cookie('token', token, { httpOnly: true, maxAge: 3600000 }); // set a cookie with the token
-        console.log('Cookie set:', res.get('Set-Cookie')); // log the Set-Cookie header
-        res.status(200).end(`Welcome ${user.email}`);
-      } else {
-        console.log('Invalid email or password');
-        res.status(500).end('Invalid email or password');
+    // used for the log in 
+    // prevent the page from sending you to res.status(200).end(¨Welcome ${user.email}¨)
+    app.post('/login', async (req, res) => {
+      try {
+        const user = await userSchema.findOne({ email: req.body.email });
+        if (user && bcrypt.compareSync(req.body.password, user.password)) {
+          console.log(user);           //need to change httpOnly to true(httpOnly:true) and then import jwt and decode it on the client side. better security
+          const token = jwt.sign({ email: user.email, loggedIn: true }, secretKey, { expiresIn: '1h' }); // add loggedIn property to the token
+          res.cookie('token', token, { httpOnly: false, maxAge: 3600000 }); // set a cookie with the token
+          console.log('Cookie set:', res.get('Set-Cookie')); // log the Set-Cookie header
+          res.status(200).end(`Welcome ${user.email}`);
+        } else {
+          console.log('Invalid email or password');
+          res.status(500).end('Invalid email or password');
+        } 
+      } catch (err) {
+        console.error(err);
+        res.status(500).end('Oops! Something went wrong!');
       }
-    } catch (err) {
-      console.error(err);
-      res.status(500).end('Oops! Something went wrong!');
-    }
-  });
-  
-
-  
-
-
+    });
+    
 
 app.get("/getBooking", async (req, res) => {
   try {
