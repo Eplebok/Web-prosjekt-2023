@@ -17,7 +17,7 @@ const secretKey = 'pass'; // replace this with a secret key of your choice
 module.exports = jwt
 
 
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 // put the HTML file containing your form in a directory named "public" (relative to where this script is located)
 app.use(express.static("public"));
@@ -165,7 +165,7 @@ app.post("/uploadBooking", async (req, res) => {
           const token = jwt.sign({ email: user.email, loggedIn: true }, secretKey, { expiresIn: '1h' }); // add loggedIn property to the token
           res.cookie('token', token, { httpOnly: false, maxAge: 3600000 }); // set a cookie with the token
           console.log('Cookie set:', res.get('Set-Cookie')); // log the Set-Cookie header
-          res.status(200).end(`Welcome ${user.email}`);
+          res.redirect("/index.html")
         } else {
           console.log('Invalid email or password');
           res.status(500).end('Invalid email or password');
