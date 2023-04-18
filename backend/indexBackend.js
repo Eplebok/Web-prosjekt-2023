@@ -17,7 +17,7 @@ const secretKey = 'pass'; // replace this with a secret key of your choice
 module.exports = jwt
 
 
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 
 // put the HTML file containing your form in a directory named "public" (relative to where this script is located)
 app.use(express.static("public"));
@@ -72,8 +72,6 @@ app.post(
 
 
 
-
-
 //this code is for the register part in the login.html page
 
 app.post("/register", async (req, res) => {
@@ -83,7 +81,7 @@ app.post("/register", async (req, res) => {
       res.status(409).end("Email already registered");
     } else {
       // Hash the password
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+     // const hashedPassword = await bcrypt.hash(req.body.password, 10);
       const user = new userSchema({
         email: req.body.email,
         password: hashedPassword, // Store the hashed password
