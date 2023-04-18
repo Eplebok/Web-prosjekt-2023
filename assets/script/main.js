@@ -125,7 +125,7 @@ class NavComponent extends HTMLElement {
            <div class="nav_links" id="nav_links">
                 
               <ul role="navigation">
-              <img src="/assets/images/logo_ntnu.svg">
+                  <a href="index.html"><img src="/assets/images/logo_ntnu.svg"></a>
                   <li id="leftlink"><a href="index.html" id="test">Home</a></li>
                   <li><a href="tools.html">Tools</a></li>
                   <li><a href="booking.html">Booking</a></li>
