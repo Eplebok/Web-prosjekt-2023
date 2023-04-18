@@ -11,7 +11,50 @@
     <!--<script src="./tools.js"></script>-->
     <script src="../assets/script/spesificTool.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?AIzaSyBneSzE9cI6A5z_vPTkdhgsl8C8I_Scy20"></script>
-    
+    <style>
+          * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+   
+
+    h1 {
+      font-size: 24px;
+    }
+
+    .spesific-tool-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    #tool-image-container {
+      width: 100px;
+      height: 100px;
+      background-color: #eee;
+      margin-right: 20px;
+    }
+
+    #tool-right {
+      flex: 1;
+    }
+
+   
+  </style>
+    </style>
 
 </head>
 <body>
@@ -19,12 +62,12 @@
     <nav-component></nav-component>
    
     
-    <div class="spesific-tool-container">
-        <div id="tool-left">
-            <div id="tool-image-container"></div>
-        </div>
+    <div class="spesific-tool-container" style="margin-bottom: 100px;">
+        
+        
         <div id="tool-right">
             <div id="tool-name"></div>
+            <div id="tool-image-container" style="margin: 0 auto;"></div>
             <div id="tool-description"></div>
             <div id="tool-quantity"></div>
         </div>
