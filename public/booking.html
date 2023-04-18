@@ -9,6 +9,100 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="./assets/script/main.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?AIzaSyBneSzE9cI6A5z_vPTkdhgsl8C8I_Scy20"></script>
+    <style>
+            #myBooking {
+        background-color: #272834;
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 1%;
+}
+
+#myBooking .subtitle {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: whitesmoke
+}
+
+#myBooking .input-container {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+#myBooking .input {
+  font-size: 16px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  color: whitesmoke;
+  background-color: transparent;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#myBooking .input:focus {
+  outline: none;
+  border-bottom: 2px solid #0088cc;
+}
+
+.uploadTool .cut {
+  position: absolute;
+  top: 18px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  border-top: 1px solid transparent;
+}
+
+#myBooking .placeholder, .placeholder2 {
+  position: absolute;
+  top: 0px;
+  left: 5px;
+  font-size: 16px;
+  color: #ccc;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  
+}
+
+#myBooking .placeholder2, .placeholder {
+  position: absolute;
+  top: 0px;
+  left: 5px;
+  font-size: 16px;
+  color: #ccc;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+#myBooking .submit {
+  background-color: #0088cc;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#myBooking .submit:hover {
+  background-color: #005580;
+}
+
+
+    </style>
 </head>
 <body>
     <nav-component></nav-component>
@@ -16,25 +110,26 @@
 
     
 
-     <form name="myBooking" method="post" action="/uploadBooking" onsubmit="submitBookingForm(event)" class="uploadTool">
+     <form id="myBooking" name="myBooking" method="post" action="/uploadBooking" onsubmit="submitBookingForm(event)" class="uploadTool">
         <div class="subtitle">Fill out the form below to book your tool</div>
 
         <div class="input-container ic3">
-          <input name="email" required class="input" type="text" placeholder=" " id="booking-email"> 
-          <div class="cut"></div>
           <label class="placeholder">Your email adress:</label>
+          <input name="email" required class="input" type="text" placeholder="Your email adress: " id="booking-email"> 
+          <div class="cut"></div>
+          
         </div> 
 
       <div class="input-container ic1">
         <input type="date" name="startBookingDate" required class="input" placeholder=" " id="bookingStart">
         <div class="cut"></div>
-        <label for="firstname" class="placeholder">Start Date:</label>
+        <label for="firstname" class="placeholder2">Start Date:</label>
       </div>
 
       <div class="input-container ic2">
         <input name="endBookingDate" required class="input" type="date" placeholder=" " id="bookingEnd"> 
         <div class="cut"></div>
-        <label class="placeholder">End Date:</label>
+        <label class="placeholder2">End Date:</label>
       </div>
 
       <button type="text" class="submit" value="submit" required>Submit</button>
@@ -46,5 +141,17 @@
 
     <footer-component></footer-component>
 
+    <script>const emailInput = document.getElementById('booking-email');
+      const emailLabel = document.querySelector('.placeholder[for="booking-email"]');
+      
+      emailInput.addEventListener('input', () => {
+        if (emailInput.value !== '') {
+          emailLabel.style.display = 'none';
+        } else {
+          emailLabel.style.display = 'block';
+        }
+      });
+
+      </script>
 </body>
 </html>

@@ -88,7 +88,7 @@
 	.homepage-info-booking-section {
 		display: flex;
 		box-sizing: border-box;
-		background-color: grey;
+		background-color: whitesmoke;
 	}
 
 	.homepage-welcome-section {
@@ -114,9 +114,7 @@
 		margin: 300px 100px ;
 	}
 
-	.important-info-card {
-		margin-left: 25% ;
-	}
+	
 
 	.important-info-card li {
 		line-height: 1.5rem;
@@ -128,7 +126,7 @@
 		width: 50ch;
 		border: solid;
 		padding: 20px;
-		margin-right: 25%;
+		
 
 	}
 
@@ -177,83 +175,13 @@
 
 	// first section 
 
-		.about-welcome-section {
-			background-color: rgb(126, 119, 62);
-			margin: 0 auto;
-		}
+		
 
-	// second section 
-
-		.about-info-card {
-			background-color: rgb(156, 114, 114);
-		}
-
-		.about-img-second {
-			margin-right: 25%;
-		}
-
-		.about-important-tools-card {
-			padding: 20px;
-			margin-left: 25%;
-			width: 400px;
-		}
-
-		.about-info-card img {
-			width: 600px;
-		}
+		
 
 	// third section 
 
-		.about-owner-card {
-			background-color: grey;	
-		}
-
-		.test {
-			margin: 0 auto;
-			display: flex;
-		}
-
-
-	// all sections
-
-		#about p {
-			line-height: 1.5rem;
-			margin-top: 15px;
-			margin-bottom: 15px;
-		}
-
-		#about h1 {
-			text-decoration: underline;
-		}
-
-		.about-link-ida {
-			color: rgb(107, 40, 40);
-			text-decoration: underline;
-		}
-
-		#about img {
-			width: 25vw;	
-			border-radius: 75px;
-			box-shadow: 5px 10px 5px;
-		}
-
-		.about-relevant-info, .about-important-tools-card, .about-important-owner-card {
-			border: solid;
-			
-		}
-
-		.about-relevant-info, .about-important-owner-card, .about-important-tools-card {
-			width: 25vw;
-			margin: 0 auto;
-		}
-
-		.about-img-first, .about-img-second, .about-img-third {
-			margin: 0 auto;
-		}
-
-		#about section {
-			display: flex;
-		}
+	
 
 		.comment-box, .login-box, .register-box {
 		width: 30%;
@@ -296,6 +224,10 @@
 			flex-direction: column;
 			}
 
+			.bigcontainer{
+				margin-top: 100px;
+				margin-bottom: 100px;
+			}
 
 			.container {
 			width: 700px;
@@ -410,21 +342,7 @@
 
 	// feedback form css
 	
-			.feedback-box {
-				display: flex;
-				width: 80%;
-				margin: 0 auto;
-				text-align: center;
-				margin-bottom: 10px;
-				margin-top: 10px;
-				background-color: rgb(145, 128, 128);
-				border-radius: 10px;
-			}
-
-			.feedback {
-				border-radius: 15px 50px 30px;
-				margin: 10px;
-			}
+			
 
 			  .feedback-img {
 				top: 0;
@@ -478,124 +396,7 @@
 
 		// General	
 
-		.tools {
-			width: 100%;
-			display: inline-block;
-			background-color: beige;
-			text-align: center;
-		}
-		  
-		// update form CSS below 
-			.uploadTool {
-				background-color: #15172b;
-				border-radius: 20px;
-				box-sizing: border-box;
-				height: 520px;
-				padding: 20px;
-				width: 320px;
-				margin-bottom: 10px;
-				margin-top: 10px;
-			}
-			
-			.subtitle {
-				color: #eee;
-				font-family: sans-serif;
-				font-size: 16px;
-				font-weight: 600;
-				margin-top: 10px;
-			}
-			
-			.input-container {
-				height: 50px;
-				position: relative;
-				width: 100%;
-			}
-			
-			.ic1 {
-				margin-top: 20px;
-			}
-			
-			.ic2 {
-				margin-top: 20px;
-			}
-			
-			.input {
-				background-color: #303245;
-				border-radius: 12px;
-				border: 0;
-				box-sizing: border-box;
-				color: #eee;
-				font-size: 18px;
-				height: 100%;
-				outline: 0;
-				padding: 4px 20px 0;
-				width: 100%;
-			}
-			
-			.cut {
-				background-color: #15172b;
-				border-radius: 10px;
-				height: 20px;
-				left: 20px;
-				position: absolute;
-				top: -20px;
-				transform: translateY(0);
-				transition: transform 200ms;
-				width: 76px;
-			}
-			
-			.cut-short {
-				width: 50px;
-			}
-			
-			.input:focus ~ .cut,
-			.input:not(:placeholder-shown) ~ .cut {
-				transform: translateY(8px);
-			}
-			
-			.placeholder {
-				color: #65657b;
-				font-family: sans-serif;
-				left: 20px;
-				line-height: 14px;
-				pointer-events: none;
-				position: absolute;
-				transform-origin: 0 50%;
-				transition: transform 200ms, color 200ms;
-				top: 20px;
-			}
-			
-			.input:focus ~ .placeholder,
-			.input:not(:placeholder-shown) ~ .placeholder {
-				transform: translateY(-30px) translateX(10px) scale(0.75);
-			}
-			
-			.input:not(:placeholder-shown) ~ .placeholder {
-				color: #808097;
-			}
-			
-			.input:focus ~ .placeholder {
-				color: #dc2f55;
-			}
-			
-			.submit {
-				background-color: #08d;
-				border-radius: 12px;
-				border: 0;
-				box-sizing: border-box;
-				color: #eee;
-				cursor: pointer;
-				font-size: 18px;
-				height: 40px;
-				margin-top: 38px;
-				// outline: 0;
-				text-align: center;
-				width: 100%;
-			}
-			
-			.submit:active {
-				background-color: #06b;
-			}
+		
 		  
 		  
 
@@ -642,7 +443,7 @@
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
-			padding: 2%;
+			padding: 5%;
 		  }
 
         h2 > a {
@@ -662,12 +463,14 @@
 		  }
 
 		  .tool-card > h2 {
-			font-size: 36pt;
+			font-size: 24pt;
+			margin-bottom: 10px;
+			margin-top: 10px;
 		  }
 		  
 		  #tool-card-image {
-			height: 250px;
-			width: 100%;
+			height: 50%;
+			width: 50%;
 			object-fit: cover;
 			border-radius: 10px 10px 0px 0px;
 		  }
