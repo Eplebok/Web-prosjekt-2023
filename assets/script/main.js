@@ -202,7 +202,6 @@ window.addEventListener("load", async () => {
 });
 
 
-
 const deleteTool = async (toolId) => {
   try {
     const response = await fetch(`http://localhost:3200/tools/delete/${toolId}`, {
