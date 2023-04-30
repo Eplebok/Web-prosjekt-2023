@@ -201,8 +201,26 @@ window.addEventListener("load", async () => {
   }
 });
 
-  
-  
+
+
+const deleteTool = async (toolId) => {
+  try {
+    const response = await fetch(`http://localhost:3200/tools/delete/${toolId}`, {
+      method: 'DELETE',
+    });
+
+    console.log("tool delete")
+    if (!response.ok) {
+      throw new Error('Failed to delete tool');
+    }
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
+
+
 
 
 
