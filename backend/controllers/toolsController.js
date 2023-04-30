@@ -1,7 +1,6 @@
 const toolSchema = require("../schemas/toolsSchema")
 const ElectricTool = require('../schemas/electricTools')
 const NormalTool = require('../schemas/normalTools')
-const multer = require("multer") // set up multer so we can upload image to the DB
 const mime = require("mime");
 const path = require("path");
 const fs = require("fs");
@@ -34,18 +33,20 @@ const getTools = async (req, res) => {
   }
 
   const getOneElectricTool = async (req, res) => {
-    try{
-      const name = req.params.name;
-      const tool = await toolSchema.findOne({ name: name });
-      res.json(tool);
-
+    try {
+      const toolId = req.params.id;
+      const updatedTool = await toolSchema.findByIdAndUpdate(
+        toolId,
+        { functional: 'broken' },
+        { new: true } // return the updated tool instead of the old one
+      );
+      res.json(updatedTool);
     } catch (err) {
       console.error(err);
-      res.status(404).send('Item not found');
-
+      res.status(500).send('Server error');
     }
   }
-
+  
   const getOneNormalTool = async (req, res) => {
     try{
       const name = req.params.name;
@@ -101,7 +102,28 @@ const createTool = async (req, res) => {
     }
 };
 
-// uploading a tool + multer setup
+
+const deleteTool = async (req, res) => {
+  try {
+    const toolId = req.params.id;
+
+    // Find the tool by id and remove it
+    const deletedTool = await toolSchema.findByIdAndRemove(toolId);
+
+    if (!deletedTool) {
+      return res.status(404).json({ message: 'error', error: 'Tool not found' });
+    }
+
+    res.json({ message: 'success', data: deletedTool });
+    console.log(`Tool with id ${toolId} has been deleted`);
+
+  } catch (err) {
+    res.status(500).json({ message: 'error', error: err });
+  }
+};
+
+
+// uploading a tool + multer setup on toolsroutes.js
 
 const uploadDir = path.join("assets", "images");
 if (!fs.existsSync(uploadDir)) {
@@ -122,6 +144,7 @@ const uploadTool = async (req, res) => {
       quantity: req.body.quantity,
       electric: req.body.electric,
       image: targetPath,
+      functional: "working"
     });
     await tool.save();
     res.status(200).end("File uploaded!");
@@ -133,4 +156,6 @@ const uploadTool = async (req, res) => {
 
 
 
+
 module.exports = {createTool, getTools, getNormalTools, getOneElectricTool, getOneNormalTool, uploadTool, deleteTool, configTool}
+

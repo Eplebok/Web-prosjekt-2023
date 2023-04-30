@@ -4,13 +4,16 @@ const PORT = process.env.PORT || 3200
 require("dotenv").config()
 const bodyParser = require("body-parser")
 app.use(bodyParser.json())
+const cookieParser = require('cookie-parser')
 const connectDB = require("./dbconnect/dbconnect")
 connectDB()
 
 // put the HTML file containing your form in a directory named "public" (relative to where this script is located)
+app.use(cookieParser());
 app.use(express.static("public"));
 app.use('/assets', express.static('assets'));
 app.use(bodyParser.urlencoded({ extended: true }));
+
 
 
 // we import our routers
