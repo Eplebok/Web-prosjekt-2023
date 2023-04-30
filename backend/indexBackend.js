@@ -17,7 +17,7 @@ const secretKey = 'pass'; // replace this with a secret key of your choice
 module.exports = jwt
 
 
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 
 // put the HTML file containing your form in a directory named "public" (relative to where this script is located)
 app.use(express.static("public"));

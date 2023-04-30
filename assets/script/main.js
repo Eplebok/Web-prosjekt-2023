@@ -125,7 +125,10 @@ class NavComponent extends HTMLElement {
            <div class="nav_links" id="nav_links">
                 
               <ul role="navigation">
+                  <div id="logo">
                   <a href="index.html"><img src="/assets/images/logo_ntnu.svg"></a>
+                  </div>
+                  <div id="mylinks">
                   <li id="leftlink"><a href="index.html" id="test">Home</a></li>
                   <li><a href="tools.html">Tools</a></li>
                   <li><a href="booking.html">Booking</a></li>
@@ -134,6 +137,7 @@ class NavComponent extends HTMLElement {
                   <li id="login-link"><a href="login.html">Log In</a></li>
                   <li id="logout-link"><a>Log out</a></li>  
                   <li id="user-email"><a></a></li>
+                  </div>
               </ul>
           </div>  
         </nav>
