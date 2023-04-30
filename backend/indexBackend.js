@@ -6,6 +6,7 @@ const bodyParser = require("body-parser")
 app.use(bodyParser.json())
 const connectDB = require("./dbconnect/dbconnect")
 connectDB()
+
 const mime = require("mime");
 const path = require("path");
 const fs = require("fs");
@@ -15,6 +16,7 @@ module.exports = jwt
 
 
  const bcrypt = require('bcrypt');
+
 
 // put the HTML file containing your form in a directory named "public" (relative to where this script is located)
 app.use(express.static("public"));
