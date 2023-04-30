@@ -144,68 +144,67 @@ class NavComponent extends HTMLElement {
         </header>
       `;
 
+      const logoutLink = document.getElementById("logout-link");
+        if (logoutLink) {
+          logoutLink.addEventListener("click", async () => {
+            const response = await fetch('http://localhost:3200/logout', {
+              method: 'GET',
+              credentials: 'include',
+            });
+            const data = await response.json();
+            console.log(data);
+            // redirect the user to the login page
+            window.location.href = "login.html";
+          });
+        }
+
     }
   }
   
   customElements.define('nav-component', NavComponent);
   
-  function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) {
-      return parts.pop().split(';').shift();
-    }
-  }
-
-  function getEmailFromToken(token) {
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const decodedToken = JSON.parse(atob(base64));
-    return decodedToken.email;
-  }
-
-  // named function to update nav bar based on login state
-  // need to import/require jwt in order to decode the token
-  function updateNavBar() {
-    const token = getCookie('token');
-    if (token) {
-        console.log('User is logged in');
-        document.getElementById("login-link").style.display = "none";
-        document.getElementById("logout-link").style.display = "inline-block";
-        document.getElementById("user-email").style.display = "inline-block";
-        document.getElementById("user-email").getElementsByTagName("a")[0].innerHTML = getEmailFromToken(token) ; 
-    } else {
-      console.log('User is logged out');
-      document.getElementById("login-link").style.display = "inline-block";
-      document.getElementById("logout-link").style.display = "none";
-      document.getElementById("user-email").style.display = "none";
-      document.getElementById("user-email").getElementsByTagName("a")[0].innerHTML = "";
-    }
-  }
+// named function to update nav bar based on login state
+// need to import/require jwt in order to decode the token
+function updateNavBar(email) {
+  document.getElementById("login-link").style.display = "none";
+  document.getElementById("logout-link").style.display = "inline-block";
+  document.getElementById("user-email").style.display = "inline-block";
+  document.getElementById("user-email").getElementsByTagName("a")[0].innerHTML = email;
+}
 
 // add event listener to update nav bar based on login state
 window.addEventListener("message", (event) => {
   if (event.data.loggedIn) {
-    updateNavBar();
+    updateNavBar(event.data.email);
   } else {
-    updateNavBar();
+    document.getElementById("login-link").style.display = "inline-block";
+    document.getElementById("logout-link").style.display = "none";
+    document.getElementById("user-email").style.display = "none";
+    document.getElementById("user-email").getElementsByTagName("a")[0].innerHTML = "";
   }
 });
 
 // add event listener to update nav bar when the page loads
-window.addEventListener("load", updateNavBar);
+window.addEventListener("load", async () => {
+  const response = await fetch('http://localhost:3200/decode', {
+    method: 'GET',
+    credentials: 'include',
+  });
+  const data = await response.json();
+  if (data.email) {
+    updateNavBar(data.email);
+  } else {
+    document.getElementById("login-link").style.display = "inline-block";
+    document.getElementById("logout-link").style.display = "none";
+    document.getElementById("user-email").style.display = "none";
+    document.getElementById("user-email").getElementsByTagName("a")[0].innerHTML = "";
+  }
+});
 
   
-  // add event listener to log out the user when the logout link is clicked
-  const logoutLink = document.getElementById("logout-link");
-  if (logoutLink) {
-    logoutLink.addEventListener("click", () => {
-      // delete the cookie
-      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      // redirect the user to the login page
-      window.location.href = "login.html";
-    });
-  }
+  
+
+
 
 
 
