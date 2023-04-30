@@ -28,6 +28,7 @@ router.get("/tools", cors(), getTools)
 
 router.get("/electric", cors(), getTools)
 router.get("/get/electric/:id", cors(), getOneElectricTool)
+router.get("/electric/:name", cors(), getOneNormalTool)
 // Route for retrieving normal tools
 router.get("/normal", cors(), getNormalTools)
 router.get("/normal/:name", cors(), getOneNormalTool)

@@ -50,7 +50,7 @@ const getTools = async (req, res) => {
   const getOneNormalTool = async (req, res) => {
     try{
       const name = req.params.name;
-      const tool = await NormalTool.findOne({ name: name });
+      const tool = await toolSchema.findOne({ name: name });
       res.json(tool);
     } catch (err) {
       console.error(err);

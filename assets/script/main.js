@@ -134,6 +134,7 @@ class NavComponent extends HTMLElement {
                   <li><a href="booking.html">Booking</a></li>
                   <li><a href="about.html">About Us</a></li>
                   <li><a href="feedback.html">Feedback</a></li>
+                  <li id="admin-link" style="display: none;"><a href="/admin.html">Admin</a></li>
                   <li id="login-link"><a href="login.html">Log In</a></li>
                   <li id="logout-link"><a>Log out</a></li>  
                   <li id="user-email"><a></a></li>
@@ -160,6 +161,10 @@ class NavComponent extends HTMLElement {
 
     }
   }
+
+
+
+
   
   customElements.define('nav-component', NavComponent);
   
@@ -193,6 +198,9 @@ window.addEventListener("load", async () => {
   const data = await response.json();
   if (data.email) {
     updateNavBar(data.email);
+    if (data.role === 'admin') {
+      document.getElementById("admin-link").style.display = "inline-block";
+    }
   } else {
     document.getElementById("login-link").style.display = "inline-block";
     document.getElementById("logout-link").style.display = "none";

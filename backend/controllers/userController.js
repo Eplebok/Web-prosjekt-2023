@@ -51,7 +51,7 @@ const login = async (req, res) => {
         const user = await userSchema.findOne({ email: req.body.email });
         if (user && bcrypt.compareSync(req.body.password, user.password)) {
           console.log(user);           //need to change httpOnly to true(httpOnly:true) and then import jwt and decode it on the client side. better security
-          const token = jwt.sign({ email: user.email, loggedIn: true }, process.env.TOKEN_SECRET, { expiresIn: '1h' }); // add loggedIn property to the token
+          const token = jwt.sign({ email: user.email, role: user.role, loggedIn: true }, process.env.TOKEN_SECRET, { expiresIn: '1h' }); // add loggedIn property to the token
           res.cookie('token', token, { httpOnly: true, maxAge: 3600000 }); // set a cookie with the token
           console.log('Cookie set:', token); // log the Set-Cookie header
           res.redirect("/index.html")
