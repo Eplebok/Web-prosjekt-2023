@@ -1,7 +1,10 @@
 const toolSchema = require("../schemas/toolsSchema")
 const ElectricTool = require('../schemas/electricTools')
 const NormalTool = require('../schemas/normalTools')
-// const multer = require("multer") // set up multer so we can upload image to the DB
+const multer = require("multer") // set up multer so we can upload image to the DB
+const mime = require("mime");
+const path = require("path");
+const fs = require("fs");
 
 
 // Get (read)
@@ -70,6 +73,36 @@ const createTool = async (req, res) => {
     }
 };
 
+// uploading a tool + multer setup
+
+const uploadDir = path.join("assets", "images");
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
+
+const uploadTool = async (req, res) => {
+  const tempPath = req.file.path;
+  const date = Date.now();
+  const targetFileName = `${date}-${req.file.originalname}`;
+  const targetPath = path.join(uploadDir, targetFileName).replace(/\\/g, "/");
+
+  try {
+    await fs.promises.rename(tempPath, targetPath);
+    const tool = new toolSchema({
+      name: req.body.name,
+      description: req.body.description,
+      quantity: req.body.quantity,
+      electric: req.body.electric,
+      image: targetPath,
+    });
+    await tool.save();
+    res.status(200).end("File uploaded!");
+  } catch (err) {
+    console.error(err);
+    res.status(500).end("Oops! Something went wrong!");
+  }
+}
 
 
-module.exports = {createTool, getTools, getNormalTools, getOneElectricTool, getOneNormalTool}
+
+module.exports = {createTool, getTools, getNormalTools, getOneElectricTool, getOneNormalTool, uploadTool}

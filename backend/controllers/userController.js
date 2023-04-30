@@ -1,4 +1,6 @@
-const User = require("../schemas/userSchema.js")
+const userSchema = require("../schemas/userSchema.js")
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 const createUser = async (req, res) => {
 
@@ -17,4 +19,49 @@ const createUser = async (req, res) => {
     });
 };
 
-module.exports = {createUser}
+// code for signing up
+const signup = async (req, res) => {
+  try {
+    const existingUser = await userSchema.findOne({ email: req.body.email });
+    if (existingUser) {
+      res.status(409).end("Email already registered");
+    } else {
+      // Hash the password
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        const user = new userSchema({
+            email: req.body.email,
+            password: hashedPassword, // Store the hashed password
+      });
+      await user.save();
+      res.redirect("/login.html")
+      //res.status(200).end("User created successfully!");
+      console.log(user); // need to add a msg that informs the user that an account has been made!
+      
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).end("Oops! Something went wrong!");
+  }
+}
+
+// code for loggin in
+const login = async (req, res) => {
+      try {
+        const user = await userSchema.findOne({ email: req.body.email });
+        if (user && bcrypt.compareSync(req.body.password, user.password)) {
+          console.log(user);           //need to change httpOnly to true(httpOnly:true) and then import jwt and decode it on the client side. better security
+          const token = jwt.sign({ email: user.email, loggedIn: true }, process.env.TOKEN_SECRET, { expiresIn: '1h' }); // add loggedIn property to the token
+          res.cookie('token', token, { httpOnly: false, maxAge: 3600000 }); // set a cookie with the token
+          console.log('Cookie set:', res.get('Set-Cookie')); // log the Set-Cookie header
+          res.redirect("/index.html")
+        } else {
+          console.log('Invalid email or password');
+          res.status(500).end('Invalid email or password');
+        } 
+      } catch (err) {
+        console.error(err);
+        res.status(500).end('Oops! Something went wrong!');
+      }
+    }
+
+module.exports = {createUser, signup, login}
