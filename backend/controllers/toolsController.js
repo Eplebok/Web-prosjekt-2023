@@ -1,7 +1,6 @@
 const toolSchema = require("../schemas/toolsSchema")
 const ElectricTool = require('../schemas/electricTools')
 const NormalTool = require('../schemas/normalTools')
-const multer = require("multer") // set up multer so we can upload image to the DB
 const mime = require("mime");
 const path = require("path");
 const fs = require("fs");
@@ -73,7 +72,28 @@ const createTool = async (req, res) => {
     }
 };
 
-// uploading a tool + multer setup
+
+const deleteTool = async (req, res) => {
+  try {
+    const toolId = req.params.id;
+
+    // Find the tool by id and remove it
+    const deletedTool = await toolSchema.findByIdAndRemove(toolId);
+
+    if (!deletedTool) {
+      return res.status(404).json({ message: 'error', error: 'Tool not found' });
+    }
+
+    res.json({ message: 'success', data: deletedTool });
+    console.log(`Tool with id ${toolId} has been deleted`);
+
+  } catch (err) {
+    res.status(500).json({ message: 'error', error: err });
+  }
+};
+
+
+// uploading a tool + multer setup on toolsroutes.js
 
 const uploadDir = path.join("assets", "images");
 if (!fs.existsSync(uploadDir)) {
@@ -105,4 +125,4 @@ const uploadTool = async (req, res) => {
 
 
 
-module.exports = {createTool, getTools, getNormalTools, getOneElectricTool, getOneNormalTool, uploadTool}
+module.exports = {createTool, getTools, getNormalTools, getOneElectricTool, getOneNormalTool, uploadTool, deleteTool}
