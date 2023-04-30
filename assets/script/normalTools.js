@@ -29,7 +29,11 @@ fetch('http://localhost:3200/tools/electric')
         <img src="${tool.image}" id="tool-card-image">
         <p id="tool-card-quantity">quantity: ${tool.quantity}</p>
         <p id="tool-card-electric">${tool.electric}</p>
+
+        
+
         <p> Tool is: ${tool.functional} </p>
+
       `;
       container.appendChild(toolElement);
       console.log(tool.electric);

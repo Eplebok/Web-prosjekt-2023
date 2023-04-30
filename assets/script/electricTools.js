@@ -21,6 +21,8 @@ fetch('http://localhost:3200/tools/electric')
     
     
     modifiedData.forEach(tool => {
+
+   
       if(tool.electric === true) {
         const toolElement = document.createElement('div');
         toolElement.classList.add('tool-card');
@@ -67,6 +69,7 @@ fetch('http://localhost:3200/tools/electric')
       });
        
       }
+
     });
     
     

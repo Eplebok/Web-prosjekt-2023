@@ -11,6 +11,7 @@
     <!--<script src="./tools.js"></script>-->
     <script src="../assets/script/spesificTool.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?AIzaSyBneSzE9cI6A5z_vPTkdhgsl8C8I_Scy20"></script>
+    
     <style>
           * {
       box-sizing: border-box;
@@ -52,6 +53,11 @@
       flex: 1;
     }
 
+    #editButton {
+      width: 100px;
+      height: 100px;
+    }
+
    
   </style>
     </style>
@@ -70,11 +76,17 @@
             <div id="tool-image-container" style="margin: 0 auto;"></div>
             <div id="tool-description"></div>
             <div id="tool-quantity"></div>
+            <div id="tool-id">
+              <button id="editButton">edit</button>
+            </div>
         </div>
 
     </div>
 
     <footer-component></footer-component>
+    
+    <script src="../assets/script/edit.js"></script>
+    
 
 </body>
 </html>

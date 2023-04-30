@@ -17,6 +17,8 @@ fetch(`http://localhost:3200/tools/${toolType}/${toolName}`)
     <img src="${tool.image}" id="tool-image">
     `;
     document.getElementById('tool-quantity').innerHTML = `<p>Quantity: ${tool.quantity}</p>`;
+    //document.getElementById('tool-id').innerHTML = `<button class="editButton" value="${tool._id}">Edit</button>`;
+
   } else {
     console.log(`No ${toolType} tool found with name ${toolName}`);
   }
