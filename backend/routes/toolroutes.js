@@ -1,3 +1,5 @@
+/*
+
 const express = require("express")
 const router = express.Router()
 const cors = require('cors');
@@ -41,3 +43,4 @@ router.delete('/delete/:id', deleteTool)
 router.post('/upload', upload.single("file"), uploadTool)
 
 module.exports = router
+*/
