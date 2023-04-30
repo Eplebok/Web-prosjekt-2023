@@ -195,6 +195,13 @@ section {
   background-image: url(../images/tools.jpg);
   background-size: cover;
   color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 600px;
 }
 
 .relevant-info {

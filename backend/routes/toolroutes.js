@@ -36,11 +36,14 @@ router.get("/normal/:name", cors(), getOneNormalTool)
 router.post("/create/tool", createTool)
 router.post("/create/user", createUser)
 
+// route that updates the tool from "working" to "broken"
+router.put("/electric/:id", getOneElectricTool)
+
 
 
 router.put("/configure/:name", cors(), configTool)
 
-router.put("/electric/:id", cors(), getOneElectricTool)
+
 
 router.delete('/delete/:id', deleteTool)
 
