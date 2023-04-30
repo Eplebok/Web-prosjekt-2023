@@ -22,10 +22,9 @@ const upload = multer({
 
 
 router.get("/tools", cors(), getTools)
-router.get("/electric/:name", cors(), getOneElectricTool)
 
 router.get("/electric", cors(), getTools)
-router.get("/electric/:name", cors(), getOneElectricTool)
+router.get("/get/electric/:id", cors(), getOneElectricTool)
 // Route for retrieving normal tools
 router.get("/normal", cors(), getNormalTools)
 router.get("/normal/:name", cors(), getOneNormalTool)
@@ -33,6 +32,8 @@ router.get("/normal/:name", cors(), getOneNormalTool)
 // this creates a new tool
 router.post("/create/tool", createTool)
 router.post("/create/user", createUser)
+
+router.put("/electric/:id", cors(), getOneElectricTool)
 
 router.delete('/delete/:id', deleteTool)
 

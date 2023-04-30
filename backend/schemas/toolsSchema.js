@@ -21,6 +21,9 @@ const toolSchema = new mongoose.Schema({
     image: {
       type: String, // Store the path to the image file
       required: true
+    },
+    functional: {
+      type: String
     }
   });
   

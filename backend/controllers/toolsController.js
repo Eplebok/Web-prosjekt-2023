@@ -33,18 +33,20 @@ const getTools = async (req, res) => {
   }
 
   const getOneElectricTool = async (req, res) => {
-    try{
-      const name = req.params.name;
-      const tool = await toolSchema.findOne({ name: name });
-      res.json(tool);
-
+    try {
+      const toolId = req.params.id;
+      const updatedTool = await toolSchema.findByIdAndUpdate(
+        toolId,
+        { functional: 'broken' },
+        { new: true } // return the updated tool instead of the old one
+      );
+      res.json(updatedTool);
     } catch (err) {
       console.error(err);
-      res.status(404).send('Item not found');
-
+      res.status(500).send('Server error');
     }
   }
-
+  
   const getOneNormalTool = async (req, res) => {
     try{
       const name = req.params.name;
@@ -114,6 +116,7 @@ const uploadTool = async (req, res) => {
       quantity: req.body.quantity,
       electric: req.body.electric,
       image: targetPath,
+      functional: "working"
     });
     await tool.save();
     res.status(200).end("File uploaded!");
