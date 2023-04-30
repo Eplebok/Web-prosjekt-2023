@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 const cors = require('cors');
 const multer = require('multer')
-const {createTool, getNormalTools, getTools, getOneNormalTool, getOneElectricTool, uploadTool} = require("../controllers/toolsController")
+const {createTool, getNormalTools, getTools, getOneNormalTool, getOneElectricTool, uploadTool, configTool, deleteTool} = require("../controllers/toolsController")
 const {createUser} = require("../controllers/userController")
 
 const upload = multer({
@@ -33,6 +33,10 @@ router.get("/normal/:name", cors(), getOneNormalTool)
 // this creates a new tool
 router.post("/create/tool", createTool)
 router.post("/create/user", createUser)
+
+router.delete("/delete/:id", cors(), deleteTool)
+
+router.put("/configure/:name", cors(), configTool)
 
 
 router.post('/upload', upload.single("file"), uploadTool)
