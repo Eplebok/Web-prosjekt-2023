@@ -1,8 +1,24 @@
 const express = require("express")
 const router = express.Router()
 const cors = require('cors');
+const multer = require('multer')
+const {createTool, getNormalTools, getTools, getOneNormalTool, getOneElectricTool, uploadTool} = require("../controllers/toolsController")
+const {createUser} = require("../controllers/userController")
 
-const {createTool, getNormalTools, getTools, getOneNormalTool, getOneElectricTool} = require("../controllers/toolsController")
+const upload = multer({
+    dest: "/DBpictures",
+    fileFilter: (req, file, cb) => {
+      if (
+        file.mimetype === "image/png" ||
+        file.mimetype === "image/jpeg" ||
+        file.mimetype === "image/jpg"
+      ) {
+        cb(null, true);
+      } else {
+        cb(new Error("Only .png, .jpeg and .jpg files are allowed!"), false);
+      }
+    },
+  });
 
 
 router.get("/tools", cors(), getTools)
@@ -14,11 +30,11 @@ router.get("/electric/:name", cors(), getOneElectricTool)
 router.get("/normal", cors(), getNormalTools)
 router.get("/normal/:name", cors(), getOneNormalTool)
 
-const {createUser} = require("../controllers/userController")
-
-
 // this creates a new tool
 router.post("/create/tool", createTool)
 router.post("/create/user", createUser)
+
+
+router.post('/upload', upload.single("file"), uploadTool)
 
 module.exports = router

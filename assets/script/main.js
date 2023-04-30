@@ -297,7 +297,7 @@ async function submitLoginForm(event) {
       const formData = new FormData(form);
     
       try {
-        const response = await fetch("/upload", {
+        const response = await fetch("/tools/upload", {
           method: "POST",
           body: formData,
         });
@@ -323,7 +323,7 @@ async function submitLoginForm(event) {
       const endBookingDate = document.getElementById("bookingEnd").value;
 
       try {
-        const response = await fetch("/uploadBooking", {
+        const response = await fetch("/booking/uploadBooking", {
           method: "POST",
           body: JSON.stringify({ email, startBookingDate, endBookingDate }),
           headers: {
