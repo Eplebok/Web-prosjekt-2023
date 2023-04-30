@@ -31,6 +31,7 @@ const signup = async (req, res) => {
         const user = new userSchema({
             email: req.body.email,
             password: hashedPassword, // Store the hashed password
+            role: "maker"
       });
       await user.save();
       res.redirect("/login.html")
@@ -51,8 +52,8 @@ const login = async (req, res) => {
         if (user && bcrypt.compareSync(req.body.password, user.password)) {
           console.log(user);           //need to change httpOnly to true(httpOnly:true) and then import jwt and decode it on the client side. better security
           const token = jwt.sign({ email: user.email, loggedIn: true }, process.env.TOKEN_SECRET, { expiresIn: '1h' }); // add loggedIn property to the token
-          res.cookie('token', token, { httpOnly: false, maxAge: 3600000 }); // set a cookie with the token
-          console.log('Cookie set:', res.get('Set-Cookie')); // log the Set-Cookie header
+          res.cookie('token', token, { httpOnly: true, maxAge: 3600000 }); // set a cookie with the token
+          console.log('Cookie set:', token); // log the Set-Cookie header
           res.redirect("/index.html")
         } else {
           console.log('Invalid email or password');
@@ -64,4 +65,35 @@ const login = async (req, res) => {
       }
     }
 
-module.exports = {createUser, signup, login}
+const logout = async (req, res) => {
+  try {
+    res.clearCookie('token', { httpOnly: true }); // clear the cookie with name 'token'
+    res.status(200).json({ message: 'Logged out successfully' }); // send response with success message
+    console.log("logout ja")
+  } catch (err) {
+    console.log("logout nei")
+    console.error(err);
+    res.status(500).end('Oops! Something went wrong!');
+  }
+};
+
+const decodeCookie = async (req, res) => {
+  try {
+    const token = req.cookies.token;
+    const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
+    const email = decoded.email;
+    const user = await userSchema.findOne({ email: email });
+    if (!user) {
+      return res.status(400).send('User not found');
+    }
+    const role = user.role;
+    res.json({ email, role });
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+};
+
+
+
+
+module.exports = {createUser, signup, login, decodeCookie, logout}

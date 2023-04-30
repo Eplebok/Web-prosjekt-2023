@@ -4,24 +4,16 @@ const PORT = process.env.PORT || 3200
 require("dotenv").config()
 const bodyParser = require("body-parser")
 app.use(bodyParser.json())
+const cookieParser = require('cookie-parser')
 const connectDB = require("./dbconnect/dbconnect")
 connectDB()
 
-const mime = require("mime");
-const path = require("path");
-const fs = require("fs");
-const jwt = require('jsonwebtoken'); // required for creating JSON Web Tokens
-const secretKey = 'pass'; // replace this with a secret key of your choice
-module.exports = jwt
-
-
- const bcrypt = require('bcrypt');
-
-
 // put the HTML file containing your form in a directory named "public" (relative to where this script is located)
+app.use(cookieParser());
 app.use(express.static("public"));
 app.use('/assets', express.static('assets'));
 app.use(bodyParser.urlencoded({ extended: true }));
+
 
 
 // we import our routers
