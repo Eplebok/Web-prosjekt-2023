@@ -50,7 +50,7 @@ const getTools = async (req, res) => {
   const getOneNormalTool = async (req, res) => {
     try{
       const name = req.params.name;
-      const tool = await NormalTool.findOne({ name: name });
+      const tool = await toolSchema.findOne({ name: name });
       res.json(tool);
     } catch (err) {
       console.error(err);
@@ -58,16 +58,6 @@ const getTools = async (req, res) => {
     }
   }
 
-  const deleteTool = async (req, res) => {
-    try {
-      const allTools = await toolSchema.find();
-      res.json(allTools)
-     //res.render('electricTools', { tools: electricTools });
-    } catch (err) {
-      console.error(err);
-      res.status(500).send('Error retrieving electric tools');
-    }
-  }
 
   const configTool = async (req,res)=>{ // Function that updates the information about a player
     try{
