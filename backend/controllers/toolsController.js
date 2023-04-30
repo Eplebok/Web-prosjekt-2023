@@ -58,6 +58,34 @@ const getTools = async (req, res) => {
     }
   }
 
+  const deleteTool = async (req, res) => {
+    try {
+      const allTools = await toolSchema.find();
+      res.json(allTools)
+     //res.render('electricTools', { tools: electricTools });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Error retrieving electric tools');
+    }
+  }
+
+  const configTool = async (req,res)=>{ // Function that updates the information about a player
+    try{
+        const uptool = await toolSchema.findOneAndUpdate( // finds and selects a player based on the username written in the query
+            {name: req.params.name},  
+            {$set:{  // updates properties using set operator of mongoDB
+                name:req.body.name,  // values take from request body
+                description:req.body.description, 
+                quantity: req.body.quantity, 
+                image: req.body.image,
+                
+            }})
+        res.json(uptool) // displays the updated information
+    }catch(error){ // catches error and displays it
+        res.status(400).json({message:error})
+    }
+}
+
 // POST method (create)
 // this function adds data in my DB
 const createTool = async (req, res) => {
@@ -128,4 +156,6 @@ const uploadTool = async (req, res) => {
 
 
 
-module.exports = {createTool, getTools, getNormalTools, getOneElectricTool, getOneNormalTool, uploadTool, deleteTool}
+
+module.exports = {createTool, getTools, getNormalTools, getOneElectricTool, getOneNormalTool, uploadTool, deleteTool, configTool}
+
