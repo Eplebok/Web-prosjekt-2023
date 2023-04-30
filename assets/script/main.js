@@ -219,6 +219,25 @@ const deleteTool = async (toolId) => {
   }
 };
 
+// checks all the tools for any broken tool and then displays the name of the tool that is flagged as broken
+window.addEventListener('load', async () => {
+  const response = await fetch('http://localhost:3200/tools/tools', {
+    method: "GET"
+  });
+    const tools = await response.json();
+    const brokenTools = tools.filter(tool => tool.functional === "broken");
+    const brokenToolNames = brokenTools.map(tool => `${tool.name} is broken`);
+    const liElements = brokenToolNames.map(name => {
+      const li = document.createElement("li");
+      li.innerHTML = name;
+      return li;
+    });
+    const ul = document.querySelector(".important-info-list");
+    liElements.forEach(li => ul.appendChild(li));
+  });
+
+
+
 
 
 
