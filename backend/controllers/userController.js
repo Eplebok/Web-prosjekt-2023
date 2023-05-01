@@ -1,5 +1,3 @@
-/*
-
 const userSchema = require("../schemas/userSchema.js")
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
@@ -120,4 +118,3 @@ const decodeCookie = async (req, res) => {
 
 module.exports = {getAllUsers, getOneUser, createUser, signup, login, decodeCookie, logout}
 
-*/
