@@ -1,4 +1,5 @@
-//const electricToolsContainer = document.getElementById('electric-tools-container');
+const electricToolsContainer = document.getElementById('electric-tools-container');
+const shoppingCart = [];
 
 fetch('http://localhost:3200/tools/electric')
   .then(response => response.json())
@@ -27,6 +28,8 @@ fetch('http://localhost:3200/tools/electric')
         const imageUrl = tool.image;
         toolElement.innerHTML = `
           <button class="broken-tool-button">Broken?</button>  
+          <button class="book-tool-button" data-tool-id="${tool.id}">Add to Cart</button>  
+ 
           <h2><a href="/spesificTool.html?toolName=${tool.name}" id="tool-card-h2">${tool.name}</a></h2>
           <button class="delete-tool-button" data-tool-id="${tool.id}">X</button>
           <img src="${tool.image}" id="tool-card-image">
@@ -47,6 +50,38 @@ fetch('http://localhost:3200/tools/electric')
             console.log('Failed to delete tool');
           }
         });
+
+        const bookButton = toolElement.querySelector('.book-tool-button');
+        bookButton.addEventListener('click', () => {
+        shoppingCart.push(tool); // Add tool to shopping cart
+        localStorage.setItem('selectedTools', JSON.stringify(shoppingCart)); // Store selected tools in local storage
+        console.log("cart" + shoppingCart); // Display shopping cart for testing purposes
+        updateCheckoutButton(); // Update the checkout button
+
+        const cartIcon = document.getElementById('cart-icon');
+        const cartCount = document.getElementById('cart-count');
+        cartIcon.classList.add('cart-active'); // Change cart icon color
+        cartCount.textContent = shoppingCart.length; // Update cart count
+        checkoutButton.classList.add('checkout-active'); // Highlight "Checkout" button
+        });
+
+        const checkoutButton = document.getElementById('checkout-button');
+        checkoutButton.addEventListener('click', () => {
+          // Get the selected tools from local storage
+          const selectedTools = JSON.parse(localStorage.getItem('selectedTools'));
+
+          // Redirect the user to the booking form page with the selected tools in the query string
+          window.location.href = `booking.html?tools=${JSON.stringify(selectedTools)}`;
+});
+
+        function updateCheckoutButton() {
+          const checkoutButton = document.getElementById('checkout-button');
+          if (shoppingCart.length > 0) {
+            checkoutButton.classList.add('has-items');
+          } else {
+            checkoutButton.classList.remove('has-items');
+          }
+        }
 
         const brokenButton = toolElement.querySelector('.broken-tool-button');
         brokenButton.addEventListener('click', async () => {

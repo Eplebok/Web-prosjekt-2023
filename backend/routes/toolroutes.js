@@ -1,4 +1,4 @@
-/*
+
 
 const express = require("express")
 const router = express.Router()
@@ -6,6 +6,7 @@ const cors = require('cors');
 const multer = require('multer')
 const {createTool, getNormalTools, getTools, getOneNormalTool, getOneElectricTool, uploadTool, deleteTool} = require("../controllers/toolsController")
 const {createUser} = require("../controllers/userController")
+/*
 
 const upload = multer({
     dest: "/DBpictures",
@@ -22,6 +23,7 @@ const upload = multer({
     },
   });
 
+*/
 
 router.get("/tools", cors(), getTools)
 
@@ -33,14 +35,14 @@ router.get("/normal/:name", cors(), getOneNormalTool)
 
 // this creates a new tool
 router.post("/create/tool", createTool)
-router.post("/create/user", createUser)
+// router.post("/create/user", createUser)
 
 router.put("/electric/:id", cors(), getOneElectricTool)
 
 router.delete('/delete/:id', deleteTool)
 
 
-router.post('/upload', upload.single("file"), uploadTool)
+// router.post('/upload', upload.single("file"), uploadTool)
 
 module.exports = router
-*/
+ 

@@ -1,3 +1,4 @@
+const { stringify } = require("querystring");
 const bookingSchema = require("../schemas/bookingSchema")
 const userSchema = require("../schemas/userSchema")
 
@@ -28,6 +29,7 @@ const uploadBooking = async (req, res) => {
     console.log(d3 + " " + d4);    
     const diff = (day4.getTime() - day3.getTime()) / (1000*60*60*24)     
     console.log(diff + "days between");
+    
 
     if (diff > 5) {
       console.log("You can only book a tool for maximimum 5 days")
@@ -50,11 +52,14 @@ const uploadBooking = async (req, res) => {
         email: req.body.email,
         startBookingDate: req.body.startBookingDate,
         endBookingDate: req.body.endBookingDate,
+        toolName: req.body.toolName,
+        toolID: req.body.toolID
       });
       await Booking.save();
       res.status(200).end("Success!")
       console.log(Booking);
-      
+     
+     
     }
   }
     }

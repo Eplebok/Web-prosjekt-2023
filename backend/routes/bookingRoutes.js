@@ -6,5 +6,6 @@ router.get('/getBooking', getBooking)
 
 router.post('/uploadBooking', uploadBooking)
 
+
 module.exports = router
 

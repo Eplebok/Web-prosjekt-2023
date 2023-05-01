@@ -18,13 +18,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // we import our routers
 
- //   app.use('/tools', require('./routes/toolroutes'))
+    app.use('/tools', require('./routes/toolroutes'))
 
     // route for signup/login 
    // app.use('/', require('./routes/userRoutes'))
 
     // route for the different booking parts
-  //  app.use('/booking', require('./routes/bookingRoutes'))
+    app.use('/booking', require('./routes/bookingRoutes'))
 
 
 // we set our server to listen to PORT
