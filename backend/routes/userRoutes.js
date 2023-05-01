@@ -1,4 +1,3 @@
-/*
 const express = require('express');
 const router = express.Router();
 //const {check} = require('express-validator')
@@ -20,7 +19,7 @@ router.get('/decode', decodeCookie)
 router.get('/logout', logout)
 
 module.exports = router
-*/
+
 
 
 

@@ -1,5 +1,3 @@
-
-
 const express = require("express")
 const router = express.Router()
 const cors = require('cors');
@@ -9,7 +7,7 @@ const {createTool, getNormalTools, getTools, getOneNormalTool, getOneElectricToo
 
 
 const {createUser} = require("../controllers/userController")
-/*
+
 
 const upload = multer({
     dest: "/DBpictures",
@@ -26,7 +24,7 @@ const upload = multer({
     },
   });
 
-*/
+
 
 router.get("/tools", cors(), getTools)
 
