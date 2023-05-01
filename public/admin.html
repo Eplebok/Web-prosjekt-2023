@@ -148,7 +148,7 @@
 }
 
 #admin-table thead tr {
-    background-color: #009879;
+    background-color: #272834;
     color: #ffffff;
     text-align: left;
 }
@@ -167,7 +167,23 @@
 }
 
 #admin-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #272834;
+}
+
+td > button{
+  padding: 5px;
+}
+
+.nav-component > a{
+   color: white;
+}
+
+h1,h2{
+    text-align: center;
+}
+
+.td-name {
+  font-size: 22pt;
 }
 
 
@@ -193,19 +209,22 @@
     <div id="tools-table">
         <h2>List of tools</h2>
         <table id="admin-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Quantity</th>
-              <th>Electric</th>
-              <th>State</th>
-              <th>Actions</th>
-              </tr>
-          </thead>
-          <tbody id="tool-list">
 
-          </tbody>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Electric</th>
+            <th>State</th>
+            <th>Actions</th>
+            <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody id="tool-list">
+
+        </tbody>
+            
       </table>
     </div>
 
