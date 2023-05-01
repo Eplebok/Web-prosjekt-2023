@@ -34,6 +34,7 @@ fetch('http://localhost:3200/tools/tools')
             <td class="td-buttons"><button class="edit-tool-button" data-tool-id="${tool.id}">Edit</button>
             </td>
             <td><button class="delete-tool-button" data-tool-id="${tool.id}">Delete</button></td>
+            <td><button class="admin-markTool-button">Mark tool as working</button></td>
           
 
         `;
