@@ -25,7 +25,7 @@ fetch('http://localhost:3200/tools/electric')
       toolElement.innerHTML = `
         <button class="broken-tool-button">Broken?</button>  
         <h2><a href="/spesificTool.html?toolName=${tool.name}" id="tool-card-h2">${tool.name}</a></h2>
-        <button class="delete-tool-button" data-tool-id="${tool.id}">X</button>
+        <button class="delete-tool-button" style="display: none;" data-tool-id="${tool.id}">X</button>
         <img src="${tool.image}" id="tool-card-image">
         <p id="tool-card-quantity">quantity: ${tool.quantity}</p>
         <p id="tool-card-electric">${tool.electric}</p>
@@ -37,6 +37,28 @@ fetch('http://localhost:3200/tools/electric')
       `;
       container.appendChild(toolElement);
       console.log(tool.electric);
+      if (tool.functional === "broken") {
+        toolElement.classList.add('broken');
+      }
+      
+      // search  bar
+      const searchBar = document.getElementById('search-bar');
+      searchBar.addEventListener('input', () => {
+  const searchText = searchBar.value.toLowerCase();
+  filterTools(searchText);
+        });
+
+        function filterTools(searchText) {
+          const toolCards = document.querySelectorAll('.tool-card');
+          toolCards.forEach(toolCard => {
+            const toolName = toolCard.querySelector('h2').textContent.toLowerCase();
+            if (toolName.includes(searchText)) {
+              toolCard.style.display = 'block';
+            } else {
+              toolCard.style.display = 'none';
+            }
+          });
+        }
 
         // add event listener to delete button
         const deleteButton = toolElement.querySelector('.delete-tool-button');

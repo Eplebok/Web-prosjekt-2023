@@ -7,7 +7,7 @@
     <title>Webproject 2023</title>
     <link rel="stylesheet" href="/assets/style/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="./assets/script/main.js"></script>
+    <script src="../assets/script/main.js"></script>
     <script src="../assets/script/electricTools.js"></script>
     <script src="../assets/script/scripts/footerComponent.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?AIzaSyBneSzE9cI6A5z_vPTkdhgsl8C8I_Scy20"></script>
@@ -119,12 +119,30 @@ body {
   background-color: #3e8e41;
 }
 
+.search {
+  margin-top: 5%;
+}
+
+#search-bar {
+ margin-left: 45%;
+ text-align: center;
+ width: 10%;
+ padding: 10px;
+}
+
+.tool-card.broken {
+  opacity: 0.5; /* make the card appear greyed out */
+  pointer-events: none; /* disable mouse events on the card */
+}
+
    </style>
 </head>
 <body>
 
     <nav-component></nav-component>
-  
+    <div class="search">
+    <input type="text" id="search-bar" placeholder="Search tools...">
+    </div>
     <div id="tool-card-container"></div>
 
     <footer-component></footer-component>

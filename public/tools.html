@@ -115,7 +115,7 @@
   background-color: #0088cc;
   border: none;
   color: white;
-  padding: 10px 20px;
+  padding: 100px 200px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -157,44 +157,7 @@
 
     </div>
     
-    <!-- nye updatetools formen  -->
-    <form name="myForm" method="post" enctype="multipart/form-data" action="/tools/upload" onsubmit="event.preventDefault(); validateForm(); addTool(event);" class="uploadTool">
-        <div class="subtitle">Fill out the form below to add a tool!</div>
-
-      <div class="input-container ic1">
-        <input type="text" name="name" required class="input" placeholder=" " id="feedback-name">
-        <div class="cut"></div>
-        <label for="firstname" class="placeholder">Name:</label>
-      </div>
-
-      <div class="input-container ic2">
-        <input name="description" required class="input" type="text" placeholder=" " id="feedback-description"> 
-        <div class="cut"></div>
-        <label class="placeholder">Description:</label>
-      </div>
-
-      <div class="input-container ic2">
-        <input name="quantity" required class="input" type="text" placeholder=" " id="feedback-quantity">
-        <div class="cut"></div>
-        <label class="placeholder">Quantity:</label>
-      </div>
-
-      <div class="input-container ic2">
-        <input type="text" name="electric" required class="input" type="text" placeholder=" " id="feedback-electric">  
-        <div class="cut"></div>
-        <label class="placeholder">Electric:</label>
-      </div>
-
-      <div class="input-container ic2">
-        <input type="file" name="file" required class="input" type="text" placeholder=" " id="feedback-image">
-        <div class="cut"></div>
-        <label class="placeholder">Image:</label>
-      </div>
-      <button type="text" class="submit" value="submit" required>Submit</button>
-      <div id="success"></div>
-      <div id="notsuccess"></div>
-    </form>
-
+    
 
 
     <footer-component></footer-component>
