@@ -81,7 +81,7 @@ fetch('http://localhost:3200/tools/tools')
        
       
     });
-  })
+  
  
 
 
