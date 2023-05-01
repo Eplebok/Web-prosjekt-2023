@@ -102,6 +102,9 @@
 		background-image: url(../images/tools.jpg);
 		background-size: cover;
 		color: white;
+		display: flex;
+		align-items: center;
+		height: 600px;
 
 		
 	}
@@ -547,11 +550,13 @@
 				text-align: center;
 				font-size: 3rem;
 				margin: 5%;
+				display: block;
 			}
 
 			#tool-description {
 				height: 100%;
 				padding: 2%;
+				display: inline-block;
 
 			}
 
@@ -578,10 +583,25 @@
             height: 100%;
 			
 			
+			
             }
 
-	
 
+.admin-all-user {
+	display: inline-block;
+	margin-left: 25px;
+}
+
+
+.admin-all-user-list li {
+	font-size: 1.2rem;
+	margin: 10px;
+	list-style: circle;
+}
+
+.admin-all-user-list button {
+	margin-left: 10px;
+}
 
 	
 

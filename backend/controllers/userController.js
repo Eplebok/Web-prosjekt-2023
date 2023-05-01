@@ -1,11 +1,30 @@
-/*
+
 
 const userSchema = require("../schemas/userSchema.js")
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-const createUser = async (req, res) => {
+const getAllUsers = async (req,res) => {
+  try {
+    const users = await userSchema.find();
+    res.status(200).json(users)
+  } catch(error) {
+    res.status(500).json({message: error.message})
+  }
+}
 
+const getOneUser = async (req, res) => {
+  try {
+    const user = await userSchema.findById(req.params.id);
+    user.role = req.body.role;
+    await user.save();
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const createUser = async (req, res) => {
    await User.findOne({email: req.body.email}).then((user) => {
         if(user) {
             return res.status(400).json({email: "already registered!"})
@@ -53,7 +72,7 @@ const login = async (req, res) => {
         const user = await userSchema.findOne({ email: req.body.email });
         if (user && bcrypt.compareSync(req.body.password, user.password)) {
           console.log(user);           //need to change httpOnly to true(httpOnly:true) and then import jwt and decode it on the client side. better security
-          const token = jwt.sign({ email: user.email, loggedIn: true }, process.env.TOKEN_SECRET, { expiresIn: '1h' }); // add loggedIn property to the token
+          const token = jwt.sign({ email: user.email, role: user.role, loggedIn: true }, process.env.TOKEN_SECRET, { expiresIn: '1h' }); // add loggedIn property to the token
           res.cookie('token', token, { httpOnly: true, maxAge: 3600000 }); // set a cookie with the token
           console.log('Cookie set:', token); // log the Set-Cookie header
           res.redirect("/index.html")
@@ -98,6 +117,6 @@ const decodeCookie = async (req, res) => {
 
 
 
-module.exports = {createUser, signup, login, decodeCookie, logout}
 
-*/
+module.exports = {getAllUsers, getOneUser, createUser, signup, login, decodeCookie, logout}
+

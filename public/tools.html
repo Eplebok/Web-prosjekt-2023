@@ -10,6 +10,8 @@
     <script src="./assets/script/main.js"></script>
     <script src="./tools.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?AIzaSyBneSzE9cI6A5z_vPTkdhgsl8C8I_Scy20"></script>
+    <script src="../assets/script/scripts/footerComponent.js"></script>
+    <script src="../assets/script/scripts/navComponent.js"></script>
     <style>
       .uploadTool {
         background-color: #272834;
@@ -125,7 +127,7 @@ font: 18px;
   background-color: #0088cc;
   border: none;
   color: white;
-  padding: 10px 20px;
+  padding: 100px 200px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -167,6 +169,7 @@ font: 18px;
 
     </div>
     
+
     <!-- nye updatetools formen  -->
     <form name="myForm" method="post" enctype="multipart/form-data" action="/tools/upload" onsubmit="event.preventDefault(); validateForm(); addTool(event);" class="uploadTool">
         <div class="subtitle">Fill out the form below to add a tool!</div>
@@ -206,6 +209,7 @@ font: 18px;
       <div id="success"></div>
       <div id="notsuccess"></div>
     </form>
+
 
 
 

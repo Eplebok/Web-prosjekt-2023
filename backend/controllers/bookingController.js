@@ -48,6 +48,7 @@ const uploadBooking = async (req, res) => {
       console.log("end alrdy booked")
     }
      else if (diff <= 5 && diff >= 0 && existingUser) {
+      console.log("booking made")
       const Booking = new bookingSchema({
         email: req.body.email,
         startBookingDate: req.body.startBookingDate,
