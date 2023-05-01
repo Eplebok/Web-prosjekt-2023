@@ -105,23 +105,50 @@ const deleteTool = async (toolId) => {
       }
     }
 
+    
+
   // function to display different message based on if booking was successfull / error
     async function submitBookingForm(event) {
       event.preventDefault();
       const email = document.getElementById("booking-email").value;
       const startBookingDate = document.getElementById("bookingStart").value;
       const endBookingDate = document.getElementById("bookingEnd").value;
+      const toolNameElements = document.querySelectorAll(".toolName");
+        let toolName = "";
+        toolNameElements.forEach(element => {
+          toolName += element.textContent + ", ";
+        });
+        toolName = toolName.slice(0, -2); // remove the last comma and space
 
+      const toolIdElements = document.querySelectorAll(".toolID");
+        let toolID = "";
+        toolIdElements.forEach(element => {
+          toolID += element.textContent + ", ";
+        });
+        toolID = toolID.slice(0, -2); // remove the last comma and space 
+        
+
+      
+     
       try {
+        
+
         const response = await fetch("/booking/uploadBooking", {
           method: "POST",
-          body: JSON.stringify({ email, startBookingDate, endBookingDate }),
+          body: JSON.stringify({ email, startBookingDate, endBookingDate, toolName, toolID}),
           headers: {
             "Content-Type": "application/json",
           },
         });
         if (response.status === 200) {
           document.getElementById("booking-success").innerHTML = `Booking appointment sent!`;
+          // Update the data of the tools in the database
+          const toolIds = toolID.split(", ");
+          for (const id of toolIds) {
+          // Perform a database update operation for each tool
+          // For example, if you are using SQL:
+          // UPDATE tools SET status = 'booked' WHERE id = id;
+          }
          // document.getElementById("booking-notsuccess").innerHTML = ""; // clear any previous error messages
         } else {
           const errorMessage = await response.text();
@@ -133,6 +160,7 @@ const deleteTool = async (toolId) => {
       }
     };
 
+   
   
   
   

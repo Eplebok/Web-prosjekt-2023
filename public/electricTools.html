@@ -144,10 +144,31 @@ body {
     <input type="text" id="search-bar" placeholder="Search tools...">
     </div>
     <div id="tool-card-container"></div>
+    
+    
+      <i class="fa fa-shopping-cart" id="cart-icon"></i>
+    
+
+    <button class="checkout-button" id="checkout-button">Checkout<span id="cart-count"></span></button>
+
 
     <footer-component></footer-component>
 
+<style>
+  #checkout-button.has-items {
+  background-color: #ff9900;
+  color: #ffffff;
+}
 
+.cart-active {
+  color: green;
+}
+
+.checkout-active {
+  background-color: green;
+  color: white;
+}
+</style>
 
 </body>
 </html>

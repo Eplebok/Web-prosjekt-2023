@@ -14,6 +14,14 @@ const bookingSchema = new mongoose.Schema({
     endBookingDate: {
       type: String,
       required: true,
+    },
+    toolName: {
+      type: String,
+      required: true,
+    },
+    toolID: {
+      type: String,
+      required: true,
     }
   });
 
