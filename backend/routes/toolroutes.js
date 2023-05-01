@@ -3,7 +3,7 @@ const router = express.Router()
 const cors = require('cors');
 const multer = require('multer')
 
-const {createTool, getNormalTools, getTools, getOneNormalTool, getOneElectricTool, uploadTool, configTool, deleteTool} = require("../controllers/toolsController")
+const {createTool, getNormalTools, getTools, getOneNormalTool, getOneElectricTool, uploadTool, configTool, deleteTool, markToolAsWorking } = require("../controllers/toolsController")
 
 
 const {createUser} = require("../controllers/userController")
@@ -40,7 +40,8 @@ router.post("/create/user", createUser)
 // route that updates the tool from "working" to "broken"
 router.put("/electric/:id", getOneElectricTool)
 
-
+//
+router.put('/working/:id', markToolAsWorking )
 
 router.put("/configure/:name", cors(), configTool)
 

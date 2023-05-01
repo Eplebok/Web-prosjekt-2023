@@ -46,6 +46,21 @@ const getTools = async (req, res) => {
       res.status(500).send('Server error');
     }
   }
+
+  const markToolAsWorking = async (req, res) => {
+    try {
+      const toolId = req.params.id;
+      const updatedTool = await toolSchema.findByIdAndUpdate(
+        toolId,
+        { functional: 'working' },
+        { new: true } // return the updated tool instead of the old one
+      );
+      res.json(updatedTool);
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Server error');
+    }
+  }
   
   const getOneNormalTool = async (req, res) => {
     try{
@@ -147,5 +162,5 @@ const uploadTool = async (req, res) => {
 
 
 
-module.exports = {createTool, getTools, getNormalTools, getOneElectricTool, getOneNormalTool, uploadTool, deleteTool, configTool}
+module.exports = {createTool, getTools, getNormalTools, getOneElectricTool, getOneNormalTool, uploadTool, deleteTool, configTool, markToolAsWorking }
 

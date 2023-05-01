@@ -29,29 +29,49 @@ fetch('http://localhost:3200/tools/tools')
             <td class="table-td">${tool.quantity}</td>
             <td class="table-td">${tool.electric}</td>
             <td class="table-td">${tool.functional}</td>
-            <td class="table-td"><button class="delete-tool-button" data-tool-id="${tool.id}">Delete</button>
+            <td class="table-td">
+                <button class="delete-tool-button" data-tool-id="${tool.id}">Delete</button>
                 <button class="edit-tool-button" data-tool-id="${tool.id}">Edit</button>
-                </td>
+                <button class="admin-markTool-button" data-tool-id="${tool.id}">Mark as Working</button>
+            </td>
         `;
         container.appendChild(toolElement);
         console.log(tool.electric);
 
     
-        // Add click event listener to delete button
+        // add click event listener to delete button
         const deleteButton = toolElement.querySelector('.delete-tool-button');
         deleteButton.addEventListener('click', async () => {
-          toolElement.remove(); // Remove tool from webpage
+          toolElement.remove(); // remove tool from webpage
           const toolId = deleteButton.dataset.toolId;
-          const deleted = await deleteTool(toolId); // Delete tool from database
+          const deleted = await deleteTool(toolId); // delete tool from database
           if (!deleted) {
             console.log('Failed to delete tool');
           }
         });
+
+        // add event listener to the "mark tool as working" button
+        const markButton = toolElement.querySelector('.admin-markTool-button');
+        markButton.addEventListener('click', async () => {
+          tool.functional = 'working'; // change the content from "broken" to "working"
+          const response = await fetch(`http://localhost:3200/tools/working/${tool.id}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ functional: 'working' })
+          });
+          console.log('response:', response);
+          if (response.ok) {
+            console.log('Tool state updated to working');
+            console.log('tool.functional:', tool.functional);
+            tool.functional = 'working'; // updates the tool from "broken" to "working"
+          } else {
+            console.log('Failed to update tool state');
+          }
+        });
       }
     });
-    
-    
-  
   })
   .catch(error => console.error(error));
 

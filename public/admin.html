@@ -22,8 +22,7 @@
     margin: 0 auto;
     margin-top: 100px;
     margin-bottom: 100px;
-    display: flex;
-    flex-wrap: wrap;
+    display: inline-block;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
@@ -190,32 +189,27 @@
 
 <body>
     <nav-component></nav-component>
-    <h1>ADMIN PAGE!!</h1>
-
 
     <div id="tools-table">
         <h2>List of tools</h2>
         <table id="admin-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Quantity</th>
-            <th>Electric</th>
-            <th>State</th>
-            <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody id="tool-list">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Quantity</th>
+              <th>Electric</th>
+              <th>State</th>
+              <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody id="tool-list">
 
-        </tbody>
-            
-
+          </tbody>
       </table>
-
     </div>
 
-
+<div class="admin-test">
     <!-- nye updatetools formen  -->
     <form name="myForm" method="post" enctype="multipart/form-data" action="/tools/upload" onsubmit="event.preventDefault(); validateForm(); addTool(event);" class="uploadTool">
         <div class="subtitle">Fill out the form below to add a tool!</div>
@@ -254,13 +248,12 @@
       <div id="notsuccess"></div>
     </form>
 
-
-
     <div class="admin-all-user">
         <ul class="admin-all-user-list">
             <h2>All users registered below!</h2>
         </ul>
     </div>
+  </div>
 
 
     <footer-component></footer-component>
