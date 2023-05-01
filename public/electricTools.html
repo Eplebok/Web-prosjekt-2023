@@ -121,47 +121,66 @@ body {
 
 .search {
   margin-top: 5%;
+  text-align: center;
 }
 
 #search-bar {
- margin-left: 45%;
+ 
  text-align: center;
  width: 10%;
  padding: 10px;
 }
-
 .tool-card.broken {
   opacity: 0.5; /* make the card appear greyed out */
   pointer-events: none; /* disable mouse events on the card */
 }
 
+.bookbutton {
+ 
+  text-align: center;
+  
+}
+
+.checkout-button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
    </style>
 </head>
 <body>
 
     <nav-component></nav-component>
-    <div class="search">
-    <input type="text" id="search-bar" placeholder="Search tools...">
-    </div>
-    <div id="tool-card-container"></div>
-    
-    
-      <i class="fa fa-shopping-cart" id="cart-icon"></i>
     
 
-    <button class="checkout-button" id="checkout-button">Checkout<span id="cart-count"></span></button>
+    <div class="search">
+      <button class="checkout-button" id="checkout-button">Book Tool(s): <span id="cart-count"></span> <i class="fa fa-tag" id="cart-icon"></i></button>
+      <input type="text" id="search-bar" placeholder="Search tools...">
+    </div>
+
+    <div id="tool-card-container"></div>
+    
+   
 
 
     <footer-component></footer-component>
 
 <style>
-  #checkout-button.has-items {
-  background-color: #ff9900;
+       #checkout-button.has-items {
+  background-color: #4CAF50;
   color: #ffffff;
 }
 
 .cart-active {
-  color: green;
+  color: white;
 }
 
 .checkout-active {
