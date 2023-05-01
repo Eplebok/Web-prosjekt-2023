@@ -136,6 +136,49 @@
   a {
     color: black;
   }
+
+  #admin-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    max-width: 70%;
+    margin-left: 15%;
+}
+
+#admin-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+#admin-table th,
+#admin-table td {
+    padding: 12px 15px;
+}
+
+#admin-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+#admin-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+#admin-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+
+
+
+
+  /*.table-td {
+    width: 50%;
+    height: 10%;
+  }*/
   
   
   
@@ -150,29 +193,28 @@
     <h1>ADMIN PAGE!!</h1>
 
 
-    <div id>
+    <div id="tools-table">
+        <h2>List of tools</h2>
         <table id="admin-table">
-        <thead><th>Name</th>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
             <th>Quantity</th>
             <th>Electric</th>
             <th>State</th>
             <th>Actions</th>
+            </tr>
         </thead>
         <tbody id="tool-list">
 
         </tbody>
             
 
-        </table>
+      </table>
 
     </div>
 
-    <div>
-        <h2>List of tools:</h2>
-        <ul id="admin-tools">
-
-        </ul>
-    </div>
 
     <!-- nye updatetools formen  -->
     <form name="myForm" method="post" enctype="multipart/form-data" action="/tools/upload" onsubmit="event.preventDefault(); validateForm(); addTool(event);" class="uploadTool">
