@@ -19,22 +19,25 @@ fetch('http://localhost:3200/tools/tools')
    
     
     modifiedData.forEach(tool => {
+      
+      const tName = tool.name; 
 
-        const tName = tool.name; 
       if(tool) {
         const toolElement = document.createElement('tr');
         toolElement.innerHTML = `
-            <td><a href="/spesificTool.html?toolName=${tName}" id="tool-card-h2">${tName}</a></td>
-            <td class="table-td">${tool.description}</td>
-            <td class="table-td">${tool.quantity}</td>
-            <td class="table-td">${tool.electric}</td>
-            <td class="table-td">${tool.functional}</td>
-            <td class="table-td"><button class="delete-tool-button" data-tool-id="${tool.id}">Delete</button>
-                <button class="edit-tool-button" data-tool-id="${tool.id}">Edit</button>
-                </td>
+            <td class="td-name"><a href="/spesificTool.html?toolName=${tName}" id="tool-card-h2">${tName}</a></td>
+            <td class="td-description">${tool.description}</td>
+            <td class="td-quantity">${tool.quantity}</td>
+            <td class="td-electric">${tool.electric}</td>
+            <td class="td-functional">${tool.functional}</td>
+            <td class="td-buttons"><button class="edit-tool-button" data-tool-id="${tool.id}">Edit</button>
+            </td>
+            <td><button class="delete-tool-button" data-tool-id="${tool.id}">Delete</button></td>
+          
         `;
         container.appendChild(toolElement);
         console.log(tool.electric);
+        
 
     
         // Add click event listener to delete button
@@ -47,6 +50,95 @@ fetch('http://localhost:3200/tools/tools')
             console.log('Failed to delete tool');
           }
         });
+        const toolNameDiv = toolElement.querySelector('.td-name');
+        const toolDescriptionDiv = toolElement.querySelector('.td-description');
+        const toolQuantityDiv = toolElement.querySelector('.td-quantity');
+        const editButton = toolElement.querySelector('.edit-tool-button');
+
+// add an event listener to the edit button to handle editing
+editButton.addEventListener("click", () => {
+    editButton.style.display = "none";
+    deleteButton.style.display = "none";
+    const currentName = toolNameDiv.textContent;
+    const currentDescription = toolDescriptionDiv.textContent;
+    const currentQuantity = toolQuantityDiv.textContent;
+  // create input elements to replace the divs that display the tool info
+  const nameInput = document.createElement("input");
+  nameInput.type = "text";
+  nameInput.value = toolNameDiv.textContent;
+  const descriptionInput = document.createElement("textarea");
+  descriptionInput.value = toolDescriptionDiv.textContent;
+  const quantityInput = document.createElement("input");
+  quantityInput.type = "number";
+  quantityInput.value = toolQuantityDiv.textContent;
+
+  // replace the tool info divs with the input elements
+  toolNameDiv.innerHTML = "";
+  toolNameDiv.appendChild(nameInput);
+  toolDescriptionDiv.innerHTML = "";
+  toolDescriptionDiv.appendChild(descriptionInput);
+  toolQuantityDiv.innerHTML = "";
+  toolQuantityDiv.appendChild(quantityInput);
+
+  // create a save button to save the changes
+  const saveButton = document.createElement("button");
+  saveButton.textContent = "Save";
+  saveButton.addEventListener("click", () => {
+    // get the new tool information from the input elements
+    const newToolName = nameInput.value;
+    const newToolDescription = descriptionInput.value;
+    const newToolQuantity = quantityInput.value;
+
+    // send a PUT request to update the tool info in the database
+    fetch(`http://localhost:3200/tools/configure/${currentName}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: newToolName,
+        description: newToolDescription,
+        quantity: newToolQuantity,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        window.location.href = `/admin.html`;
+        // replace the input elements with the updated tool info divs
+        toolNameDiv.innerHTML = data.name;
+        toolDescriptionDiv.innerHTML = data.description;
+        toolQuantityDiv.innerHTML = data.quantity;
+        buttonContainer.parentNode.removeChild(buttonContainer);
+        editButton.style.display = "block";
+        deleteButton.style.display = "block";
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  });
+
+  // create a cancel button to cancel editing
+  const cancelButton = document.createElement("button");
+  cancelButton.textContent = "Cancel";
+  cancelButton.addEventListener("click", () => {
+    // replace the input elements with the tool info divs
+    editButton.style.display = "block";
+    deleteButton.style.display = "block";
+    toolNameDiv.innerHTML = currentName;
+    toolDescriptionDiv.innerHTML = currentDescription;
+    toolQuantityDiv.innerHTML = currentQuantity;
+    buttonContainer.parentNode.removeChild(buttonContainer);
+  });
+
+  // add the save and cancel buttons to the page
+  const buttonContainer = document.createElement("div");
+  buttonContainer.appendChild(saveButton);
+  buttonContainer.appendChild(cancelButton);
+  editButton.parentNode.appendChild(buttonContainer);
+});
+
+        
       }
     });
     
@@ -55,48 +147,4 @@ fetch('http://localhost:3200/tools/tools')
   })
   .catch(error => console.error(error));
 
-
-  const editButtons = document.querySelectorAll('.edit-tool-button');
-editButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    const row = button.parentElement.parentElement;
-    const cells = row.children;
-
-    // Replace cell contents with input fields
-    for (let i = 0; i < cells.length - 1; i++) {
-      const cell = cells[i];
-      const content = cell.textContent.trim();
-      cell.innerHTML = `<input type="text" value="${content}">`;
-    }
-
-    // Change the edit button to a save button
-    button.innerText = 'Save';
-    button.classList.add('save-tool-button');
-    button.classList.remove('edit-tool-button');
-  });
-});
-
-const saveButtons = document.querySelectorAll('.save-tool-button');
-saveButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    const row = button.parentElement.parentElement;
-    const cells = row.children;
-
-    // Update the data
-    const tName = cells[0].querySelector('input').value;
-    const quantity = cells[1].querySelector('input').value;
-    const electric = cells[2].querySelector('input').value;
-    const functional = cells[3].querySelector('input').value;
-
-    // Replace input fields with cell contents
-    cells[0].innerHTML = `<a href="/spesificTool.html?toolName=${tName}" id="tool-card-h2">${tName}</a>`;
-    cells[1].innerHTML = quantity;
-    cells[2].innerHTML = electric;
-    cells[3].innerHTML = functional;
-
-    // Change the save button back to an edit button
-    button.innerText = 'Edit';
-    button.classList.add('edit-tool-button');
-    button.classList.remove('save-tool-button');
-  });
-});
+ 
