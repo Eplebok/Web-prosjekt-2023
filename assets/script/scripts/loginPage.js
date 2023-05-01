@@ -68,7 +68,8 @@ async function submitLoginForm(event) {
       });
   
       if (response.status === 200) {
-        // Send a message to the parent window with the user's email and login state
+        // send a message to the parent window with the user's email and login state
+        // not sure if we use this anymore...
         window.parent.postMessage({
           loggedIn: true,
           email: email,

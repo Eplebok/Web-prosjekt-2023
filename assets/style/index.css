@@ -648,11 +648,13 @@ h2 > a {
   text-align: center;
   font-size: 3rem;
   margin: 5%;
+  display: block;
 }
 
 #tool-description {
   height: 100%;
   padding: 2%;
+  display: inline-block;
 }
 
 #tool-left {
@@ -679,7 +681,7 @@ h2 > a {
 
 .admin-all-user {
   display: inline-block;
-  margin-left: 25px;
+  margin: 0 auto;
 }
 
 .admin-all-user-list li {
@@ -690,6 +692,15 @@ h2 > a {
 
 .admin-all-user-list button {
   margin-left: 10px;
+}
+
+.admin-test {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 nav {
