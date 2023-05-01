@@ -19,7 +19,7 @@
   width: 80%;
   max-width: 400px;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 50px;
   margin-bottom: 100px;
   display: flex;
   flex-wrap: wrap;
@@ -111,6 +111,24 @@
 }
 
 
+#tools-list li{
+  margin: 0 auto;
+  
+  text-align: center;
+  
+  
+  list-style: none;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+#booking-success {
+  color: lightgray;
+}
 
 
     </style>
@@ -122,12 +140,14 @@
     <ul id="selected-tools-list">
     </ul>
 
+    <h3>Your Booking Cart:</h3>
+
     <ul id="tools-list">
     </ul>
     
 
      <form id="myBooking" name="myBooking" method="post" action="/booking/uploadBooking" onsubmit="submitBookingForm(event)" class="uploadTool">
-        <div class="subtitle">Fill out the form below to book your tool</div>
+        <div class="subtitle">Fill out the form below to book your tool(s)</div>
 <br>
         
 
@@ -195,9 +215,11 @@ function addTool(tool) {
     <p class="toolName">${tool.name}</p>
     <p class="toolQty">${tool.quantity}</p>
     
-    <button class="delete-tool" data-id="${tool.id}">Remove</button>
+    
     <p class="toolID">${tool.id}</p>
-    <br></br>
+    <button class="delete-tool" data-id="${tool.id}">Remove</button>
+    <br></br><br></br>
+    
   `;
   toolsList.appendChild(li);
 }

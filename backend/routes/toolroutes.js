@@ -57,7 +57,7 @@ router.delete('/delete/:id', deleteTool)
 
 
 
-router.post('/upload', upload.single("file"), uploadTool)
+// router.post('/upload', upload.single("file"), uploadTool)
 
 
 module.exports = router

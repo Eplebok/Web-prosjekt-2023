@@ -1,4 +1,4 @@
-
+/*
 
 const userSchema = require("../schemas/userSchema.js")
 const bcrypt = require('bcrypt')
@@ -120,3 +120,4 @@ const decodeCookie = async (req, res) => {
 
 module.exports = {getAllUsers, getOneUser, createUser, signup, login, decodeCookie, logout}
 
+*/
