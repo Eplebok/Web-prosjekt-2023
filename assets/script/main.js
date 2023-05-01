@@ -59,33 +59,6 @@ function hideMenu(){
 
 
 
-// add event listener to update nav bar when the page loads
-window.addEventListener("load", async () => {
-  const response = await fetch('http://localhost:3200/decode', {
-    method: 'GET',
-    credentials: 'include',
-  });
-  const data = await response.json();
-  if (data.email) {
-    updateNavBar(data.email);
-    if (data.role === 'admin') {
-      document.getElementById("admin-link").style.display = "inline-block";
-      document.getElementById("editButton").style.display = "inline-block";
-      const deleteButtons = document.getElementsByClassName("delete-tool-button");
-      for (let i = 0; i < deleteButtons.length; i++) {
-        deleteButtons[i].style.display = "inline-block";
-      }
-    }
-  } else {
-    document.getElementById("login-link").style.display = "inline-block";
-    document.getElementById("logout-link").style.display = "none";
-    document.getElementById("user-email").style.display = "none";
-    document.getElementById("user-email").getElementsByTagName("a")[0].innerHTML = "";
-  }
-});
-
-
-
 // used in the different tool pages so the admin can delete the tool
 
 const deleteTool = async (toolId) => {
