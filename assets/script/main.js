@@ -200,6 +200,7 @@ window.addEventListener("load", async () => {
     updateNavBar(data.email);
     if (data.role === 'admin') {
       document.getElementById("admin-link").style.display = "inline-block";
+      document.getElementById("editButton").style.display = "inline-block";
     }
   } else {
     document.getElementById("login-link").style.display = "inline-block";

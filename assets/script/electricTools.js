@@ -38,6 +38,26 @@ fetch('http://localhost:3200/tools/electric')
         `;
         container.appendChild(toolElement);
         console.log(tool.electric);
+
+        // search bar
+
+        const searchBar = document.getElementById('search-bar');
+        searchBar.addEventListener('input', () => {
+         const searchText = searchBar.value.toLowerCase();
+          filterTools(searchText);
+        });
+  
+          function filterTools(searchText) {
+            const toolCards = document.querySelectorAll('.tool-card');
+            toolCards.forEach(toolCard => {
+              const toolName = toolCard.querySelector('h2').textContent.toLowerCase();
+              if (toolName.includes(searchText)) {
+                toolCard.style.display = 'block';
+              } else {
+                toolCard.style.display = 'none';
+              }
+            });
+          }
     
         // Add click event listener to delete button
         const deleteButton = toolElement.querySelector('.delete-tool-button');
