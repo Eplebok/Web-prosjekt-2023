@@ -648,11 +648,13 @@ h2 > a {
   text-align: center;
   font-size: 3rem;
   margin: 5%;
+  display: block;
 }
 
 #tool-description {
   height: 100%;
   padding: 2%;
+  display: inline-block;
 }
 
 #tool-left {
