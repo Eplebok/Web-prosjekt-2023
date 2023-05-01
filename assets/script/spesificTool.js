@@ -11,11 +11,10 @@ fetch(`http://localhost:3200/tools/${toolType}/${toolName}`)
   .then(tool => {
     if (tool) {//window.location.href = `/spesificTool.html?name=${tool.name}&description=${tool.description}&power=${tool.power}`;
     // Update the HTML elements on the page with the product information
+    document.getElementById('tool-image-container').innerHTML = `
+    <img src="${tool.image}" id="tool-image">`;
     document.getElementById('tool-name').innerHTML = `<h1>${tool.name}</h1>`;
     document.getElementById('tool-description').innerHTML = `<p>${tool.description}</p>`;
-    document.getElementById('tool-image-container').innerHTML = `
-    <img src="${tool.image}" id="tool-image">
-    `;
     document.getElementById('tool-quantity').innerHTML = `<p>Quantity: ${tool.quantity}</p>`;
     //document.getElementById('tool-id').innerHTML = `<button class="editButton" value="${tool._id}">Edit</button>`;
 
