@@ -15,20 +15,19 @@ fetch('http://localhost:3200/tools/tools')
     
     // Display the modified data on the webpage
     const container = document.getElementById('tool-list');
-    
+   
     
     modifiedData.forEach(tool => {
 
-   
+        const tName = tool.name; 
       if(tool) {
-        const toolElement = document.createElement('div');
-        toolElement.classList.add('tool-card');
+        const toolElement = document.createElement('tr');
         toolElement.innerHTML = `
-          <h2><a href="/spesificTool.html?toolName=${tool.name}" id="tool-card-h2">${tool.name}</a></h2>
-          <button class="delete-tool-button" data-tool-id="${tool.id}">Delete item</button>
-          <p id="tool-card-quantity">quantity: ${tool.quantity}</p>
-          <p id="tool-card-electric">${tool.electric}</p>
-          <p> Tool is: ${tool.functional} </p>
+            <td><a href="/spesificTool.html?toolName=${tName}" id="tool-card-h2">${tName}</a></td>
+            <td>${tool.quantity}</td>
+            <td>${tool.electric}</td>
+            <td>${tool.functional}</td>
+            <td><button class="delete-tool-button" data-tool-id="${tool.id}">Delete</button></td>
         `;
         container.appendChild(toolElement);
         console.log(tool.electric);

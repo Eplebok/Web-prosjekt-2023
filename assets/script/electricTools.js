@@ -30,12 +30,15 @@ fetch('http://localhost:3200/tools/electric')
         toolElement.innerHTML = `
           <button class="broken-tool-button">Broken?</button>  
           <h2><a href="/spesificTool.html?toolName=${tool.name}" id="tool-card-h2">${tool.name}</a></h2>
-          <button class="delete-tool-button" data-tool-id="${tool.id}">X</button>
+          <button class="delete-tool-button" style="display: none;" data-tool-id="${tool.id}">X</button>
           <img src="${tool.image}" id="tool-card-image">
           <p id="tool-card-quantity">quantity: ${tool.quantity}</p>
           <p id="tool-card-electric">${tool.electric}</p>
           <p> Tool is: ${tool.functional} </p>
         `;
+        if (tool.functional === "broken") {
+          toolElement.classList.add('broken');
+        }
         container.appendChild(toolElement);
         console.log(tool.electric);
 
