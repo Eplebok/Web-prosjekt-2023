@@ -77,6 +77,11 @@ function updateNavBar(email) {
       updateNavBar(data.email);
       if (data.role === 'admin') {
         document.getElementById("admin-link").style.display = "inline-block";
+        document.getElementById("editButton").style.display = "inline-block";
+      const deleteButtons = document.getElementsByClassName("delete-tool-button");
+      for (let i = 0; i < deleteButtons.length; i++) {
+        deleteButtons[i].style.display = "inline-block";
+      }
       }
     } else {
       document.getElementById("login-link").style.display = "inline-block";
