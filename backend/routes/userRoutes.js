@@ -1,9 +1,14 @@
 const express = require('express');
 const router = express.Router();
 //const {check} = require('express-validator')
-const {signup, login, decodeCookie, logout} = require('../controllers/userController')
+const {getAllUsers, getOneUser,signup, login, decodeCookie, logout} = require('../controllers/userController')
 //const { auth } = require('../controllers/verifyToken') // add this later on
 
+// used to get all the user in the admin page
+router.get('/all', getAllUsers)
+
+// used to update the role from maker to admin or vice versa on the admin page
+router.put('/all/:id', getOneUser)
 
 router.post('/register', signup)
 

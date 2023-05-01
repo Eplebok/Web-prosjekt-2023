@@ -2,8 +2,27 @@ const userSchema = require("../schemas/userSchema.js")
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-const createUser = async (req, res) => {
+const getAllUsers = async (req,res) => {
+  try {
+    const users = await userSchema.find();
+    res.status(200).json(users)
+  } catch(error) {
+    res.status(500).json({message: error.message})
+  }
+}
 
+const getOneUser = async (req, res) => {
+  try {
+    const user = await userSchema.findById(req.params.id);
+    user.role = req.body.role;
+    await user.save();
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const createUser = async (req, res) => {
    await User.findOne({email: req.body.email}).then((user) => {
         if(user) {
             return res.status(400).json({email: "already registered!"})
@@ -96,4 +115,4 @@ const decodeCookie = async (req, res) => {
 
 
 
-module.exports = {createUser, signup, login, decodeCookie, logout}
+module.exports = {getAllUsers, getOneUser, createUser, signup, login, decodeCookie, logout}
