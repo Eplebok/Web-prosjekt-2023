@@ -55,19 +55,23 @@ window.addEventListener('load', async () => {
       const deleteButton = document.createElement("button");
       deleteButton.innerHTML = 'Delete account';
       deleteButton.addEventListener('click', async () => {
-        try {
-          const response = await fetch(`http://localhost:3200/delete/${user._id}`, {
-            method: 'DELETE'
-          });
-          if (response.ok) {
-            tr.remove();
-          } else {
-            throw new Error('Failed to delete user');
+        const confirmMessage = window.confirm("Are you sure you want to delete this user?");
+        if (confirmMessage) {
+          try {
+            const response = await fetch(`http://localhost:3200/delete/${user._id}`, {
+              method: 'DELETE'
+            });
+            if (response.ok) {
+              tr.remove();
+            } else {
+              throw new Error('Failed to delete user');
+            }
+          } catch (error) {
+            console.log(error.message);
           }
-        } catch (error) {
-          console.log(error.message);
         }
       });
+      
       
       deleteTd.append(deleteButton);
       tr.append(emailTd, roleTd, makerTd, adminTd, deleteTd);
@@ -115,17 +119,33 @@ window.addEventListener('load', async () => {
       deleteBooking.textContent = 'Delete';
       deleteBooking.addEventListener('click', async () => {
         try {
-          const response = await fetch(`http://localhost:3200/booking/delete/${booking._id}`, {
-            method: 'DELETE'
-          });
-          const result = await response.json();
-          console.log(result.message);
-          // remove the table from the page
-          tr.remove();
+          const confirmMessage = window.confirm("Are you sure you want to delete this?");
+          if(confirmMessage) {
+            const response = await fetch(`http://localhost:3200/booking/delete/${booking._id}`, {
+              method: 'DELETE'
+            });
+            const result = await response.json();
+            console.log(result.message);
+            // remove the table row from the page
+            tr.remove();
+            const deleteButton = document.querySelector(`[data-booking-id="${booking._id}"]`);
+            if (deleteButton) {
+              const toolElement = deleteButton.closest('.tool-card');
+              if (toolElement) {
+                toolElement.remove(); // remove tool from webpage
+                const toolId = deleteButton.dataset.toolId;
+                const deleted = await deleteTool(toolId); // delete tool from database
+                if (!deleted) {
+                  console.log('Failed to delete tool');
+                }
+              }
+            }
+          }
         } catch (error) {
           console.log(error.message);
         }
       });
+      
       buttonTd.append(deleteBooking)
 
       tr.append(emailTd, toolsTd, fromTd, toTd, buttonTd);
