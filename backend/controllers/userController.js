@@ -1,5 +1,7 @@
+
+
 const userSchema = require("../schemas/userSchema.js")
-const bcrypt = require('bcrypt')
+// const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 const getAllUsers = async (req,res) => {
@@ -61,7 +63,7 @@ const signup = async (req, res) => {
       res.status(409).end("Email already registered");
     } else {
       // Hash the password
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+  //      const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const user = new userSchema({
             email: req.body.email,
             password: hashedPassword, // Store the hashed password

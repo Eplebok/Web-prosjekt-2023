@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
     app.use('/tools', require('./routes/toolroutes'))
 
     // route for signup/login 
-    app.use('/', require('./routes/userRoutes'))
+  //  app.use('/', require('./routes/userRoutes'))
 
     // route for the different booking parts
     app.use('/booking', require('./routes/bookingRoutes'))

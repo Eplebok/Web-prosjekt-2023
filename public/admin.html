@@ -201,7 +201,64 @@ h1,h2{
   margin-top: 20px;
 }
 
+.uploadTool {
+        display: none;
+        
+      }
+.uploadTool.visible {
+        display: block;
+}
 
+#bookingAdminTable {
+        display: none;
+        margin-bottom: 100px;
+      }
+#bookingAdminTable.visible {
+        display: block;
+}
+
+#userAdminTable {
+        display: none;
+        margin-bottom: 100px;
+      }
+#userAdminTable.visible {
+        display: block;
+}
+
+#toolAdminTable {
+        display: none;
+        margin-bottom: 100px;
+      }
+#toolAdminTable.visible {
+        display: block;
+}
+
+.toggleBtns {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  margin-top: 0px ;
+  margin-bottom: 100px;
+  background-color: #0088cc;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.toggleBtns:hover{
+  background-color: #333;
+  color: white;
+}
+
+.toggles {
+  display: flex;
+  width: 50%;
+  margin: 0 auto;
+}
 
 
 
@@ -210,7 +267,15 @@ h1,h2{
     height: 10%;
   }*/
   
+  h1{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    color: #333;
+
+ 
+  }
   
+ 
   
   
       </style>    
@@ -221,8 +286,19 @@ h1,h2{
 <body>
     <nav-component></nav-component>
 
+    <h1>Admin Configurations</h1>
+    <div class="toggles">
+      <button id="toggleBtn4" class="toggleBtns">Listed Tools</button>
+      <button id="toggleBtn" class="toggleBtns">Tool Upload</button>
+      <button id="toggleBtn3" class="toggleBtns">Users</button>
+      <button id="toggleBtn2" class="toggleBtns">bookings</button>
+      
+
+    </div>
+
 <!-- show all the tools inside the table -->
-    <div class="tools-table">
+
+    <div class="tools-table" id="toolAdminTable">
         <h2 class="admin-info">List of tools</h2>
         <table class="admin-table">
 
@@ -246,8 +322,9 @@ h1,h2{
     </div>
 
 <!-- show all user inside the table -->
-    <div class="tools-table">
-      <h2 class="admin-info">List of user below!</h2>
+
+    <div class="tools-table" id="userAdminTable">
+      <h2 class="admin-info">List of users!</h2>
       <table class="admin-table">
       <thead>
         <tr>
@@ -264,9 +341,12 @@ h1,h2{
     </table>
     </div>
 
+
+    
 <!-- show the recent bookings inside the table -->
-    <div class="tools-table">
-      <h2 class="admin-info">Recent bookings below!</h2>
+    <div class="tools-table" id="bookingAdminTable">
+      <h2 class="admin-info">Recent bookings!</h2>
+       
       <table class="admin-table">
         <thead>
           <tr>
@@ -284,6 +364,7 @@ h1,h2{
       </table>
     </div>
 
+    
 <div class="admin-test">
     <!-- nye updatetools formen  -->
     <form name="myForm" method="post" enctype="multipart/form-data" action="/tools/upload" onsubmit="event.preventDefault(); validateForm(); addTool(event);" class="uploadTool">
@@ -327,6 +408,80 @@ h1,h2{
 </div>
 
     <footer-component></footer-component>
+
+    <script>
+      const toggleBtn = document.getElementById('toggleBtn');
+      const uploadTool = document.querySelector('.uploadTool');
+
+      toggleBtn.addEventListener('click', () => {
+        uploadTool.classList.toggle('visible');
+        if (ShowTools.classList.contains('visible')) {
+          ShowTools.classList.toggle('visible');
+      }
+      if (ShowBooking.classList.contains('visible')) {
+          ShowBooking.classList.toggle('visible');
+      }
+
+      if (ShowUsers.classList.contains('visible')) {
+          ShowUsers.classList.toggle('visible');
+      }
+      });
+
+      const toggleBtn2 = document.getElementById('toggleBtn2');
+      const ShowBooking = document.getElementById('bookingAdminTable');
+
+      toggleBtn2.addEventListener('click', () => {
+        ShowBooking.classList.toggle('visible');
+        if (ShowTools.classList.contains('visible')) {
+          ShowTools.classList.toggle('visible');
+      }
+      if (ShowUsers.classList.contains('visible')) {
+          ShowUsers.classList.toggle('visible');
+      }
+
+      if (uploadTool.classList.contains('visible')) {
+          uploadTool.classList.toggle('visible');
+      }
+      });
+
+      const toggleBtn3 = document.getElementById('toggleBtn3');
+      const ShowUsers = document.getElementById('userAdminTable');
+
+      toggleBtn3.addEventListener('click', () => {
+        ShowUsers.classList.toggle('visible');
+
+        if (ShowTools.classList.contains('visible')) {
+          ShowTools.classList.toggle('visible');
+      }
+      if (ShowBooking.classList.contains('visible')) {
+          ShowBooking.classList.toggle('visible');
+      }
+
+      if (uploadTool.classList.contains('visible')) {
+          uploadTool.classList.toggle('visible');
+      }
+
+      });
+
+      const toggleBtn4 = document.getElementById('toggleBtn4');
+      const ShowTools = document.getElementById('toolAdminTable');
+
+      toggleBtn4.addEventListener('click', () => {
+        ShowTools.classList.toggle('visible');
+        if (ShowUsers.classList.contains('visible')) {
+          ShowUsers.classList.toggle('visible');
+      }
+      if (ShowBooking.classList.contains('visible')) {
+          ShowBooking.classList.toggle('visible');
+      }
+
+      if (uploadTool.classList.contains('visible')) {
+          uploadTool.classList.toggle('visible');
+      }
+        
+        
+      });
+    </script>
 </body>
 
 
