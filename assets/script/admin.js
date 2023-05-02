@@ -15,7 +15,7 @@ fetch('http://localhost:3200/tools/tools')
   
     
     // Display the modified data on the webpage
-    const container = document.getElementById('tool-list');
+    const container = document.querySelector('.tool-list');
    
     
     modifiedData.forEach(tool => {

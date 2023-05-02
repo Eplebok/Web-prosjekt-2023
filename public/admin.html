@@ -147,37 +147,37 @@
     color: black;
   }
 
-  #admin-table {
+  .admin-table {
     border-collapse: collapse;
-    margin: 25px 0;
+    margin: 0 auto;
+    margin-top: 20px;
     font-size: 0.9em;
     font-family: sans-serif;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     max-width: 70%;
-    margin-left: 15%;
 }
 
-#admin-table thead tr {
+.admin-table thead tr {
     background-color: #272834;
     color: #ffffff;
     text-align: left;
 }
 
-#admin-table th,
-#admin-table td {
+.admin-table th,
+.admin-table td {
     padding: 12px 15px;
 }
 
-#admin-table tbody tr {
+.admin-table tbody tr {
     border-bottom: 1px solid #dddddd;
 }
 
-#admin-table tbody tr:nth-of-type(even) {
+.admin-table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
 }
 
-#admin-table tbody tr:last-of-type {
+.admin-table tbody tr:last-of-type {
     border-bottom: 2px solid #272834;
 }
 
@@ -195,6 +195,10 @@ h1,h2{
 
 .td-name {
   font-size: 22pt;
+}
+
+.admin-info {
+  margin-top: 20px;
 }
 
 
@@ -217,9 +221,9 @@ h1,h2{
 <body>
     <nav-component></nav-component>
 
-    <div id="tools-table">
-        <h2>List of tools</h2>
-        <table id="admin-table">
+    <div class="tools-table">
+        <h2 class="admin-info">List of tools</h2>
+        <table class="admin-table">
 
         <thead>
           <tr>
@@ -233,10 +237,49 @@ h1,h2{
             <th>Functionality</th>
             </tr>
         </thead>
-        <tbody id="tool-list">
+        <tbody class="tool-list">
 
         </tbody>
             
+      </table>
+    </div>
+
+    <div class="tools-table">
+      <h2 class="admin-info">List of user below!</h2>
+      <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Make user a maker</th>
+          <th>Make user a admin</th>
+          <th>Delete account</th>
+        </tr>
+      </thead>
+      <tbody class="tool-list" id="admin-user-list">
+    
+      </tbody>
+    </table>
+    </div>
+
+    <div class="tools-table">
+      <h2 class="admin-info">Recent bookings below!</h2>
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Booking email</th>
+            <th>Tools borrowed</th>
+            <th>From time:</th>
+            <th>To time:</th>
+          </tr>
+        </thead>
+        <tbody class="tool-list" id="admin-booking-list">
+          <td>booking email here</td>
+          <td>The tools that has been booked</td>
+          <td>From time </td>
+          <td>To time</td>
+        </tbody>
+        
       </table>
     </div>
 
@@ -280,14 +323,7 @@ h1,h2{
     <div id="success"></div>
     <div id="notsuccess"></div>
   </form>
-
-    <div class="admin-all-user">
-        <ul class="admin-all-user-list">
-            <h2>All users registered below!</h2>
-        </ul>
-    </div>
-  </div>
-
+</div>
 
     <footer-component></footer-component>
 </body>
