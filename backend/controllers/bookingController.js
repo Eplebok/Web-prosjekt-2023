@@ -6,10 +6,22 @@ const getBooking =  async (req, res) => {
     try {
       const getBooking = await bookingSchema.find();
       res.json(getBooking)
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Error ');
+    }
+  }
+
+const deleteBooking =  async (req, res) => {
+    try {
+      const getBooking = await bookingSchema.findByIdAndDelete(req.params.id);
+      res.json(getBooking)
+      console.log("bookings deleted")
       
     } catch (err) {
       console.error(err);
       res.status(500).send('Error ');
+      console.log("booking not deleted")
     }
   }
 
@@ -69,4 +81,4 @@ const uploadBooking = async (req, res) => {
    }
   }
 
-module.exports = {getBooking, uploadBooking}
+module.exports = {getBooking, deleteBooking ,uploadBooking}
