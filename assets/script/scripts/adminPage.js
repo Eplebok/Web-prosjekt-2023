@@ -1,3 +1,5 @@
+// this is the code for showing all the users in the database on the admin page
+// and to make them display inside the table
 window.addEventListener('load', async () => {
   try {
     const response = await fetch('http://localhost:3200/all', {
@@ -75,3 +77,63 @@ window.addEventListener('load', async () => {
     console.log(error.message);
   }
 });
+
+
+// this is the code for showing the recent bookings in the database on the admin page
+// and to make them display inside the table
+window.addEventListener('load', async () => {
+  try {
+    const response = await fetch('http://localhost:3200/booking/getBooking', {
+      method: 'GET'
+    });
+    const allBookings = await response.json();
+
+    // sort the bookings in an descneding order
+    allBookings.sort((a, b) => new Date(a.startBookingDate) - new Date(b.startBookingDate));
+  
+
+    // find the table body element to add rows to
+    const tbody = document.querySelector('#admin-booking-list');
+
+    allBookings.forEach(booking => {
+      const tr = document.createElement('tr');
+
+      const emailTd = document.createElement('td');
+      emailTd.textContent = booking.email;
+
+      const toolsTd = document.createElement('td');
+      toolsTd.textContent = booking.toolName;
+
+      const fromTd = document.createElement('td');
+      fromTd.textContent = booking.startBookingDate;
+
+      const toTd = document.createElement('td');
+      toTd.textContent = booking.endBookingDate;
+
+      const buttonTd = document.createElement('td')
+      const deleteBooking = document.createElement('button');
+      deleteBooking.textContent = 'Delete';
+      deleteBooking.addEventListener('click', async () => {
+        try {
+          const response = await fetch(`http://localhost:3200/booking/delete/${booking._id}`, {
+            method: 'DELETE'
+          });
+          const result = await response.json();
+          console.log(result.message);
+          // remove the table from the page
+          tr.remove();
+        } catch (error) {
+          console.log(error.message);
+        }
+      });
+      buttonTd.append(deleteBooking)
+
+      tr.append(emailTd, toolsTd, fromTd, toTd, buttonTd);
+      tbody.append(tr);
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+
