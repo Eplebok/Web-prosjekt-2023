@@ -67,11 +67,14 @@ fetch('http://localhost:3200/tools/tools')
         // add click event listener to delete button
         const deleteButton = toolElement.querySelector('.delete-tool-button');
         deleteButton.addEventListener('click', async () => {
-          toolElement.remove(); // remove tool from webpage
-          const toolId = deleteButton.dataset.toolId;
-          const deleted = await deleteTool(toolId); // delete tool from database
-          if (!deleted) {
-            console.log('Failed to delete tool');
+          const confirmMessage = window.confirm("Are you sure you want to delete this?")
+          if(confirmMessage) {
+            toolElement.remove(); // remove tool from webpage
+            const toolId = deleteButton.dataset.toolId;
+            const deleted = await deleteTool(toolId); // delete tool from database
+            if (!deleted) {
+              console.log('Failed to delete tool');
+            }
           }
         });
 
