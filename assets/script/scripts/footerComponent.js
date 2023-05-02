@@ -6,18 +6,18 @@ class FooterComponent extends HTMLElement {
       <img src="/assets/images/logo_ntnu_tag_norsk.svg" alt="picture of NTNU logo" class="footer-img">
       <div class="footer-container">  
           <div class="footer-top">      
-              <p class="footer-top-info">Kontakt Info</p>
+              <p class="footer-top-info">Contact Info</p>
                   <ul>
                       <li><a href="https://www.ntnu.no/" class="footer-list">NTNU Homepage</a></li>
                       <li><a href="email@test.no" class="footer-list">NTNU mail</a></li>
                       <li><a href="https://www.ntnu.no/ansatte/ida.parelius" class="footer-list">Person responsible for the workshop</a></li>
                       <li><a href="email@test.no" class="footer-list">Idas mail</a></li>
-                      <li><a href="73595000" class="footer-list">Telefon sentralbord: 73 59 50 00</a></li>
+                      <li><a href="73595000" class="footer-list">Telephone switchboard: 73 59 50 00</a></li>
                   </ul>
           </div>
   
           <div class="footer-top">
-              <p class="footer-top-info">Andre medier</p>
+              <p class="footer-top-info">Other medias</p>
                   <ul>
                       <li><a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
                       <li><a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
@@ -46,11 +46,11 @@ class FooterComponent extends HTMLElement {
   
       const location = new google.maps.LatLng(60.78962992090764, 10.675766849946319);
   
-      // Create a marker at the specified location
+      // create a marker at the specified location
         const marker = new google.maps.Marker({
           position: location,
           map: map,
-          title: 'Verkstedet' // You can set a title to display when hovering over the marker
+          title: 'Verkstedet' // you can set a title to display when hovering over the marker
         });
   
     }

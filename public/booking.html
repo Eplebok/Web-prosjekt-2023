@@ -130,6 +130,60 @@ h3 {
   color: lightgray;
 }
 
+#tool-table {
+  margin-left: 38%;
+}
+
+.tool-table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    max-width: 70%;
+}
+
+.tool-table thead tr {
+    background-color: #272834;
+    color: #ffffff;
+    text-align: left;
+}
+
+.tool-table th,
+.tool-table td {
+    padding: 12px 15px;
+}
+
+.tool-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.tool-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.tool-table tbody tr:last-of-type {
+    border-bottom: 2px solid #272834;
+}
+
+td > button{
+  padding: 5px;
+}
+
+.nav-component > a{
+   color: white;
+}
+
+h1,h2{
+    text-align: center;
+}
+
+.td-name {
+  font-size: 22pt;
+}
+
 
     </style>
 </head>
@@ -141,9 +195,16 @@ h3 {
     </ul>
 
     <h3>Your Booking Cart:</h3>
-
-    <ul id="tools-list">
-    </ul>
+      <table class="tool-table">
+        <thead>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Button</th>
+        </thead>
+        <tbody id="tools-list">
+        </tbody>
+      </table>
+      
     
 
      <form id="myBooking" name="myBooking" method="post" action="/booking/uploadBooking" onsubmit="submitBookingForm(event)" class="uploadTool">
@@ -210,24 +271,20 @@ if (tools && tools.length > 0) {
 
 // Function to add a tool to the list
 function addTool(tool) {
-  const li = document.createElement('li');
-  li.innerHTML = `
-    <p class="toolName">${tool.name}</p>
-    <p class="toolQty">${tool.quantity}</p>
-    
-    
-    <p class="toolID">${tool.id}</p>
+  const table = document.createElement('tr');
+  table.innerHTML = `
+    <td class="toolName">${tool.name}</td>
+    <td class="toolQty">${tool.quantity}</td>
     <button class="delete-tool" data-id="${tool.id}">Remove</button>
-    <br></br><br></br>
-    
   `;
-  toolsList.appendChild(li);
+  toolsList.appendChild(table);
 }
 
 // Add an event listener to the tools list to listen for clicks on the delete buttons
 toolsList.addEventListener('click', event => {
   if (event.target.classList.contains('delete-tool')) {
     const id = parseInt(event.target.dataset.id);
+  
     removeTool(id);
     event.target.parentElement.remove();
   }
