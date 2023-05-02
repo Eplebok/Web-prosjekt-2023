@@ -22,6 +22,21 @@ const getOneUser = async (req, res) => {
   }
 };
 
+const deleteUser = async (req, res) => {
+  try {
+    const user = await userSchema.findByIdAndRemove(req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json({ message: 'User deleted successfully' });
+    console.log(`${user} has been deleted`)
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+
 const createUser = async (req, res) => {
    await User.findOne({email: req.body.email}).then((user) => {
         if(user) {
@@ -116,5 +131,5 @@ const decodeCookie = async (req, res) => {
 
 
 
-module.exports = {getAllUsers, getOneUser, createUser, signup, login, decodeCookie, logout}
+module.exports = {getAllUsers, getOneUser, createUser, signup, login, decodeCookie, logout, deleteUser}
 
