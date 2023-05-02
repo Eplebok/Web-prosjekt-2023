@@ -47,7 +47,7 @@ fetch('http://localhost:3200/tools/tools')
         const toolElement = document.createElement('tr');
         toolElement.innerHTML = `
 
-            <td class="td-name"><a href="/spesificTool.html?toolName=${tName}" id="tool-card-h2">${tName}</a></td>
+            <td class="td-name"><a href="/spesificTool.html?toolName=${tName}" class="tool-link">${tName}</a></td>
             <td class="td-description">${tool.description}</td>
             <td class="td-quantity">${tool.quantity}</td>
             <td class="td-electric">${tool.electric}</td>
