@@ -13,7 +13,7 @@ class NavComponent extends HTMLElement {
                   <div id="mylinks">
                   <li id="leftlink"><a href="index.html" id="test">Home</a></li>
                   <li><a href="tools.html">Tools</a></li>
-                  <li><a href="booking.html">Booking</a></li>
+                  
                   <li><a href="about.html">About Us</a></li>
                   <li><a href="feedback.html">Feedback</a></li>
                   <li id="admin-link" style="display: none;"><a href="/admin.html">Admin</a></li>
@@ -78,7 +78,7 @@ function updateNavBar(email) {
       if (data.role === 'admin') {
         document.getElementById("admin-link").style.display = "inline-block";
         document.getElementById("editButton").style.display = "inline-block";
-      const deleteButtons = document.getElementsByClassName("delete-tool-button");
+        const deleteButtons = document.getElementsByClassName("delete-tool-button");
       for (let i = 0; i < deleteButtons.length; i++) {
         deleteButtons[i].style.display = "inline-block";
       }
@@ -88,6 +88,21 @@ function updateNavBar(email) {
       document.getElementById("logout-link").style.display = "none";
       document.getElementById("user-email").style.display = "none";
       document.getElementById("user-email").getElementsByTagName("a")[0].innerHTML = "";
+
+      if (!document.cookie) {
+        // Cookie is not present, hide the buttons
+        document.getElementById("checkout-button").style.display = "none";
+        const brokenToolButtons = document.querySelectorAll(".broken-tool-button");
+        const bookToolButtons = document.querySelectorAll(".book-tool-button");
+      
+        for (let i = 0; i < brokenToolButtons.length; i++) {
+          brokenToolButtons[i].style.display = "none";
+        }
+        for (let i = 0; i < bookToolButtons.length; i++) {
+          bookToolButtons[i].style.display = "none";
+        }
+      }
     }
+    
   });
 
