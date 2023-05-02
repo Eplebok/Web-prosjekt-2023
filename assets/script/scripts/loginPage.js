@@ -76,7 +76,7 @@ async function submitLoginForm(event) {
         }, "*");
      //   window.alert("You logged in!")
         document.getElementById("status-msg-login").innerHTML = `You logged in!`;
-     //   window.location.href = "index.html"; // redirects the user to the home page
+        window.location.href = "index.html"; // redirects the user to the home page
       } else {
         document.getElementById("status-msg-login").innerHTML = "Wrong email or password!";
       }
