@@ -1,3 +1,24 @@
+// check if the user is an admin before accessing the page!
+// Check if the user is an admin before accessing the page!
+fetch('http://localhost:3200/decode')
+  .then(response => response.json())
+  .then(data => {
+    if (data.role === "admin") {
+      // If the user is an admin, show the page
+      console.log("User is an admin!");
+    } else {
+      // If the user is not an admin, redirect to index.html
+      console.log("User is not an admin!");
+      window.location.href = "index.html";
+    }
+  })
+  .catch(error => {
+    // If there's an error fetching the user data, redirect to index.html
+    console.log(error.message);
+    window.location.href = "index.html";
+  });
+
+
 fetch('http://localhost:3200/tools/tools')
   .then(response => response.json())
   .then(data => {

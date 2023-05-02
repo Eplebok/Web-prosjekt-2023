@@ -36,6 +36,7 @@ class NavComponent extends HTMLElement {
             });
             const data = await response.json();
             console.log(data);
+            localStorage.clear();
             // redirect the user to the login page
             window.location.href = "login.html";
           });
