@@ -20,7 +20,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "uninstall": "npm uninstall bcrypt",
     "install": "npm install bcrypt",
-    "all": "npm install"
+    "all": "npm run uninstall && npm run install"
   },
   "repository": {
     "type": "git",
